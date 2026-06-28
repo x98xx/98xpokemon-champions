@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PoKemon 屬性相剋計算表</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+            margin: 0;
+            padding: 10px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 15px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+        h1, h2, h3 { text-align: center; color: #2c3e50; font-size: 1.4rem; margin: 15px 0; }
+        h2 { border-bottom: 2px solid #e9ecef; padding-bottom: 6px; margin-top: 25px; }
+        
+        /* 1. 屬性方塊選擇區 */
+        .select-section {
+            background: #e9ecef;
+            padding: 12px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+        .picker-title {
+            font-size: 13px;
+            font-weight: bold; color: #495057; margin-bottom: 8px; text-align: center;
+        }
+        .type-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(68px, 1fr));
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+        .type-btn {
+            padding: 6px 2px;
+            border-radius: 20px;
+            border: 2px solid transparent;
+            font-size: 12px;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+            cursor: pointer;
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+            transition: all 0.15s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .type-btn.selected-t1 { border-color: #000 !important; box-shadow: 0 0 8px #000; transform: scale(1.05); }
+        .type-btn.selected-t2 { border-color: #ff007f !important; box-shadow: 0 0 8px #ff007f; transform: scale(1.05); }
+
+        /* 功能按鈕區 */
+        .action-container {
+            display: flex;
+            justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 10px;
+        }
+        .btn {
+            padding: 8px 12px;
+            border: none; border-radius: 20px;
+            font-size: 13px; font-weight: bold; cursor: pointer; transition: 0.2s;
+            display: inline-flex; align-items: center; gap: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .btn-update { background-color: #28a745; color: white; }
+        .btn-update:hover { background-color: #218838; }
+        .btn-remove { background-color: #dc3545; color: white; }
+        .btn-remove:hover { background-color: #c82333; }
+        .btn-clear { background-color: #6c757d; color: white; }
+
+        /* 2. 單體即時預覽區 */
+        .single-preview {
+            background: #fff;
+            border: 1px solid #dee2e6; border-radius: 12px;
+            padding: 12px; margin-bottom: 20px; box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);
+        }
+        .preview-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+        .preview-box { background: #fafafa; padding: 6px 8px; border-radius: 8px; border-left: 3px solid #ccc; }
+
+        /* 3. 隊伍顯示區 */
+        .team-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; margin-bottom: 25px;
+        }
+        .team-slot {
+            background: #f8f9fa;
+            border: 2px dashed #ced4da; border-radius: 12px;
+            padding: 10px; display: flex; flex-direction: column; position: relative;
+            transition: 0.2s;
+        }
+        .team-slot.selected {
+            border: 2px solid #28a745 !important;
+            background: #f1f9f1;
+            box-shadow: 0 0 10px rgba(40,167,69,0.15);
+        }
+        .team-slot.active { border-style: solid; border-color: #ced4da; background: #fff; }
+        
+        .slot-header {
+            display: flex;
+            justify-content: space-between; align-items: center;
+            border-bottom: 1px solid #eee; padding-bottom: 4px; margin-bottom: 6px;
+        }
+        .slot-title { 
+            font-weight: bold;
+            font-size: 13px; color: #007bff; cursor: pointer;
+            padding: 2px 6px; border-radius: 4px; background: #e7f3ff; transition: 0.15s;
+        }
+        .slot-title:hover { background: #007bff; color: white; }
+        .slot-status { font-size: 10px; padding: 1px 5px; border-radius: 8px; }
+        .status-empty { background: #e9ecef; color: #6c757d; }
+        .status-selected { background: #28a745; color: white; }
+        .status-filled { background: #007bff; color: white; }
+
+        /* 分組排版結構樣式 */
+        .member-details { font-size: 11px; cursor: pointer; }
+        .member-detail-row { margin-bottom: 4px; background: #fafafa; padding: 5px; border-radius: 4px; }
+        .member-detail-title { font-weight: bold; font-size: 11px; margin-bottom: 3px;}
+        .sub-group { margin-top: 3px; padding-left: 4px; border-left: 2px solid #e2e8f0; }
+        .sub-title { font-size: 10px; color: #718096; font-weight: bold; margin-bottom: 2px; }
+
+        /* 4. 底部整隊綜合分析 */
+        .result-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 15px; }
+        .card { background: #fff; border: 1px solid #e9ecef; border-radius: 12px; padding: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
+        .card h3 { text-align: left; margin-top: 0; font-size: 14px; padding-bottom: 4px; border-bottom: 1px solid #eee;}
+        .list-group { margin-bottom: 10px; }
+        .list-title { font-weight: bold; margin-bottom: 3px; font-size: 12px; color: #555; }
+        
+        /* 屬性標籤與計數器 */
+        .badge-container { display: flex; flex-wrap: wrap; gap: 3px; min-height: 16px; align-items: center;}
+        .type-badge {
+            padding: 1px 5px;
+            border-radius: 4px; color: white;
+            font-size: 11px; font-weight: bold; text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+            display: inline-block;
+        }
+        .count-tag {
+            background: #333;
+            color: #fff; font-size: 9px;
+            padding: 1px 3px; border-radius: 3px; margin-left: 1px;
+        }
+
+        /* 屬性官方色彩 */
+        .type-一般 { background-color: #949495; } .type-草 { background-color: #5fbd58; }
+        .type-火 { background-color: #ff9944; } .type-水 { background-color: #58abf6; }
+        .type-電 { background-color: #f7d02c; color: #333; text-shadow: none; } .type-蟲 { background-color: #92bc2c; }
+        .type-飛行 { background-color: #a2a3e3; } .type-岩石 { background-color: #c5b78c; }
+        .type-毒 { background-color: #a854a5; } .type-地面 { background-color: #dac77e; }
+        .type-冰 { background-color: #75d0c4; color: #333; text-shadow: none; } .type-格鬥 { background-color: #c03028; }
+        .type-超能力 { background-color: #f95587; } .type-幽靈 { background-color: #6a5296; }
+        .type-龍 { background-color: #8354ff; } .type-惡 { background-color: #6d5344; }
+        .type-鋼 { background-color: #b7b7c8; color: #333; text-shadow: none; } .type-妖精 { background-color: #f4a2e5; }
+
+        /* 搜尋彈窗 (Modal) 樣式 */
+        .search-modal {
+            display: none;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.4); z-index: 1000; justify-content: center;
+            align-items: flex-start;
+            padding-top: 10vh; box-sizing: border-box;
+        }
+        .search-modal-content {
+            background: white;
+            padding: 20px; border-radius: 16px; width: 90%; max-width: 450px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15); animation: fadeIn 0.2s ease-out;
+        }
+        .search-input {
+            width: 100%;
+            padding: 10px 12px; border-radius: 8px; border: 1px solid #ced4da;
+            font-size: 14px; box-sizing: border-box; margin-top: 10px;
+        }
+        .search-results-list {
+            margin-top: 12px;
+            max-height: 250px; overflow-y: auto; border: 1px solid #eee; border-radius: 8px;
+        }
+        .search-item {
+            padding: 10px 12px;
+            cursor: pointer; border-bottom: 1px solid #f8f9fa; display: flex; justify-content: space-between; align-items: center;
+        }
+        .search-item:hover { background-color: #f1f3f5; }
+        .close-modal-btn {
+            float: right;
+            border: none; background: none; font-size: 18px; font-weight: bold; color: #aaa; cursor: pointer;
+        }
+        .close-modal-btn:hover { color: #333; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>PoKemon 屬性相剋計算表</h1>
+    
+    <div class="select-section">
+        <div class="picker-title">選擇第一屬性 / 第二屬性</div>
+        <div class="type-grid" id="type-button-container"></div>
+        
+        <div class="action-container">
+            <button class="btn btn-update" onclick="updateSelectedSlot()">✔️ 更新</button>
+            <button class="btn btn-remove" onclick="removeSelectedSlot()">❌ 清除</button>
+            <button class="btn btn-clear" onclick="clearAllTeam()">🫟 全部重置</button>
+        </div>
+    </div>
+
+    <div class="single-preview">
+        <div class="preview-grid">
+            <div class="preview-box" style="border-left-color: #d9534f;">
+                <span style="font-weight:bold; color:#d9534f; font-size:12px;">🛡️ 防守弱點：</span>
+                <div id="single-def-weak" class="badge-container" style="margin-top:2px;"></div>
+            </div>
+            <div class="preview-box" style="border-left-color: #28a745;">
+                <span style="font-weight:bold; color:#28a745; font-size:12px;">🛡️ 防守抗性：</span>
+                <div id="single-def-resist" class="badge-container" style="margin-top:2px;"></div>
+            </div>
+            <div class="preview-box" style="border-left-color: #0275d8;">
+                <span style="font-weight:bold; color:#0275d8; font-size:12px;">🗡️ 強打擊點：</span>
+                <div id="single-atk-strong" style="margin-top:2px;"></div>
+            </div>
+            <div class="preview-box" style="border-left-color: #e67e22;">
+                <span style="font-weight:bold; color:#e67e22; font-size:12px;">🗡️ 弱打擊點：</span>
+                <div id="single-atk-weak" style="margin-top:2px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <h3>👤 隊伍成員屬性分析</h3>
+    <div class="team-section" id="team-container"></div>
+
+    <h2>🫂 隊伍綜合相剋分析</h2>
+    <div class="result-grid">
+        <div class="card">
+            <h3 style="color: #d9534f;">🛡️ 隊伍防守弱點 (被克)</h3>
+            <div id="team-def-danger" class="list-group">
+                <div class="list-title" style="color: #c03028; font-size:11px;">⚠️ 嚴重盲點 (2隻以上怕它，且少人能抗)：</div>
+                <div class="badge-container"></div>
+            </div>
+            <div id="team-def-weak" class="list-group">
+                <div class="list-title">⛓️‍💥 成員弱點 (受 2x/4x 傷害)：</div>
+                <div class="badge-container"></div>
+            </div>
+            <div id="team-def-resist" class="list-group">
+                <div class="list-title">⛓️ 成員抗性 (0.5x/0x 傷害)：</div>
+                <div class="badge-container"></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3 style="color: #0275d8;">🗡️ 隊伍打擊面 (進攻)</h3>
+            <div id="team-atk-good" class="list-group">
+                <div class="list-title" style="color: #28a745;">☄️ 可克制 (2x) 的屬性目標：</div>
+                <div class="badge-container"></div>
+            </div>
+            <div id="team-atk-blind" class="list-group">
+                <div class="list-title" style="color: #856404;">🪨 進攻盲點 (整隊招式都無法克制)：</div>
+                <div class="badge-container"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="search-modal" class="search-modal" onclick="closeSearchModal(event)">
+    <div class="search-modal-content" onclick="event.stopPropagation()">
+        <button class="close-modal-btn" onclick="document.getElementById('search-modal').style.display='none'">×</button>
+        <div style="font-weight: bold; font-size: 15px; color: #2c3e50;" id="search-modal-title">🔍 搜尋寶可夢 (位置 1)</div>
+        <input type="text" id="modal-search-input" class="search-input" placeholder="輸入中文名稱... (例如：皮卡丘、烈咬陸鯊)" oninput="filterPokemonResults()">
+        <div id="search-results-list" class="search-results-list"></div>
+    </div>
+</div>
+
+<script>
+const types = ["一般", "草", "火", "水", "電", "蟲", "飛行", "岩石", "毒", "地面", "冰", "格鬥", "超能力", "幽靈", "龍", "惡", "鋼", "妖精"];
+
+const chart = {
+    "一般": {"岩石": 0.5, "幽靈": 0, "鋼": 0.5},
+    "草": {"草": 0.5, "火": 0.5, "水": 2, "岩石": 2, "毒": 0.5, "地面": 2, "飛行": 0.5, "蟲": 0.5, "龍": 0.5, "鋼": 0.5},
+    "火": {"草": 2, "火": 0.5, "水": 0.5, "岩石": 0.5, "冰": 2, "蟲": 2, "龍": 0.5, "鋼": 2},
+    "水": {"火": 2, "水": 0.5, "岩石": 2, "地面": 2, "龍": 0.5},
+    "電": {"水": 2, "電": 0.5, "飛行": 2, "地面": 0, "龍": 0.5},
+    "蟲": {"草": 2, "火": 0.5, "毒": 0.5, "飛行": 0.5, "格鬥": 0.5, "超能力": 2, "幽靈": 0.5, "惡": 2, "鋼": 0.5, "妖精": 0.5},
+    "飛行": {"草": 2, "電": 0.5, "岩石": 0.5, "格鬥": 2, "蟲": 2, "鋼": 0.5},
+    "岩石": {"火": 2, "冰": 2, "格鬥": 0.5, "地面": 0.5, "飛行": 2, "蟲": 2, "鋼": 0.5},
+    "毒": {"草": 2, "岩石": 0.5, "毒": 0.5, "地面": 0.5, "幽靈": 0.5, "鋼": 0, "妖精": 2},
+    "地面": {"火": 2, "電": 2, "草": 0.5, "蟲": 0.5, "岩石": 2, "毒": 2, "飛行": 0, "鋼": 2},
+    "冰": {"草": 2, "火": 0.5, "水": 0.5, "冰": 0.5, "飛行": 2, "地面": 2, "龍": 2, "鋼": 0.5},
+    "格鬥": {"一般": 2, "岩石": 2, "冰": 2, "飛行": 0.5, "毒": 0.5, "超能力": 0.5, "蟲": 0.5, "幽靈": 0, "惡": 2, "鋼": 2, "妖精": 0.5},
+    "超能力": {"格鬥": 2, "毒": 2, "超能力": 0.5, "惡": 0, "鋼": 0.5},
+    "幽靈": {"一般": 0, "超能力": 2, "幽靈": 2, "惡": 0.5},
+    "龍": {"龍": 2, "鋼": 0.5, "妖精": 0},
+    "惡": {"格鬥": 0.5, "超能力": 2, "幽靈": 2, "惡": 0.5, "妖精": 0.5},
+    "鋼": {"火": 0.5, "水": 0.5, "電": 0.5, "岩石": 2, "冰": 2, "鋼": 0.5, "妖精": 2},
+    "妖精": {"火": 0.5, "格鬥": 2, "毒": 0.5, "龍": 2, "惡": 2, "鋼": 0.5}
+};
+
+const pokemonDatabase = [
+    { name: "妙蛙花", t1: "草", t2: "毒" },
+    { name: "妙蛙花|超級妙蛙花", t1: "草", t2: "毒" },
+    { name: "噴火龍", t1: "火", t2: "飛行" },
+    { name: "噴火龍|超級噴火龍Ｘ", t1: "火", t2: "龍" },
+    { name: "噴火龍|超級噴火龍Ｙ", t1: "火", t2: "飛行" },
+    { name: "水箭龜", t1: "水", t2: "" },
+    { name: "水箭龜|超級水箭龜", t1: "水", t2: "" },
+    { name: "大針蜂", t1: "蟲", t2: "毒" },
+    { name: "大針蜂|超級大針蜂", t1: "蟲", t2: "毒" },
+    { name: "大比鳥", t1: "一般", t2: "飛行" },
+    { name: "大比鳥|超級大比鳥", t1: "一般", t2: "飛行" },
+    { name: "阿柏怪", t1: "毒", t2: "" },
+    { name: "皮卡丘", t1: "電", t2: "" },
+    { name: "雷丘", t1: "電", t2: "" },
+    { name: "雷丘|阿羅拉的樣子", t1: "電", t2: "超能力" },
+    { name: "皮可西", t1: "妖精", t2: "" },
+    { name: "皮可西|超級皮可西", t1: "妖精", t2: "飛行" },
+    { name: "九尾", t1: "火", t2: "" },
+    { name: "九尾|阿羅拉的樣子", t1: "冰", t2: "妖精" },
+    { name: "風速狗", t1: "火", t2: "" },
+    { name: "風速狗|洗翠的樣子", t1: "火", t2: "岩石" },
+    { name: "胡地", t1: "超能力", t2: "" },
+    { name: "胡地|超級胡地", t1: "超能力", t2: "" },
+    { name: "怪力", t1: "格鬥", t2: "" },
+    { name: "大食花", t1: "草", t2: "毒" },
+    { name: "大食花|超級大食花", t1: "草", t2: "毒" },
+    { name: "呆殼獸", t1: "水", t2: "超能力" },
+    { name: "呆殼獸|伽勒爾的樣子", t1: "毒", t2: "超能力" },
+    { name: "呆殼獸|超級呆殼獸", t1: "水", t2: "超能力" },
+    { name: "耿鬼", t1: "幽靈", t2: "毒" },
+    { name: "耿鬼|超級耿鬼", t1: "幽靈", t2: "毒" },
+    { name: "袋獸", t1: "一般", t2: "" },
+    { name: "袋獸|超級袋獸", t1: "一般", t2: "" },
+    { name: "寶石海星", t1: "水", t2: "超能力" },
+    { name: "寶石海星|超級寶石海星", t1: "水", t2: "超能力" },
+    { name: "凱羅斯", t1: "蟲", t2: "" },
+    { name: "凱羅斯|超級凱羅斯", t1: "蟲", t2: "飛行" },
+    { name: "肯泰羅", t1: "一般", t2: "" },
+    { name: "肯泰羅(水)", t1: "格鬥", t2: "水" },
+    { name: "肯泰羅(火)", t1: "格鬥", t2: "火" },
+    { name: "暴鯉龍", t1: "水", t2: "飛行" },
+    { name: "暴鯉龍|超級暴鯉龍", t1: "水", t2: "惡" },
+    { name: "百變怪", t1: "一般", t2: "" },
+    { name: "水伊布", t1: "水", t2: "" },
+    { name: "雷伊布", t1: "電", t2: "" },
+    { name: "火伊布", t1: "火", t2: "" },
+    { name: "化石翼龍", t1: "岩石", t2: "飛行" },
+    { name: "化石翼龍|超級化信翼龍", t1: "岩石", t2: "飛行" },
+    { name: "卡比獸", t1: "一般", t2: "" },
+    { name: "快龍", t1: "龍", t2: "飛行" },
+    { name: "快龍|超級快龍", t1: "龍", t2: "飛行" },
+    { name: "大竺葵", t1: "草", t2: "" },
+    { name: "大竺葵|超級大竺葵", t1: "草", t2: "妖精" },
+    { name: "火爆獸", t1: "火", t2: "" },
+    { name: "火爆獸|洗翠的樣子", t1: "火", t2: "幽靈" },
+    { name: "大力鱷", t1: "水", t2: "" },
+    { name: "大力鱷|超級大力鱷", t1: "水", t2: "龍" },
+    { name: "阿利多斯", t1: "蟲", t2: "毒" },
+    { name: "電龍", t1: "電", t2: "" },
+    { name: "電龍|超級電龍", t1: "電", t2: "龍" },
+    { name: "瑪力露麗", t1: "水", t2: "妖精" },
+    { name: "蚊香蛙皇", t1: "水", t2: "" },
+    { name: "太陽伊布", t1: "超能力", t2: "" },
+    { name: "月亮伊布", t1: "惡", t2: "" },
+    { name: "呆呆王", t1: "水", t2: "超能力" },
+    { name: "呆呆王|伽勒爾的樣子", t1: "毒", t2: "超能力" },
+    { name: "佛烈托斯", t1: "蟲", t2: "鋼" },
+    { name: "大鋼蛇", t1: "鋼", t2: "地面" },
+    { name: "大鋼蛇|超級大鋼蛇", t1: "鋼", t2: "地面" },
+    { name: "巨鉗螳螂", t1: "蟲", t2: "鋼" },
+    { name: "巨鉗螳螂|超級巨鉗螳螂", t1: "蟲", t2: "鋼" },
+    { name: "赫拉克羅斯", t1: "蟲", t2: "格鬥" },
+    { name: "赫拉克羅斯|超級赫拉克羅斯", t1: "蟲", t2: "格鬥" },
+    { name: "盔甲鳥", t1: "鋼", t2: "飛行" },
+    { name: "盔甲鳥|超級盔甲鳥", t1: "鋼", t2: "飛行" },
+    { name: "黑魯加", t1: "惡", t2: "火" },
+    { name: "黑魯加|超級黑魯加", t1: "惡", t2: "火" },
+    { name: "班基拉斯", t1: "岩石", t2: "惡" },
+    { name: "班基拉斯|超級班基拉斯", t1: "岩石", t2: "惡" },
+    { name: "大嘴鷗", t1: "水", t2: "飛行" },
+    { name: "沙奈朵", t1: "超能力", t2: "妖精" },
+    { name: "沙奈朵|超級沙奈朵", t1: "超能力", t2: "妖精" },
+    { name: "勾魂眼", t1: "惡", t2: "幽靈" },
+    { name: "勾魂眼|超級勾魂眼", t1: "惡", t2: "幽靈" },
+    { name: "波士可多拉", t1: "鋼", t2: "岩石" },
+    { name: "波士可多拉|超級波士可多拉", t1: "鋼", t2: "" },
+    { name: "恰雷姆", t1: "格鬥", t2: "超能力" },
+    { name: "恰雷姆|超級恰雷姆", t1: "格鬥", t2: "超能力" },
+    { name: "雷電獸", t1: "電", t2: "" },
+    { name: "雷電獸|超級雷電獸", t1: "電", t2: "" },
+    { name: "巨牙鯊", t1: "水", t2: "惡" },
+    { name: "巨牙鯊|超級巨牙鯊", t1: "水", t2: "惡" },
+    { name: "噴火駝", t1: "火", t2: "地面" },
+    { name: "噴火駝|超級噴火駝", t1: "火", t2: "地面" },
+    { name: "煤炭龜", t1: "火", t2: "" },
+    { name: "七夕青鳥", t1: "龍", t2: "飛行" },
+    { name: "七夕青鳥|超級七夕青鳥", t1: "龍", t2: "妖精" },
+    { name: "美納斯", t1: "水", t2: "" },
+    { name: "烈咬陸鯊", t1: "龍", t2: "地面" },
+    { name: "烈咬陸鯊|超級烈咬陸鯊", t1: "龍", t2: "地面" },
+    { name: "路卡利歐", t1: "格鬥", t2: "鋼" },
+    { name: "路卡利歐|超級路卡利歐", t1: "格鬥", t2: "鋼" },
+    { name: "仙子伊布", t1: "妖精", t2: "" },
+    { name: "多龍巴魯托", t1: "龍", t2: "幽靈" }
+];
+
+let currentT1 = "";
+let currentT2 = "";
+let selectedSlotIndex = 0;
+let teamSlots = Array(6).fill(null);
+
+window.onload = function() {
+    renderTypeButtons();
+    renderTeamSlots();
+    calculateSingle();
+    analyzeTotalTeam();
+};
+
+function renderTypeButtons() {
+    const container = document.getElementById('type-button-container');
+    container.innerHTML = '';
+    types.forEach(t => {
+        let btn = document.createElement('div');
+        btn.className = `type-btn type-${t}`;
+        btn.innerText = t;
+        if (t === currentT1) btn.classList.add('selected-t1');
+        if (t === currentT2) btn.classList.add('selected-t2');
+        btn.onclick = () => selectTypeLogic(t);
+        container.appendChild(btn);
+    });
+}
+
+function selectTypeLogic(type) { 
+    if (currentT1 === type) { 
+        if (currentT2 !== "") { 
+            currentT1 = currentT2; 
+            currentT2 = "";
+        } else {
+            currentT1 = ""; // 當只選擇了一個屬性並再次點擊它時，完全取消選擇（可歸零）
+        }
+    } else if (currentT2 === type) { 
+        currentT2 = "";
+    } else { 
+        if (currentT1 === "") {
+            currentT1 = type; // 如果目前完全沒選屬性，點擊新屬性優先填入第一屬性
+        } else if (currentT2 === "") { 
+            currentT2 = type;
+        } else { 
+            currentT1 = type; 
+            currentT2 = ""; 
+        } 
+    } 
+    renderTypeButtons(); 
+    calculateSingle();
+}
+
+function createBadge(textWithFactor) {
+    let typeName = textWithFactor.split('(')[0];
+    return `<span class="type-badge type-${typeName}">${textWithFactor}</span>`;
+}
+
+function createBadgeWithCount(type, count) {
+    return `<div><span class="type-badge type-${type}">${type}</span><span class="count-tag">${count}隻</span></div>`;
+}
+
+function getStructuredAnalysis(t1, t2) {
+    let defWeaks = [], defResists = [];
+    let atkStrongs = {}, atkWeaks = {};
+    
+    if (t1) {
+        atkStrongs[t1] = [];
+        atkWeaks[t1] = [];
+    }
+    if (t2) {
+        atkStrongs[t2] = [];
+        atkWeaks[t2] = [];
+    }
+
+    types.forEach(atkType => {
+        if (!t1 && !t2) return; // 完全沒選屬性時防守無增減
+        let f1 = (t1 && chart[atkType] && chart[atkType][t1] !== undefined) ? chart[atkType][t1] : 1;
+        let f2 = (t2 && chart[atkType] && chart[atkType][t2] !== undefined) ? chart[atkType][t2] : 1;
+        let final = f1 * f2;
+        if (final > 1) defWeaks.push(`${atkType}(${final}x)`);
+        if (final < 1) defResists.push(`${atkType}(${final}x)`);
+    });
+
+    types.forEach(defType => {
+        if (t1) {
+            let f1 = (chart[t1] && chart[t1][defType] !== undefined) ? chart[t1][defType] : 1;
+            if (f1 === 2) atkStrongs[t1].push(defType);
+            if (f1 < 1) atkWeaks[t1].push(defType);
+        }
+        if (t2) {
+            let f2 = (chart[t2] && chart[t2][defType] !== undefined) ? chart[t2][defType] : 1;
+            if (f2 === 2) atkStrongs[t2].push(defType);
+            if (f2 < 1) atkWeaks[t2].push(defType);
+        }
+    });
+
+    return { defWeaks, defResists, atkStrongs, atkWeaks };
+}
+
+function buildHtmlGroup(dataObject) {
+    let html = '';
+    for (let attacker in dataObject) {
+        if (dataObject[attacker].length > 0) {
+            html += `
+                <div class="sub-group">
+                    <div class="sub-title">由 ${attacker}</div>
+                    <div class="badge-container">${dataObject[attacker].map(createBadge).join(' ')}</div>
+                </div>
+            `;
+        }
+    }
+    return html || '<span style="color:#aaa; font-size:12px;">無</span>';
+}
+
+function calculateSingle() {
+    const res = getStructuredAnalysis(currentT1, currentT2);
+    document.getElementById('single-def-weak').innerHTML = res.defWeaks.map(createBadge).join(' ') || '無';
+    document.getElementById('single-def-resist').innerHTML = res.defResists.map(createBadge).join(' ') || '無';
+    document.getElementById('single-atk-strong').innerHTML = buildHtmlGroup(res.atkStrongs);
+    document.getElementById('single-atk-weak').innerHTML = buildHtmlGroup(res.atkWeaks);
+}
+
+function openSearchModal(index, e) {
+    e.stopPropagation();
+    selectedSlotIndex = index;
+    document.getElementById('search-modal-title').innerText = `🔍 搜尋寶可夢 (位置 ${index + 1})`;
+    document.getElementById('modal-search-input').value = '';
+    filterPokemonResults();
+    document.getElementById('search-modal').style.display = 'flex';
+    renderTeamSlots();
+}
+
+function closeSearchModal(e) {
+    document.getElementById('search-modal').style.display = 'none';
+}
+
+function filterPokemonResults() {
+    const keyword = document.getElementById('modal-search-input').value.trim();
+    const listContainer = document.getElementById('search-results-list');
+    const filtered = keyword ? pokemonDatabase.filter(p => p.name.includes(keyword)) : pokemonDatabase;
+    
+    if (filtered.length === 0) {
+        listContainer.innerHTML = '<div style="padding: 12px; color: #aaa; text-align:center; font-size:13px;">找不到符合的寶可夢</div>';
+        return;
+    }
+    listContainer.innerHTML = filtered.map(p => {
+        let typeStr = p.t2 ? `${p.t1} + ${p.t2}` : p.t1;
+        return `
+            <div class="search-item" onclick="applyPokemonToSlot('${p.name}', '${p.t1}', '${p.t2}')">
+                <strong>${p.name}</strong>
+                <div>
+                    <span class="type-badge type-${p.t1}">${p.t1}</span>
+                    ${p.t2 ? `<span class="type-badge type-${p.t2}">${p.t2}</span>` : ''}
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
+function applyPokemonToSlot(name, t1, t2) {
+    currentT1 = t1;
+    currentT2 = t2 || "";
+    teamSlots[selectedSlotIndex] = { t1: currentT1, t2: currentT2, name: name };
+    document.getElementById('search-modal').style.display = 'none';
+    renderTypeButtons();
+    calculateSingle();
+    renderTeamSlots();
+    analyzeTotalTeam();
+}
+
+function selectSlot(index) {
+    selectedSlotIndex = index;
+    if (teamSlots[index]) {
+        currentT1 = teamSlots[index].t1;
+        currentT2 = teamSlots[index].t2;
+    } else {
+        currentT1 = "";
+        currentT2 = "";
+    }
+    renderTypeButtons();
+    calculateSingle();
+    renderTeamSlots();
+}
+
+function updateSelectedSlot() {
+    let existingName = teamSlots[selectedSlotIndex] ? teamSlots[selectedSlotIndex].name : "";
+    // 如果完全清空了屬性，也可以允許保留自訂或更新為純屬性空配置
+    teamSlots[selectedSlotIndex] = { t1: currentT1, t2: currentT2, name: existingName };
+    renderTeamSlots();
+    analyzeTotalTeam();
+}
+
+function removeSelectedSlot() { 
+    // 1. 清除目前選取的隊員格子
+    teamSlots[selectedSlotIndex] = null; 
+    
+    // 2. 同時清除上方已選擇的屬性
+    currentT1 = "";
+    currentT2 = "";
+    
+    // 3. 重新整理屬性按鈕與上方單體即時預覽
+    renderTypeButtons();
+    calculateSingle();
+    
+    // 4. 重新整理隊伍格子與整隊分析
+    renderTeamSlots();
+    analyzeTotalTeam(); 
+}
+
+function clearAllTeam() {
+    teamSlots = Array(6).fill(null);
+    currentT1 = "";
+    currentT2 = "";
+    renderTypeButtons();
+    calculateSingle();
+    renderTeamSlots();
+    analyzeTotalTeam();
+}
+
+function renderTeamSlots() {
+    const container = document.getElementById('team-container');
+    container.innerHTML = '';
+    for (let i = 0; i < 6; i++) {
+        let slot = document.createElement('div');
+        let isSelected = (i === selectedSlotIndex);
+        let hasData = teamSlots[i] !== null;
+        
+        slot.className = `team-slot ${hasData ? 'active' : ''} ${isSelected ? 'selected' : ''}`;
+        slot.setAttribute('onclick', `selectSlot(${i})`);
+        
+        let statusTag = `<span class="slot-status status-empty">空</span>`;
+        if (isSelected) statusTag = `<span class="slot-status status-selected">選取中</span>`;
+        else if (hasData) statusTag = `<span class="slot-status status-filled">已配置</span>`;
+
+        let displayName = `位置 ${i + 1}`;
+        let bodyHtml = `<div style="color:#aaa; text-align:center; margin: auto 0; font-size:12px; padding:15px 0;">點擊選擇屬性</div>`;
+        
+        if (hasData) {
+            let member = teamSlots[i];
+            if (member.name) displayName = member.name;
+            
+            let res = getStructuredAnalysis(member.t1, member.t2);
+            bodyHtml = `
+                <div class="member-details">
+                    <div class="member-detail-row">
+                        <div class="member-detail-title">🛡️ 防守弱點:</div>
+                        <div class="badge-container">${res.defWeaks.map(createBadge).join(' ') || '無'}</div>
+                    </div>
+                    <div class="member-detail-row">
+                        <div class="member-detail-title">🛡️ 防守抗性:</div>
+                        <div class="badge-container">${res.defResists.map(createBadge).join(' ') || '無'}</div>
+                    </div>
+                    <div class="member-detail-row">
+                        <div class="member-detail-title">🗡️ 攻擊強打擊面:</div>
+                        ${buildHtmlGroup(res.atkStrongs)}
+                    </div>
+                </div>
+            `;
+        }
+
+        slot.innerHTML = `
+            <div class="slot-header">
+                <span class="slot-title" onclick="openSearchModal(${i}, event)">📌 ${displayName}</span>
+                ${statusTag}
+            </div>
+            ${bodyHtml}
+        `;
+        container.appendChild(slot);
+    }
+}
+
+function analyzeTotalTeam() {
+    const ids = ['team-def-danger', 'team-def-weak', 'team-def-resist', 'team-atk-good', 'team-atk-blind'];
+    let activeMembers = teamSlots.filter(m => m !== null && (m.t1 !== "" || m.t2 !== ""));
+    
+    if (activeMembers.length === 0) {
+        ids.forEach(id => {
+            document.getElementById(id).querySelector('.badge-container').innerHTML = '<span style="color:#aaa; font-size:12px;">無成員數據</span>';
+        });
+        return;
+    }
+    
+    ids.forEach(id => document.getElementById(id).querySelector('.badge-container').innerHTML = '');
+    
+    let defWeakCount = {};
+    let defResistCount = {};
+    let teamCanAtkSuper = {};
+    
+    types.forEach(t => {
+        defWeakCount[t] = 0;
+        defResistCount[t] = 0;
+        teamCanAtkSuper[t] = false;
+    });
+
+    activeMembers.forEach(member => {
+        types.forEach(atkType => {
+            let f1 = (member.t1 && chart[atkType] && chart[atkType][member.t1] !== undefined) ? chart[atkType][member.t1] : 1;
+            let f2 = (member.t2 && chart[atkType] && chart[atkType][member.t2] !== undefined) ? chart[atkType][member.t2] : 1;
+            let final = f1 * f2;
+            if (final > 1) defWeakCount[atkType]++;
+            if (final < 1) defResistCount[atkType]++;
+        });
+
+        types.forEach(defType => {
+            let f1 = (member.t1 && chart[member.t1] && chart[member.t1][defType] !== undefined) ? chart[member.t1][defType] : 1;
+            let f2 = (member.t2 && chart[member.t2] && chart[member.t2][defType] !== undefined) ? chart[member.t2][defType] : 1;
+            if (f1 === 2 || (member.t2 && f2 === 2)) teamCanAtkSuper[defType] = true;
+        });
+    });
+
+    types.forEach(t => {
+        if (defWeakCount[t] >= 2 && defResistCount[t] < defWeakCount[t]) {
+            document.getElementById('team-def-danger').querySelector('.badge-container').innerHTML += createBadgeWithCount(t, defWeakCount[t]);
+        }
+        if (defWeakCount[t] > 0) {
+            document.getElementById('team-def-weak').querySelector('.badge-container').innerHTML += createBadgeWithCount(t, defWeakCount[t]);
+        }
+        if (defResistCount[t] > 0) {
+            document.getElementById('team-def-resist').querySelector('.badge-container').innerHTML += createBadgeWithCount(t, defResistCount[t]);
+        }
+        if (teamCanAtkSuper[t]) {
+            document.getElementById('team-atk-good').querySelector('.badge-container').innerHTML += createBadge(t);
+        } else {
+            document.getElementById('team-atk-blind').querySelector('.badge-container').innerHTML += createBadge(t);
+        }
+    });
+
+    ids.forEach(id => {
+        let container = document.getElementById(id).querySelector('.badge-container');
+        if (container.innerHTML === '') {
+            container.innerHTML = '<span style="color:#aaa; font-size:12px;">無</span>';
+        }
+    });
+}
+</script>
+</body>
+</html>
