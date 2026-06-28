@@ -193,24 +193,24 @@
         }
 
         /* 屬性官方色彩 */
-        .type-一般 { background-color: #949495;
-        } .type-草 { background-color: #5fbd58; }
-        .type-火 { background-color: #ff9944;
-        } .type-水 { background-color: #58abf6; }
-        .type-電 { background-color: #f7d02c; color: #333;
-            text-shadow: none; } .type-蟲 { background-color: #92bc2c; }
-        .type-飛行 { background-color: #a2a3e3;
-        } .type-岩石 { background-color: #c5b78c; }
-        .type-毒 { background-color: #a854a5;
-        } .type-地面 { background-color: #dac77e; }
-        .type-冰 { background-color: #75d0c4; color: #333;
-            text-shadow: none; } .type-格鬥 { background-color: #c03028; }
-        .type-超能力 { background-color: #f95587;
-        } .type-幽靈 { background-color: #6a5296; }
-        .type-龍 { background-color: #8354ff;
-        } .type-惡 { background-color: #6d5344; }
-        .type-鋼 { background-color: #b7b7c8; color: #333;
-            text-shadow: none; } .type-妖精 { background-color: #f4a2e5; }
+        .type-一般 { background-color: #949495; }
+        .type-草 { background-color: #5fbd58; }
+        .type-火 { background-color: #ff9944; }
+        .type-水 { background-color: #58abf6; }
+        .type-電 { background-color: #f7d02c; }
+        .type-蟲 { background-color: #92bc2c; }
+        .type-飛行 { background-color: #a2a3e3; }
+        .type-岩石 { background-color: #c5b78c; }
+        .type-毒 { background-color: #a854a5; }
+        .type-地面 { background-color: #dac77e; }
+        .type-冰 { background-color: #75d0c4; }
+        .type-格鬥 { background-color: #c03028; }
+        .type-超能力 { background-color: #f95587; }
+        .type-幽靈 { background-color: #6a5296; }
+        .type-龍 { background-color: #8354ff; }
+        .type-惡 { background-color: #6d5344; }
+        .type-鋼 { background-color: #b7b7c8; }
+        .type-妖精 { background-color: #f4a2e5; }
 
         /* 搜尋彈窗 (Modal) 樣式 */
         .search-modal {
@@ -603,15 +603,15 @@ function renderTeamSlots() {
             bodyHtml = `
                 <div class="member-details">
                     <div class="member-detail-row">
-                        <div class="member-detail-title">🛡️ 防守弱點:</div>
+                        <div class="member-detail-title">防守弱點:</div>
                         <div class="badge-container">${res.defWeaks.map(createBadge).join(' ') || createEmptyBadge()}</div>
                     </div>
                     <div class="member-detail-row">
-                        <div class="member-detail-title">🛡️ 防守抗性:</div>
+                        <div class="member-detail-title">防守抗性:</div>
                         <div class="badge-container">${res.defResists.map(createBadge).join(' ') || createEmptyBadge()}</div>
                     </div>
                     <div class="member-detail-row">
-                        <div class="member-detail-title">🗡️ 攻擊強打擊面:</div>
+                        <div class="member-detail-title">攻擊強打擊面:</div>
                         ${buildHtmlGroup(res.atkStrongs)}
                     </div>
                 </div>
