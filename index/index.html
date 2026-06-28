@@ -20,8 +20,10 @@
             border-radius: 16px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.06);
         }
-        h1, h2, h3 { text-align: center; color: #2c3e50; font-size: 1.4rem; margin: 15px 0; }
-        h2 { border-bottom: 2px solid #e9ecef; padding-bottom: 6px; margin-top: 25px; }
+        h1, h2, h3 { text-align: center; color: #2c3e50; font-size: 1.4rem;
+            margin: 15px 0; }
+        h2 { border-bottom: 2px solid #e9ecef; padding-bottom: 6px;
+            margin-top: 25px; }
         
         /* 1. 屬性方塊選擇區 */
         .select-section {
@@ -53,8 +55,10 @@
             transition: all 0.15s ease;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
-        .type-btn.selected-t1 { border-color: #000 !important; box-shadow: 0 0 8px #000; transform: scale(1.05); }
-        .type-btn.selected-t2 { border-color: #ff007f !important; box-shadow: 0 0 8px #ff007f; transform: scale(1.05); }
+        .type-btn.selected-t1 { border-color: #000 !important; box-shadow: 0 0 8px #000; transform: scale(1.05);
+        }
+        .type-btn.selected-t2 { border-color: #ff007f !important; box-shadow: 0 0 8px #ff007f; transform: scale(1.05);
+        }
 
         /* 功能按鈕區 */
         .action-container {
@@ -68,11 +72,16 @@
             display: inline-flex; align-items: center; gap: 4px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-        .btn-update { background-color: #28a745; color: white; }
-        .btn-update:hover { background-color: #218838; }
-        .btn-remove { background-color: #dc3545; color: white; }
-        .btn-remove:hover { background-color: #c82333; }
-        .btn-clear { background-color: #6c757d; color: white; }
+        .btn-update { background-color: #28a745; color: white;
+        }
+        .btn-update:hover { background-color: #218838;
+        }
+        .btn-remove { background-color: #dc3545; color: white;
+        }
+        .btn-remove:hover { background-color: #c82333;
+        }
+        .btn-clear { background-color: #6c757d; color: white;
+        }
 
         /* 2. 單體即時預覽區 */
         .single-preview {
@@ -80,8 +89,10 @@
             border: 1px solid #dee2e6; border-radius: 12px;
             padding: 12px; margin-bottom: 20px; box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);
         }
-        .preview-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-        .preview-box { background: #fafafa; padding: 6px 8px; border-radius: 8px; border-left: 3px solid #ccc; }
+        .preview-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;
+        }
+        .preview-box { background: #fafafa; padding: 6px 8px; border-radius: 8px;
+            border-left: 3px solid #ccc; }
 
         /* 3. 隊伍顯示區 */
         .team-section {
@@ -99,7 +110,8 @@
             background: #f1f9f1;
             box-shadow: 0 0 10px rgba(40,167,69,0.15);
         }
-        .team-slot.active { border-style: solid; border-color: #ced4da; background: #fff; }
+        .team-slot.active { border-style: solid;
+            border-color: #ced4da; background: #fff; }
         
         .slot-header {
             display: flex;
@@ -111,28 +123,45 @@
             font-size: 13px; color: #007bff; cursor: pointer;
             padding: 2px 6px; border-radius: 4px; background: #e7f3ff; transition: 0.15s;
         }
-        .slot-title:hover { background: #007bff; color: white; }
-        .slot-status { font-size: 10px; padding: 1px 5px; border-radius: 8px; }
-        .status-empty { background: #e9ecef; color: #6c757d; }
-        .status-selected { background: #28a745; color: white; }
-        .status-filled { background: #007bff; color: white; }
+        .slot-title:hover { background: #007bff; color: white;
+        }
+        .slot-status { font-size: 10px; padding: 1px 5px; border-radius: 8px;
+        }
+        .status-empty { background: #e9ecef; color: #6c757d;
+        }
+        .status-selected { background: #28a745; color: white;
+        }
+        .status-filled { background: #007bff; color: white;
+        }
 
         /* 分組排版結構樣式 */
-        .member-details { font-size: 11px; cursor: pointer; }
-        .member-detail-row { margin-bottom: 4px; background: #fafafa; padding: 5px; border-radius: 4px; }
-        .member-detail-title { font-weight: bold; font-size: 11px; margin-bottom: 3px;}
-        .sub-group { margin-top: 3px; padding-left: 4px; border-left: 2px solid #e2e8f0; }
-        .sub-title { font-size: 10px; color: #718096; font-weight: bold; margin-bottom: 2px; }
+        .member-details { font-size: 11px;
+            cursor: pointer; }
+        .member-detail-row { margin-bottom: 4px; background: #fafafa; padding: 5px; border-radius: 4px;
+        }
+        .member-detail-title { font-weight: bold; font-size: 11px;
+            margin-bottom: 3px;}
+        .sub-group { margin-top: 3px; padding-left: 4px; border-left: 2px solid #e2e8f0;
+        }
+        .sub-title { font-size: 10px; color: #718096; font-weight: bold; margin-bottom: 2px;
+        }
 
         /* 4. 底部整隊綜合分析 */
-        .result-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 15px; }
-        .card { background: #fff; border: 1px solid #e9ecef; border-radius: 12px; padding: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
-        .card h3 { text-align: left; margin-top: 0; font-size: 14px; padding-bottom: 4px; border-bottom: 1px solid #eee;}
-        .list-group { margin-bottom: 10px; }
-        .list-title { font-weight: bold; margin-bottom: 3px; font-size: 12px; color: #555; }
+        .result-grid { display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 15px; }
+        .card { background: #fff;
+            border: 1px solid #e9ecef; border-radius: 12px; padding: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+        .card h3 { text-align: left; margin-top: 0; font-size: 14px; padding-bottom: 4px;
+            border-bottom: 1px solid #eee;}
+        .list-group { margin-bottom: 10px;
+        }
+        .list-title { font-weight: bold; margin-bottom: 3px; font-size: 12px; color: #555;
+        }
         
         /* 屬性標籤與計數器 */
-        .badge-container { display: flex; flex-wrap: wrap; gap: 3px; min-height: 16px; align-items: center;}
+        .badge-container { display: flex;
+            flex-wrap: wrap; gap: 3px; min-height: 16px; align-items: center;}
         .type-badge {
             padding: 1px 5px;
             border-radius: 4px; color: white;
@@ -146,15 +175,24 @@
         }
 
         /* 屬性官方色彩 */
-        .type-一般 { background-color: #949495; } .type-草 { background-color: #5fbd58; }
-        .type-火 { background-color: #ff9944; } .type-水 { background-color: #58abf6; }
-        .type-電 { background-color: #f7d02c; color: #333; text-shadow: none; } .type-蟲 { background-color: #92bc2c; }
-        .type-飛行 { background-color: #a2a3e3; } .type-岩石 { background-color: #c5b78c; }
-        .type-毒 { background-color: #a854a5; } .type-地面 { background-color: #dac77e; }
-        .type-冰 { background-color: #75d0c4; color: #333; text-shadow: none; } .type-格鬥 { background-color: #c03028; }
-        .type-超能力 { background-color: #f95587; } .type-幽靈 { background-color: #6a5296; }
-        .type-龍 { background-color: #8354ff; } .type-惡 { background-color: #6d5344; }
-        .type-鋼 { background-color: #b7b7c8; color: #333; text-shadow: none; } .type-妖精 { background-color: #f4a2e5; }
+        .type-一般 { background-color: #949495;
+        } .type-草 { background-color: #5fbd58; }
+        .type-火 { background-color: #ff9944;
+        } .type-水 { background-color: #58abf6; }
+        .type-電 { background-color: #f7d02c; color: #333;
+            text-shadow: none; } .type-蟲 { background-color: #92bc2c; }
+        .type-飛行 { background-color: #a2a3e3;
+        } .type-岩石 { background-color: #c5b78c; }
+        .type-毒 { background-color: #a854a5;
+        } .type-地面 { background-color: #dac77e; }
+        .type-冰 { background-color: #75d0c4; color: #333;
+            text-shadow: none; } .type-格鬥 { background-color: #c03028; }
+        .type-超能力 { background-color: #f95587;
+        } .type-幽靈 { background-color: #6a5296; }
+        .type-龍 { background-color: #8354ff;
+        } .type-惡 { background-color: #6d5344; }
+        .type-鋼 { background-color: #b7b7c8; color: #333;
+            text-shadow: none; } .type-妖精 { background-color: #f4a2e5; }
 
         /* 搜尋彈窗 (Modal) 樣式 */
         .search-modal {
@@ -182,13 +220,16 @@
             padding: 10px 12px;
             cursor: pointer; border-bottom: 1px solid #f8f9fa; display: flex; justify-content: space-between; align-items: center;
         }
-        .search-item:hover { background-color: #f1f3f5; }
+        .search-item:hover { background-color: #f1f3f5;
+        }
         .close-modal-btn {
             float: right;
             border: none; background: none; font-size: 18px; font-weight: bold; color: #aaa; cursor: pointer;
         }
-        .close-modal-btn:hover { color: #333; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        .close-modal-btn:hover { color: #333;
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px);
+        } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
@@ -295,7 +336,6 @@ const chart = {
     "鋼": {"火": 0.5, "水": 0.5, "電": 0.5, "岩石": 2, "冰": 2, "鋼": 0.5, "妖精": 2},
     "妖精": {"火": 0.5, "格鬥": 2, "毒": 0.5, "龍": 2, "惡": 2, "鋼": 0.5}
 };
-
 const pokemonDatabase = [
     { name: "妙蛙花", t1: "草", t2: "毒" },
     { name: "妙蛙花|超級妙蛙花", t1: "草", t2: "毒" },
@@ -335,8 +375,9 @@ const pokemonDatabase = [
     { name: "凱羅斯", t1: "蟲", t2: "" },
     { name: "凱羅斯|超級凱羅斯", t1: "蟲", t2: "飛行" },
     { name: "肯泰羅", t1: "一般", t2: "" },
-    { name: "肯泰羅(水)", t1: "格鬥", t2: "水" },
-    { name: "肯泰羅(火)", t1: "格鬥", t2: "火" },
+    { name: "肯泰羅", t1: "格鬥", t2: "水" },
+    { name: "肯泰羅", t1: "格鬥", t2: "火" },
+    { name: "肯泰羅", t1: "格鬥", t2: "" },
     { name: "暴鯉龍", t1: "水", t2: "飛行" },
     { name: "暴鯉龍|超級暴鯉龍", t1: "水", t2: "惡" },
     { name: "百變怪", t1: "一般", t2: "" },
@@ -344,7 +385,7 @@ const pokemonDatabase = [
     { name: "雷伊布", t1: "電", t2: "" },
     { name: "火伊布", t1: "火", t2: "" },
     { name: "化石翼龍", t1: "岩石", t2: "飛行" },
-    { name: "化石翼龍|超級化信翼龍", t1: "岩石", t2: "飛行" },
+    { name: "化石翼龍|超級化石翼龍", t1: "岩石", t2: "飛行" },
     { name: "卡比獸", t1: "一般", t2: "" },
     { name: "快龍", t1: "龍", t2: "飛行" },
     { name: "快龍|超級快龍", t1: "龍", t2: "飛行" },
@@ -395,14 +436,270 @@ const pokemonDatabase = [
     { name: "七夕青鳥", t1: "龍", t2: "飛行" },
     { name: "七夕青鳥|超級七夕青鳥", t1: "龍", t2: "妖精" },
     { name: "美納斯", t1: "水", t2: "" },
+    { name: "飄浮泡泡|飄浮泡泡的樣子", t1: "一般", t2: "" },
+    { name: "飄浮泡泡|雨水的樣子", t1: "水", t2: "" },
+    { name: "飄浮泡泡|太陽的樣子", t1: "火", t2: "" },
+    { name: "飄浮泡泡|雪雲的樣子", t1: "冰", t2: "" },
+    { name: "詛咒娃娃", t1: "幽靈", t2: "" },
+    { name: "詛咒娃娃|超級詛咒娃娃", t1: "幽靈", t2: "" },
+    { name: "風鈴鈴", t1: "超能力", t2: "" },
+    { name: "風鈴鈴|超級風鈴鈴", t1: "超能力", t2: "鋼" },
+    { name: "阿勃梭魯", t1: "惡", t2: "" },
+    { name: "阿勃梭魯|超級阿勃梭魯", t1: "惡", t2: "" },
+    { name: "冰鬼護", t1: "冰", t2: "" },
+    { name: "冰鬼護|超級冰鬼護", t1: "冰", t2: "" },
+    { name: "土台龜", t1: "草", t2: "地面" },
+    { name: "烈焰猴", t1: "火", t2: "格鬥" },
+    { name: "帝王拿波", t1: "水", t2: "鋼" },
+    { name: "倫琴貓", t1: "電", t2: "" },
+    { name: "羅絲雷朵", t1: "草", t2: "毒" },
+    { name: "戰槌龍", t1: "岩石", t2: "" },
+    { name: "護城龍", t1: "岩石", t2: "鋼" },
+    { name: "長耳兔", t1: "一般", t2: "" },
+    { name: "長耳兔|超級長耳兔", t1: "一般", t2: "格鬥" },
+    { name: "花岩怪", t1: "幽靈", t2: "惡" },
     { name: "烈咬陸鯊", t1: "龍", t2: "地面" },
     { name: "烈咬陸鯊|超級烈咬陸鯊", t1: "龍", t2: "地面" },
     { name: "路卡利歐", t1: "格鬥", t2: "鋼" },
     { name: "路卡利歐|超級路卡利歐", t1: "格鬥", t2: "鋼" },
+    { name: "河馬獸", t1: "地面", t2: "" },
+    { name: "毒骷蛙", t1: "毒", t2: "格鬥" },
+    { name: "暴雪王", t1: "草", t2: "冰" },
+    { name: "暴雪王|超級暴雪王", t1: "草", t2: "冰" },
+    { name: "瑪狃拉", t1: "惡", t2: "冰" },
+    { name: "超甲狂犀", t1: "地面", t2: "岩石" },
+    { name: "葉伊布", t1: "草", t2: "" },
+    { name: "冰伊布", t1: "冰", t2: "" },
+    { name: "天蠍王", t1: "地面", t2: "飛行" },
+    { name: "象牙豬", t1: "冰", t2: "地面" },
+    { name: "艾路雷朵", t1: "超能力", t2: "格鬥" },
+    { name: "艾路雷朵|超級艾路雷朵", t1: "超能力", t2: "格鬥" },
+    { name: "雪妖女", t1: "冰", t2: "幽靈" },
+    { name: "雪妖女|超級雪妖女", t1: "冰", t2: "幽靈" },
+    { name: "洛托姆|洛托姆的樣子", t1: "電", t2: "幽靈" },
+    { name: "結霜洛托姆", t1: "電", t2: "冰" },
+    { name: "旋轉洛托姆", t1: "電", t2: "飛行" },
+    { name: "加熱洛托姆", t1: "電", t2: "火" },
+    { name: "切割洛托姆", t1: "電", t2: "草" },
+    { name: "清洗洛托姆", t1: "電", t2: "水" },
+    { name: "君主蛇", t1: "草", t2: "" },
+    { name: "炎武王", t1: "火", t2: "格鬥" },
+    { name: "炎武王|超級炎武王", t1: "火", t2: "格鬥" },
+    { name: "大劍鬼", t1: "水", t2: "" },
+    { name: "大劍鬼|洗翠的樣子", t1: "水", t2: "惡" },
+    { name: "步哨鼠", t1: "一般", t2: "" },
+    { name: "酷豹", t1: "惡", t2: "" },
+    { name: "花椰猿", t1: "草", t2: "" },
+    { name: "爆香猿", t1: "火", t2: "" },
+    { name: "冷水猿", t1: "水", t2: "" },
+    { name: "龍頭地鼠", t1: "地面", t2: "鋼" },
+    { name: "龍頭地鼠|超級龍頭地鼠", t1: "地面", t2: "鋼" },
+    { name: "差不多娃娃", t1: "一般", t2: "" },
+    { name: "差不多娃娃|超級差不多娃娃", t1: "一般", t2: "妖精" },
+    { name: "修建老匠", t1: "格鬥", t2: "" },
+    { name: "風妖精", t1: "草", t2: "妖精" },
+    { name: "流氓鱷", t1: "地面", t2: "惡" },
+    { name: "死神棺", t1: "幽靈", t2: "" },
+    { name: "灰塵山", t1: "毒", t2: "" },
+    { name: "索羅亞克", t1: "惡", t2: "" },
+    { name: "索羅亞克|洗翠的樣子", t1: "一般", t2: "幽靈" },
+    { name: "人造細胞卵", t1: "超能力", t2: "" },
+    { name: "雙倍多多冰", t1: "冰", t2: "" },
+    { name: "電飛鼠", t1: "電", t2: "飛行" },
+    { name: "水晶燈火靈", t1: "幽靈", t2: "火" },
+    { name: "水晶燈火靈|超級水晶燈火靈", t1: "幽靈", t2: "火" },
+    { name: "凍原熊", t1: "冰", t2: "" },
+    { name: "泥巴魚", t1: "地面", t2: "電" },
+    { name: "泥巴魚|伽勒爾的樣子", t1: "地面", t2: "鋼" },
+    { name: "泥偶巨人", t1: "地面", t2: "幽靈" },
+    { name: "泥偶巨人|超級泥偶巨人", t1: "地面", t2: "幽靈" },
+    { name: "三首惡龍", t1: "惡", t2: "龍" },
+    { name: "火神蛾", t1: "蟲", t2: "火" },
+    { name: "布里卡隆", t1: "草", t2: "格鬥" },
+    { name: "布里卡隆|超級布里卡隆", t1: "草", t2: "格鬥" },
+    { name: "妖火紅狐", t1: "火", t2: "超能力" },
+    { name: "妖火紅狐|超級妖火紅狐", t1: "火", t2: "超能力" },
+    { name: "甲賀忍蛙", t1: "水", t2: "惡" },
+    { name: "甲賀忍蛙|超級甲賀忍蛙", t1: "水", t2: "惡" },
+    { name: "掘地兔", t1: "一般", t2: "地面" },
+    { name: "烈箭鷹", t1: "火", t2: "飛行" },
+    { name: "花園花紋", t1: "蟲", t2: "飛行" },
+    { name: "群島花紋", t1: "蟲", t2: "飛行" },
+    { name: "大陸花紋", t1: "蟲", t2: "飛行" },
+    { name: "高雅花紋", t1: "蟲", t2: "飛行" },
+    { name: "幻彩花紋", t1: "蟲", t2: "飛行" },
+    { name: "庭園花紋", t1: "蟲", t2: "飛行" },
+    { name: "荒野花紋", t1: "蟲", t2: "飛行" },
+    { name: "冰雪花紋", t1: "蟲", t2: "飛行" },
+    { name: "熱帶雨林花紋", t1: "蟲", t2: "飛行" },
+    { name: "大海花紋", t1: "蟲", t2: "飛行" },
+    { name: "摩登花紋", t1: "蟲", t2: "飛行" },
+    { name: "驟雨花紋", t1: "蟲", t2: "飛行" },
+    { name: "大洋花紋", t1: "蟲", t2: "飛行" },
+    { name: "球球花紋", t1: "蟲", t2: "飛行" },
+    { name: "雪國花紋", t1: "蟲", t2: "飛行" },
+    { name: "大河花紋", t1: "蟲", t2: "飛行" },
+    { name: "沙塵花紋", t1: "蟲", t2: "飛行" },
+    { name: "熱帶草原花紋", t1: "蟲", t2: "飛行" },
+    { name: "太陽花紋", t1: "蟲", t2: "飛行" },
+    { name: "雪原花紋", t1: "蟲", t2: "飛行" },
+    { name: "永恆之花", t1: "妖精", t2: "" },
+    { name: "花葉蒂|超級花葉蒂", t1: "妖精", t2: "" },
+    { name: "紅花", t1: "妖精", t2: "" },
+    { name: "藍花", t1: "妖精", t2: "" },
+    { name: "橙花", t1: "妖精", t2: "" },
+    { name: "白花", t1: "妖精", t2: "" },
+    { name: "黃花", t1: "妖精", t2: "" },
+    { name: "流氓熊猫", t1: "格鬥", t2: "惡" },
+    { name: "多麗米亞|野生的樣子", t1: "一般", t2: "" },
+    { name: "紳士造型", t1: "一般", t2: "" },
+    { name: "淑女造型", t1: "一般", t2: "" },
+    { name: "菱形造型", t1: "一般", t2: "" },
+    { name: "心形造型", t1: "一般", t2: "" },
+    { name: "歌舞伎造型", t1: "一般", t2: "" },
+    { name: "女王造型", t1: "一般", t2: "" },
+    { name: "貴婦造型", t1: "一般", t2: "" },
+    { name: "國王造型", t1: "一般", t2: "" },
+    { name: "星形造型", t1: "一般", t2: "" },
+    { name: "超能妙喵|雄性的樣子", t1: "超能力", t2: "" },
+    { name: "超能妙喵|雌性的樣子", t1: "超能力", t2: "" },
+    { name: "超能妙喵|超級超能妙喵", t1: "超能力", t2: "" },
+    { name: "盾牌形態", t1: "鋼", t2: "幽靈" },
+    { name: "刀劍形態", t1: "鋼", t2: "幽靈" },
+    { name: "芳香精", t1: "妖精", t2: "" },
+    { name: "胖甜妮", t1: "妖精", t2: "" },
+    { name: "鋼炮臂蝦", t1: "水", t2: "" },
+    { name: "光電傘蜥", t1: "電", t2: "一般" },
+    { name: "怪顎龍", t1: "岩石", t2: "龍" },
+    { name: "冰雪巨龍", t1: "岩石", t2: "冰" },
     { name: "仙子伊布", t1: "妖精", t2: "" },
-    { name: "多龍巴魯托", t1: "龍", t2: "幽靈" }
-];
+    { name: "摔角鷹人", t1: "格鬥", t2: "飛行" },
+    { name: "摔角鷹人|超級摔角鷹人", t1: "格鬥", t2: "飛行" },
+    { name: "咚咚鼠", t1: "電", t2: "妖精" },
+    { name: "黏美龍", t1: "龍", t2: "" },
+    { name: "黏美龍|洗翠的樣子", t1: "鋼", t2: "龍" },
+    { name: "鑰圈兒", t1: "鋼", t2: "妖精" },
+    { name: "朽木妖", t1: "幽靈", t2: "草" },
+    { name: "南瓜怪人|中顆種", t1: "幽靈", t2: "草" },
+    { name: "南瓜怪人|巨顆種", t1: "幽靈", t2: "草" },
+    { name: "南瓜怪人|大顆種", t1: "幽靈", t2: "草" },
+    { name: "南瓜怪人|小顆種", t1: "幽靈", t2: "草" },
+    { name: "冰岩怪", t1: "冰", t2: "" },
+    { name: "冰岩怪|洗翠的樣子", t1: "冰", t2: "岩石" },
+    { name: "音波龍", t1: "飛行", t2: "龍" },
+    { name: "狙射樹梟", t1: "草", t2: "幽靈" },
+    { name: "狙射樹梟|洗翠的樣子", t1: "草", t2: "格鬥" },
+    { name: "熾焰咆哮虎", t1: "火", t2: "惡" },
+    { name: "西獅海壬", t1: "水", t2: "妖精" },
+    { name: "銃嘴大鳥", t1: "一般", t2: "飛行" },
+    { name: "好勝毛蟹", t1: "格鬥", t2: "冰" },
+    { name: "好勝毛蟹|超級好勝毛蟹", t1: "格鬥", t2: "冰" },
+    { name: "鬃岩狼人|白晝的樣子", t1: "岩石", t2: "" },
+    { name: "鬃岩狼人|黑夜的樣子", t1: "岩石", t2: "" },
+    { name: "鬃岩狼人|黃昏的樣子", t1: "岩石", t2: "" },
+    { name: "超壞星", t1: "毒", t2: "水" },
+    { name: "重泥挽馬", t1: "地面", t2: "" },
+    { name: "滴蛛霸", t1: "水", t2: "蟲" },
+    { name: "焰后蜥", t1: "毒", t2: "火" },
+    { name: "甜冷美后", t1: "草", t2: "" },
+    { name: "智揮猩", t1: "一般", t2: "超能力" },
+    { name: "投擲猴", t1: "格鬥", t2: "" },
+    { name: "謎拟Ｑ|化形的樣子", t1: "幽靈", t2: "妖精" },
+    { name: "老翁龍", t1: "一般", t2: "龍" },
+    { name: "老翁龍|超級老翁龍", t1: "一般", t2: "龍" },
+    { name: "杖尾鱗甲龍", t1: "龍", t2: "格鬥" },
+    { name: "鋼鎧鴉", t1: "飛行", t2: "鋼" },
+    { name: "蘋裹龍", t1: "草", t2: "龍" },
+    { name: "豐蜜龍", t1: "草", t2: "龍" },
+    { name: "沙螺蟒", t1: "地面", t2: "" },
+    { name: "贗品形態", t1: "幽靈", t2: "" },
+    { name: "真品形態", t1: "幽靈", t2: "" },
+    { name: "布莉姆溫", t1: "超能力", t2: "妖精" },
+    { name: "踏冰人偶", t1: "冰", t2: "超能力" },
+    { name: "死神板", t1: "地面", t2: "幽靈" },
+    { name: "奶香香草", t1: "妖精", t2: "" },
+    { name: "焦糖綜合", t1: "妖精", t2: "" },
+    { name: "奶香檸檬", t1: "妖精", t2: "" },
+    { name: "奶香抹茶", t1: "妖精", t2: "" },
+    { name: "奶香薄荷", t1: "妖精", t2: "" },
+    { name: "三色綜合", t1: "妖精", t2: "" },
+    { name: "奶香紅鑽", t1: "妖精", t2: "" },
+    { name: "紅鑽綜合", t1: "妖精", t2: "" },
+    { name: "奶香雪鹽", t1: "妖精", t2: "" },
+    { name: "滿腹花紋", t1: "電", t2: "惡" },
+    { name: "空腹花紋", t1: "電", t2: "惡" },
+    { name: "多龍巴魯托", t1: "龍", t2: "幽靈" },
+    { name: "詭角鹿", t1: "一般", t2: "超能力" },
+    { name: "劈斧螳螂", t1: "蟲", t2: "岩石" },
+    { name: "幽尾玄魚|雄性的樣子", t1: "水", t2: "幽靈" },
+    { name: "幽尾玄魚|雌性的樣子", t1: "水", t2: "幽靈" },
+    { name: "大狃拉", t1: "格鬥", t2: "毒" },
+    { name: "魔幻假面喵", t1: "草", t2: "惡" },
+    { name: "骨紋巨聲鱷", t1: "火", t2: "幽靈" },
+    { name: "狂歡浪舞鴨", t1: "水", t2: "格鬥" },
+    { name: "巴布土撥", t1: "電", t2: "格鬥" },
+    { name: "四隻家庭", t1: "一般", t2: "" },
+    { name: "三隻家庭", t1: "一般", t2: "" },
+    { name: "鹽石巨靈", t1: "岩石", t2: "" },
+    { name: "紅蓮鎧騎", t1: "火", t2: "超能力" },
+    { name: "蒼炎刃鬼", t1: "火", t2: "幽靈" },
+    { name: "電肚蛙", t1: "電", t2: "" },
+    { name: "狠辣椒", t1: "草", t2: "火" },
+    { name: "狠辣椒|超級狠辣椒", t1: "草", t2: "火" },
+    { name: "超能豔鴕", t1: "超能力", t2: "" },
+    { name: "巨鍛匠", t1: "妖精", t2: "鋼" },
+    { name: "海豚俠|平凡形態", t1: "水", t2: "" },
+    { name: "海豚俠|全能形態", t1: "水", t2: "" },
+    { name: "拖拖蚓", t1: "鋼", t2: "" },
+    { name: "晶光花", t1: "岩石", t2: "毒" },
+    { name: "晶光花|超級晶光花", t1: "岩石", t2: "毒" },
+    { name: "奇麒麟", t1: "一般", t2: "超能力" },
+    { name: "仆斬将军", t1: "惡", t2: "鋼" },
+    { name: "來悲粗茶|凡作的樣子", t1: "草", t2: "幽靈" },
+    { name: "來悲粗茶|傑作的樣子", t1: "草", t2: "幽靈" },
+    { name: "鋁鋼橋龍", t1: "鋼", t2: "龍" },
+    { name: "蜜集大蛇", t1: "草", t2: "龍" },
+    { name: "雷丘|超級雷丘Ｘ", t1: "電", t2: "" },
+    { name: "雷丘|超級雷丘Ｙ", t1: "電", t2: "" },
+    { name: "霸王花", t1: "草", t2: "毒" },
+    { name: "千針魚", t1: "水", t2: "毒" },
+    { name: "蜥蜴王", t1: "草", t2: "" },
+    { name: "蜥蜴王|超級蜥蜴王", t1: "草", t2: "龍" },
+    { name: "火焰鸡", t1: "火", t2: "格鬥" },
+    { name: "火焰鸡|超級火焰鸡", t1: "火", t2: "格鬥" },
+    { name: "巨沼怪", t1: "水", t2: "地面" },
+    { name: "巨沼怪|超級巨沼怪", t1: "水", t2: "地面" },
+    { name: "大嘴娃", t1: "鋼", t2: "妖精" },
+    { name: "大嘴娃|超級大嘴娃", t1: "鋼", t2: "妖精" },
+    { name: "巨金怪", t1: "鋼", t2: "超能力" },
+    { name: "巨金怪|超級巨金怪", t1: "鋼", t2: "超能力" },
+    { name: "姆克鹰", t1: "一般", t2: "飛行" },
+    { name: "姆克鹰|超級姆克鹰", t1: "格鬥", t2: "飛行" },
+    { name: "梦梦蚀", t1: "超能力", t2: "" },
+    { name: "蜈蚣王", t1: "蟲", t2: "毒" },
+    { name: "蜈蚣王|超級蜈蚣王", t1: "蟲", t2: "毒" },
+    { name: "頭巾混混", t1: "惡", t2: "格鬥" },
+    { name: "頭巾混混|超級頭巾混混", t1: "惡", t2: "格鬥" },
+    { name: "麻麻鳗魚王", t1: "電", t2: "" },
+    { name: "麻麻鳗魚王|超級麻麻鳗魚王", t1: "電", t2: "" },
+    { name: "火炎狮|雄性的樣子）", t1: "火", t2: "一般" },
+    { name: "火炎狮|雌性的樣子）", t1: "火", t2: "一般" },
+    { name: "火炎狮|超級火炎狮", t1: "火", t2: "一般" },
+    { name: "乌賊王", t1: "惡", t2: "超能力" },
+    { name: "乌賊王|超級乌賊王", t1: "惡", t2: "超能力" },
+    { name: "龜足巨铠", t1: "岩石", t2: "水" },
+    { name: "龜足巨铠|超級龜足巨铠", t1: "岩石", t2: "格鬥" },
+    { name: "毒藻龍", t1: "毒", t2: "龍" },
+    { name: "毒藻龍|超級毒藻龍", t1: "毒", t2: "龍" },
+    { name: "長毛巨魔", t1: "惡", t2: "妖精" },
+    { name: "列陣兵", t1: "格鬥", t2: "" },
+    { name: "列陣兵|超級列陣兵", t1: "格鬥", t2: "" },
+    { name: "萬針魚", t1: "惡", t2: "毒" },
+    { name: "墓揚犬", t1: "幽靈", t2: "" },
+    { name: "棄世猴", t1: "格鬥", t2: "幽靈" },
+    { name: "賽富豪", t1: "鋼", t2: "幽靈" }
 
+];
 let currentT1 = "";
 let currentT2 = "";
 let selectedSlotIndex = 0;
@@ -432,20 +729,20 @@ function renderTypeButtons() {
 function selectTypeLogic(type) { 
     if (currentT1 === type) { 
         if (currentT2 !== "") { 
-            currentT1 = currentT2; 
+            currentT1 = currentT2;
             currentT2 = "";
         } else {
-            currentT1 = ""; // 當只選擇了一個屬性並再次點擊它時，完全取消選擇（可歸零）
+            currentT1 = "";
         }
     } else if (currentT2 === type) { 
         currentT2 = "";
     } else { 
         if (currentT1 === "") {
-            currentT1 = type; // 如果目前完全沒選屬性，點擊新屬性優先填入第一屬性
+            currentT1 = type;
         } else if (currentT2 === "") { 
             currentT2 = type;
         } else { 
-            currentT1 = type; 
+            currentT1 = type;
             currentT2 = ""; 
         } 
     } 
@@ -462,6 +759,11 @@ function createBadgeWithCount(type, count) {
     return `<div><span class="type-badge type-${type}">${type}</span><span class="count-tag">${count}隻</span></div>`;
 }
 
+// 統一獨立為灰色小字的「無」標籤函數
+function createEmptyBadge() {
+    return `<span style="color:#aaa; font-size:12px;">無</span>`;
+}
+
 function getStructuredAnalysis(t1, t2) {
     let defWeaks = [], defResists = [];
     let atkStrongs = {}, atkWeaks = {};
@@ -476,7 +778,7 @@ function getStructuredAnalysis(t1, t2) {
     }
 
     types.forEach(atkType => {
-        if (!t1 && !t2) return; // 完全沒選屬性時防守無增減
+        if (!t1 && !t2) return; 
         let f1 = (t1 && chart[atkType] && chart[atkType][t1] !== undefined) ? chart[atkType][t1] : 1;
         let f2 = (t2 && chart[atkType] && chart[atkType][t2] !== undefined) ? chart[atkType][t2] : 1;
         let final = f1 * f2;
@@ -496,7 +798,6 @@ function getStructuredAnalysis(t1, t2) {
             if (f2 < 1) atkWeaks[t2].push(defType);
         }
     });
-
     return { defWeaks, defResists, atkStrongs, atkWeaks };
 }
 
@@ -512,13 +813,14 @@ function buildHtmlGroup(dataObject) {
             `;
         }
     }
-    return html || '<span style="color:#aaa; font-size:12px;">無</span>';
+    return html || createEmptyBadge();
 }
 
 function calculateSingle() {
     const res = getStructuredAnalysis(currentT1, currentT2);
-    document.getElementById('single-def-weak').innerHTML = res.defWeaks.map(createBadge).join(' ') || '無';
-    document.getElementById('single-def-resist').innerHTML = res.defResists.map(createBadge).join(' ') || '無';
+    // 將防守弱點與抗性預覽區無數據時改為小尺寸灰色字體
+    document.getElementById('single-def-weak').innerHTML = res.defWeaks.map(createBadge).join(' ') || createEmptyBadge();
+    document.getElementById('single-def-resist').innerHTML = res.defResists.map(createBadge).join(' ') || createEmptyBadge();
     document.getElementById('single-atk-strong').innerHTML = buildHtmlGroup(res.atkStrongs);
     document.getElementById('single-atk-weak').innerHTML = buildHtmlGroup(res.atkWeaks);
 }
@@ -541,7 +843,6 @@ function filterPokemonResults() {
     const keyword = document.getElementById('modal-search-input').value.trim();
     const listContainer = document.getElementById('search-results-list');
     const filtered = keyword ? pokemonDatabase.filter(p => p.name.includes(keyword)) : pokemonDatabase;
-    
     if (filtered.length === 0) {
         listContainer.innerHTML = '<div style="padding: 12px; color: #aaa; text-align:center; font-size:13px;">找不到符合的寶可夢</div>';
         return;
@@ -586,26 +887,18 @@ function selectSlot(index) {
 }
 
 function updateSelectedSlot() {
-    let existingName = teamSlots[selectedSlotIndex] ? teamSlots[selectedSlotIndex].name : "";
-    // 如果完全清空了屬性，也可以允許保留自訂或更新為純屬性空配置
-    teamSlots[selectedSlotIndex] = { t1: currentT1, t2: currentT2, name: existingName };
+    // 經由上方自訂點擊更新時，直接將 name 設定為空字串，以自動清除原有搜尋產生的寶可夢名字
+    teamSlots[selectedSlotIndex] = { t1: currentT1, t2: currentT2, name: "" };
     renderTeamSlots();
     analyzeTotalTeam();
 }
 
 function removeSelectedSlot() { 
-    // 1. 清除目前選取的隊員格子
-    teamSlots[selectedSlotIndex] = null; 
-    
-    // 2. 同時清除上方已選擇的屬性
+    teamSlots[selectedSlotIndex] = null;
     currentT1 = "";
     currentT2 = "";
-    
-    // 3. 重新整理屬性按鈕與上方單體即時預覽
     renderTypeButtons();
     calculateSingle();
-    
-    // 4. 重新整理隊伍格子與整隊分析
     renderTeamSlots();
     analyzeTotalTeam(); 
 }
@@ -634,10 +927,9 @@ function renderTeamSlots() {
         let statusTag = `<span class="slot-status status-empty">空</span>`;
         if (isSelected) statusTag = `<span class="slot-status status-selected">選取中</span>`;
         else if (hasData) statusTag = `<span class="slot-status status-filled">已配置</span>`;
-
+        
         let displayName = `位置 ${i + 1}`;
         let bodyHtml = `<div style="color:#aaa; text-align:center; margin: auto 0; font-size:12px; padding:15px 0;">點擊選擇屬性</div>`;
-        
         if (hasData) {
             let member = teamSlots[i];
             if (member.name) displayName = member.name;
@@ -647,11 +939,11 @@ function renderTeamSlots() {
                 <div class="member-details">
                     <div class="member-detail-row">
                         <div class="member-detail-title">🛡️ 防守弱點:</div>
-                        <div class="badge-container">${res.defWeaks.map(createBadge).join(' ') || '無'}</div>
+                        <div class="badge-container">${res.defWeaks.map(createBadge).join(' ') || createEmptyBadge()}</div>
                     </div>
                     <div class="member-detail-row">
                         <div class="member-detail-title">🛡️ 防守抗性:</div>
-                        <div class="badge-container">${res.defResists.map(createBadge).join(' ') || '無'}</div>
+                        <div class="badge-container">${res.defResists.map(createBadge).join(' ') || createEmptyBadge()}</div>
                     </div>
                     <div class="member-detail-row">
                         <div class="member-detail-title">🗡️ 攻擊強打擊面:</div>
@@ -663,7 +955,7 @@ function renderTeamSlots() {
 
         slot.innerHTML = `
             <div class="slot-header">
-                <span class="slot-title" onclick="openSearchModal(${i}, event)">📌 ${displayName}</span>
+                <span class="slot-title" onclick="openSearchModal(${i}, event)"><img src="images/4889-pokeball.png" style="width: 12px; vertical-align: middle; margin-right: 8px;"> ${displayName}</span>
                 ${statusTag}
             </div>
             ${bodyHtml}
@@ -675,7 +967,6 @@ function renderTeamSlots() {
 function analyzeTotalTeam() {
     const ids = ['team-def-danger', 'team-def-weak', 'team-def-resist', 'team-atk-good', 'team-atk-blind'];
     let activeMembers = teamSlots.filter(m => m !== null && (m.t1 !== "" || m.t2 !== ""));
-    
     if (activeMembers.length === 0) {
         ids.forEach(id => {
             document.getElementById(id).querySelector('.badge-container').innerHTML = '<span style="color:#aaa; font-size:12px;">無成員數據</span>';
@@ -694,7 +985,6 @@ function analyzeTotalTeam() {
         defResistCount[t] = 0;
         teamCanAtkSuper[t] = false;
     });
-
     activeMembers.forEach(member => {
         types.forEach(atkType => {
             let f1 = (member.t1 && chart[atkType] && chart[atkType][member.t1] !== undefined) ? chart[atkType][member.t1] : 1;
@@ -710,7 +1000,6 @@ function analyzeTotalTeam() {
             if (f1 === 2 || (member.t2 && f2 === 2)) teamCanAtkSuper[defType] = true;
         });
     });
-
     types.forEach(t => {
         if (defWeakCount[t] >= 2 && defResistCount[t] < defWeakCount[t]) {
             document.getElementById('team-def-danger').querySelector('.badge-container').innerHTML += createBadgeWithCount(t, defWeakCount[t]);
@@ -727,11 +1016,10 @@ function analyzeTotalTeam() {
             document.getElementById('team-atk-blind').querySelector('.badge-container').innerHTML += createBadge(t);
         }
     });
-
     ids.forEach(id => {
         let container = document.getElementById(id).querySelector('.badge-container');
         if (container.innerHTML === '') {
-            container.innerHTML = '<span style="color:#aaa; font-size:12px;">無</span>';
+            container.innerHTML = createEmptyBadge();
         }
     });
 }
