@@ -367,7 +367,8 @@ function renderTypeButtons() {
     types.forEach(t => {
         let btn = document.createElement('div');
         btn.className = `type-btn type-${t}`;
-        btn.innerText = t;
+        // 改為使用 innerHTML，加入圖片
+        btn.innerHTML = `<img src="images/types/${t}.png" style="width:18px; height:18px; vertical-align:middle; margin-right:4px;"> ${t}`;
         if (t === currentT1) btn.classList.add('selected-t1');
         if (t === currentT2) btn.classList.add('selected-t2');
         btn.onclick = () => selectTypeLogic(t);
