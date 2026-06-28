@@ -242,8 +242,8 @@
 </head>
 <body>
     <div class="container">
-        <h1 style="display: flex; flex-direction: column; align-items: center; margin-bottom: 20px;">
-            <img src="images/Pokemon-Logo.png" alt="logo" style="height: 200px; margin-bottom: 10px;">
+        <h1 style="display: flex; flex-direction: column; align-items: center; margin-bottom: 10px;">
+            <img src="images/Pokemon-Logo.png" alt="logo" style="height: 200px; margin-bottom: 4px;">
         </h1>
     
     <div class="select-section">
@@ -251,62 +251,62 @@
         <div class="type-grid" id="type-button-container"></div>
         
         <div class="action-container">
-            <button class="btn btn-update" onclick="updateSelectedSlot()">✔️ 更新</button>
-            <button class="btn btn-remove" onclick="removeSelectedSlot()">❌ 清除</button>
-            <button class="btn btn-clear" onclick="clearAllTeam()">🫟 全部重置</button>
+            <button class="btn btn-update" onclick="updateSelectedSlot()">✔ 更新</button>
+            <button class="btn btn-remove" onclick="removeSelectedSlot()">✘ 清除</button>
+            <button class="btn btn-clear" onclick="clearAllTeam()">全部重置</button>
         </div>
     </div>
 
     <div class="single-preview">
         <div class="preview-grid">
             <div class="preview-box" style="border-left-color: #d9534f;">
-                <span style="font-weight:bold; color:#d9534f; font-size:12px;">🛡️ 防守弱點：</span>
+                <span style="font-weight:bold; color:#d9534f; font-size:12px;">防守弱點：</span>
                 <div id="single-def-weak" class="badge-container" style="margin-top:2px;"></div>
             </div>
             <div class="preview-box" style="border-left-color: #28a745;">
-                <span style="font-weight:bold; color:#28a745; font-size:12px;">🛡️ 防守抗性：</span>
+                <span style="font-weight:bold; color:#28a745; font-size:12px;">防守抗性：</span>
                 <div id="single-def-resist" class="badge-container" style="margin-top:2px;"></div>
             </div>
             <div class="preview-box" style="border-left-color: #0275d8;">
-                <span style="font-weight:bold; color:#0275d8; font-size:12px;">🗡️ 強打擊點：</span>
+                <span style="font-weight:bold; color:#0275d8; font-size:12px;">強打擊點：</span>
                 <div id="single-atk-strong" style="margin-top:2px;"></div>
             </div>
             <div class="preview-box" style="border-left-color: #e67e22;">
-                <span style="font-weight:bold; color:#e67e22; font-size:12px;">🗡️ 弱打擊點：</span>
+                <span style="font-weight:bold; color:#e67e22; font-size:12px;">弱打擊點：</span>
                 <div id="single-atk-weak" style="margin-top:2px;"></div>
             </div>
         </div>
     </div>
 
-    <h3>👤 隊伍成員屬性分析</h3>
+    <h3>隊伍成員屬性分析</h3>
     <div class="team-section" id="team-container"></div>
 
-    <h2>🫂 隊伍綜合相剋分析</h2>
+    <h2>隊伍綜合相剋分析</h2>
     <div class="result-grid">
         <div class="card">
-            <h3 style="color: #d9534f;">🛡️ 隊伍防守弱點 (被克)</h3>
+            <h3 style="color: #d9534f;">隊伍防守弱點 (被克)</h3>
             <div id="team-def-danger" class="list-group">
-                <div class="list-title" style="color: #c03028; font-size:11px;">⚠️ 嚴重盲點 (2隻以上怕它，且少人能抗)：</div>
+                <div class="list-title" style="color: #c03028; font-size:11px;">⚠️ 防守盲點 (2隻以上怕它，且少人能抗)：</div>
                 <div class="badge-container"></div>
             </div>
             <div id="team-def-weak" class="list-group">
-                <div class="list-title">⛓️‍💥 成員弱點 (受 2x/4x 傷害)：</div>
+                <div class="list-title">成員弱點 (受 2x/4x 傷害)：</div>
                 <div class="badge-container"></div>
             </div>
             <div id="team-def-resist" class="list-group">
-                <div class="list-title">⛓️ 成員抗性 (0.5x/0x 傷害)：</div>
+                <div class="list-title">成員抗性 (0.5x/0x 傷害)：</div>
                 <div class="badge-container"></div>
             </div>
         </div>
 
         <div class="card">
-            <h3 style="color: #0275d8;">🗡️ 隊伍打擊面 (進攻)</h3>
-            <div id="team-atk-good" class="list-group">
-                <div class="list-title" style="color: #28a745;">☄️ 可克制 (2x) 的屬性目標：</div>
+            <h3 style="color: #0275d8;">隊伍打擊面 (進攻)</h3>
+            <div id="team-atk-blind" class="list-group">
+                <div class="list-title" style="color: #856404;">⚠️ 進攻盲點 (整隊招式都無法克制)：</div>
                 <div class="badge-container"></div>
             </div>
-            <div id="team-atk-blind" class="list-group">
-                <div class="list-title" style="color: #856404;">🪨 進攻盲點 (整隊招式都無法克制)：</div>
+            <div id="team-atk-good" class="list-group">
+                <div class="list-title" style="color: #28a745;">可克制 (2x) 的屬性目標：</div>
                 <div class="badge-container"></div>
             </div>
         </div>
@@ -316,7 +316,7 @@
 <div id="search-modal" class="search-modal" onclick="closeSearchModal(event)">
     <div class="search-modal-content" onclick="event.stopPropagation()">
         <button class="close-modal-btn" onclick="document.getElementById('search-modal').style.display='none'">×</button>
-        <div style="font-weight: bold; font-size: 15px; color: #2c3e50;" id="search-modal-title">🔍 搜尋寶可夢 (位置 1)</div>
+        <div style="font-weight: bold; font-size: 15px; color: #2c3e50;" id="search-modal-title">搜尋寶可夢 (位置 1)</div>
         <input type="text" id="modal-search-input" class="search-input" placeholder="輸入中文名稱... (例如：皮卡丘、烈咬陸鯊)" oninput="filterPokemonResults()">
         <div id="search-results-list" class="search-results-list"></div>
     </div>
@@ -475,7 +475,7 @@ function calculateSingle() {
 function openSearchModal(index, e) {
     e.stopPropagation();
     selectedSlotIndex = index;
-    document.getElementById('search-modal-title').innerText = `🔍 搜尋寶可夢 (位置 ${index + 1})`;
+    document.getElementById('search-modal-title').innerText = `搜尋寶可夢 (位置 ${index + 1})`;
     document.getElementById('modal-search-input').value = '';
     filterPokemonResults();
     document.getElementById('search-modal').style.display = 'flex';
@@ -589,15 +589,15 @@ function renderTeamSlots() {
             bodyHtml = `
                 <div class="member-details">
                     <div class="member-detail-row">
-                        <div class="member-detail-title">🛡️ 防守弱點:</div>
+                        <div class="member-detail-title">防守弱點:</div>
                         <div class="badge-container">${res.defWeaks.map(createBadge).join(' ') || createEmptyBadge()}</div>
                     </div>
                     <div class="member-detail-row">
-                        <div class="member-detail-title">🛡️ 防守抗性:</div>
+                        <div class="member-detail-title">防守抗性:</div>
                         <div class="badge-container">${res.defResists.map(createBadge).join(' ') || createEmptyBadge()}</div>
                     </div>
                     <div class="member-detail-row">
-                        <div class="member-detail-title">🗡️ 攻擊強打擊面:</div>
+                        <div class="member-detail-title">攻擊強打擊面:</div>
                         ${buildHtmlGroup(res.atkStrongs)}
                     </div>
                 </div>
