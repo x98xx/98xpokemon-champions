@@ -510,10 +510,10 @@ function filterPokemonResults() {
     }).join('');
 }
 
-function applyPokemonToSlot(name, t1, t2) {
+function applyPokemonToSlot(name, t1, t2, image) {
     currentT1 = t1;
     currentT2 = t2 || "";
-    teamSlots[selectedSlotIndex] = { t1: currentT1, t2: currentT2, name: name };
+    teamSlots[selectedSlotIndex] = { t1: currentT1, t2: currentT2, name: name, image: image || "" };
     document.getElementById('search-modal').style.display = 'none';
     renderTypeButtons();
     calculateSingle();
@@ -578,12 +578,15 @@ function renderTeamSlots() {
         
         let displayName = `位置 ${i + 1}`;
         let bodyHtml = `<div style="color:#aaa; text-align:center; margin: auto 0; font-size:12px; padding:15px 0;">點擊選擇屬性</div>`;
-        
-        // 產生屬性標籤（顯示在名字右側）
         let typeTags = '';
+        let imageTag = '';
+        
         if (hasData) {
             let member = teamSlots[i];
             if (member.name) displayName = member.name;
+            if (member.image) {
+                imageTag = `<img src="${member.image}" style="width:24px; height:24px; vertical-align:middle; margin-left:6px; border-radius:50%;">`;
+            }
             if (member.t1) typeTags += `<span class="type-badge type-${member.t1}">${member.t1}</span>`;
             if (member.t2) typeTags += `<span class="type-badge type-${member.t2}">${member.t2}</span>`;
             
@@ -591,15 +594,15 @@ function renderTeamSlots() {
             bodyHtml = `
                 <div class="member-details">
                     <div class="member-detail-row">
-                        <div class="member-detail-title">防守弱點:</div>
+                        <div class="member-detail-title">🛡️ 防守弱點:</div>
                         <div class="badge-container">${res.defWeaks.map(createBadge).join(' ') || createEmptyBadge()}</div>
                     </div>
                     <div class="member-detail-row">
-                        <div class="member-detail-title">防守抗性:</div>
+                        <div class="member-detail-title">🛡️ 防守抗性:</div>
                         <div class="badge-container">${res.defResists.map(createBadge).join(' ') || createEmptyBadge()}</div>
                     </div>
                     <div class="member-detail-row">
-                        <div class="member-detail-title">攻擊強打擊面:</div>
+                        <div class="member-detail-title">🗡️ 攻擊強打擊面:</div>
                         ${buildHtmlGroup(res.atkStrongs)}
                     </div>
                 </div>
@@ -611,7 +614,7 @@ function renderTeamSlots() {
                 <span class="slot-title" onclick="openSearchModal(${i}, event)">
                     <img src="images/4889-pokeball.png" style="width: 20px; middle; margin-right: 8px;">
                     ${displayName}
-                    ${member.image ? `<img src="${member.image}" style="width:24px; height:24px; vertical-align:middle; margin-left:6px; border-radius:50%;">` : ''}
+                    ${imageTag}
                 </span>
                 <div style="display: flex; align-items: center; gap: 4px;">
                     ${typeTags}
