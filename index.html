@@ -496,7 +496,6 @@ function filterPokemonResults() {
         return;
     }
     listContainer.innerHTML = filtered.map(p => {
-        let typeStr = p.t2 ? `${p.t1} + ${p.t2}` : p.t1;
         return `
             <div class="search-item" onclick="applyPokemonToSlot('${p.name}', '${p.t1}', '${p.t2}', '${p.image || ''}')">
                 <strong>${p.name}</strong>
