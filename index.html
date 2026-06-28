@@ -498,9 +498,10 @@ function filterPokemonResults() {
     listContainer.innerHTML = filtered.map(p => {
         let typeStr = p.t2 ? `${p.t1} + ${p.t2}` : p.t1;
         return `
-            <div class="search-item" onclick="applyPokemonToSlot('${p.name}', '${p.t1}', '${p.t2}')">
+            <div class="search-item" onclick="applyPokemonToSlot('${p.name}', '${p.t1}', '${p.t2}', '${p.image || ''}')">
                 <strong>${p.name}</strong>
-                <div>
+                <div style="display:flex; align-items:center; gap:6px;">
+                    ${p.image ? `<img src="${p.image}" style="width:24px; height:24px; border-radius:50%;">` : ''}
                     <span class="type-badge type-${p.t1}">${p.t1}</span>
                     ${p.t2 ? `<span class="type-badge type-${p.t2}">${p.t2}</span>` : ''}
                 </div>
@@ -610,6 +611,7 @@ function renderTeamSlots() {
                 <span class="slot-title" onclick="openSearchModal(${i}, event)">
                     <img src="images/4889-pokeball.png" style="width: 20px; middle; margin-right: 8px;">
                     ${displayName}
+                    ${member.image ? `<img src="${member.image}" style="width:24px; height:24px; vertical-align:middle; margin-left:6px; border-radius:50%;">` : ''}
                 </span>
                 <div style="display: flex; align-items: center; gap: 4px;">
                     ${typeTags}
