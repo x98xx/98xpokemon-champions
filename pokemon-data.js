@@ -3,7 +3,7 @@ const pokemonDatabase = [
         "name": "妙蛙花",
         "t1": "草",
         "t2": "毒",
-        "image": ""
+        "image": "images/pokemon/妙蛙花.png"
     },
     {
         "name": "妙蛙花|超級妙蛙花",
