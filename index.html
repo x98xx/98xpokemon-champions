@@ -9,7 +9,7 @@
     <style>
         .slot-title {
             display: inline-flex;
-            align-items: center; /* 讓圖片與文字在行內垂直置中 */
+            align-items: center;
             cursor: pointer;
         }
         body {
@@ -322,6 +322,7 @@
     </div>
 </div>
 
+<!-- 引入外部寶可夢資料庫 -->
 <script src="pokemon-data.js"></script>
 
 <script>
@@ -407,7 +408,6 @@ function createBadgeWithCount(type, count) {
     return `<div><span class="type-badge type-${type}">${type}</span><span class="count-tag">${count}隻</span></div>`;
 }
 
-// 統一獨立為灰色小字的「無」標籤函數
 function createEmptyBadge() {
     return `<span style="color:#aaa; font-size:12px;">無</span>`;
 }
@@ -466,7 +466,6 @@ function buildHtmlGroup(dataObject) {
 
 function calculateSingle() {
     const res = getStructuredAnalysis(currentT1, currentT2);
-    // 將防守弱點與抗性預覽區無數據時改為小尺寸灰色字體
     document.getElementById('single-def-weak').innerHTML = res.defWeaks.map(createBadge).join(' ') || createEmptyBadge();
     document.getElementById('single-def-resist').innerHTML = res.defResists.map(createBadge).join(' ') || createEmptyBadge();
     document.getElementById('single-atk-strong').innerHTML = buildHtmlGroup(res.atkStrongs);
@@ -535,7 +534,6 @@ function selectSlot(index) {
 }
 
 function updateSelectedSlot() {
-    // 經由上方自訂點擊更新時，直接將 name 設定為空字串，以自動清除原有搜尋產生的寶可夢名字
     teamSlots[selectedSlotIndex] = { t1: currentT1, t2: currentT2, name: "" };
     renderTeamSlots();
     analyzeTotalTeam();
@@ -578,9 +576,14 @@ function renderTeamSlots() {
         
         let displayName = `位置 ${i + 1}`;
         let bodyHtml = `<div style="color:#aaa; text-align:center; margin: auto 0; font-size:12px; padding:15px 0;">點擊選擇屬性</div>`;
+        
+        // 產生屬性標籤（顯示在名字右側）
+        let typeTags = '';
         if (hasData) {
             let member = teamSlots[i];
             if (member.name) displayName = member.name;
+            if (member.t1) typeTags += `<span class="type-badge type-${member.t1}">${member.t1}</span>`;
+            if (member.t2) typeTags += `<span class="type-badge type-${member.t2}">${member.t2}</span>`;
             
             let res = getStructuredAnalysis(member.t1, member.t2);
             bodyHtml = `
@@ -607,7 +610,10 @@ function renderTeamSlots() {
                     <img src="images/4889-pokeball.png" style="width: 20px; middle; margin-right: 8px;">
                     ${displayName}
                 </span>
-                ${statusTag}
+                <div style="display: flex; align-items: center; gap: 4px;">
+                    ${typeTags}
+                    ${statusTag}
+                </div>
             </div>
             ${bodyHtml}
         `;
