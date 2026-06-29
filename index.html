@@ -8,7 +8,7 @@
     <link rel="apple-touch-icon" href="images/favicon.png">
 
     <style>
-        /* ----- 基本樣式，標題字體減半 ----- */
+        /* ----- 基本樣式與之前相同，僅加入手機版 media query ----- */
         .type-btn {
             display: inline-flex;
             align-items: center;
@@ -39,14 +39,13 @@
             border-radius: 16px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.06);
         }
-        /* 標題字體減半 (原 1.4rem → 0.7rem) */
+        /* 標題字體減半 */
         h1, h2, h3 { 
             text-align: center; 
             color: #2c3e50; 
             font-size: 0.7rem; 
             margin: 10px 0; 
         }
-        /* 卡片內的 h3 也調整，避免繼承問題 */
         .card h3 { 
             font-size: 0.7rem; 
             text-align: left; 
@@ -55,7 +54,6 @@
             border-bottom: 1px solid #b0b0b0; 
             color: #000; 
         }
-        /* 其他 h2 樣式（如推薦標題） */
         h2 { font-size: 0.7rem; }
         h3 { font-size: 0.7rem; }
         
@@ -158,7 +156,7 @@
         .sub-group { margin-top: 3px; padding-left: 4px; border-left: 2px solid #e2e8f0; }
         .sub-title { font-size: 10px; color: #718096; font-weight: bold; margin-bottom: 2px; }
 
-        /* 綜合分析卡片：三欄均分 */
+        /* 綜合分析卡片：桌機三欄，手機直排 */
         .result-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -277,11 +275,7 @@
             justify-content: center;
             align-items: center;
             position: relative;
-        }
-        .opponent-slot.selected-opp {
-            border-color: #6c757d;
-            background: #e9ecef;
-            box-shadow: 0 0 8px rgba(108,117,125,0.3);
+            overflow: hidden; /* 防止溢出 */
         }
         .opponent-slot .opp-label {
             font-size: 10px;
@@ -292,9 +286,14 @@
             display: flex;
             gap: 4px;
             margin-top: 4px;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 100%;
         }
         .opponent-slot .opp-types .type-badge {
-            font-size: 10px;
+            font-size: 9px;  /* 手機版稍小 */
+            padding: 1px 4px;
+            white-space: nowrap;
         }
 
         /* 彈出屬性選擇器 */
@@ -352,7 +351,7 @@
             color: #333;
         }
 
-        /* 推薦卡片（放在最下方） */
+        /* 推薦卡片 */
         .recommend-section {
             margin-top: 20px;
         }
@@ -417,6 +416,76 @@
             font-size: 11px;
             color: #333;
             margin-top: 3px;
+        }
+
+        /* ===== 手機版專用樣式 (max-width: 600px) ===== */
+        @media (max-width: 600px) {
+            /* 綜合分析三欄變直排 */
+            .result-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            /* 對手隊伍六欄變三欄，讓格子有足夠空間 */
+            .opponent-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 6px;
+            }
+            /* 對手格子內字體再小一點 */
+            .opponent-slot .opp-types .type-badge {
+                font-size: 8px;
+                padding: 1px 3px;
+            }
+            .opponent-slot {
+                min-height: 50px;
+                padding: 4px;
+            }
+            /* 屬性選擇器在手機上寬度調整 */
+            .opponent-picker {
+                width: 90%;
+                max-width: 280px;
+                left: 50% !important;
+                transform: translateX(-50%) !important;
+                top: 50% !important;
+                transform: translate(-50%, -50%) !important;
+            }
+            /* 讓卡片內文字更緊湊 */
+            .card {
+                padding: 8px;
+            }
+            .member-detail-row {
+                padding: 4px;
+            }
+            .type-badge {
+                font-size: 10px;
+            }
+            .recommend-card {
+                padding: 6px 8px;
+                gap: 6px;
+            }
+            .recommend-card .rec-name {
+                font-size: 13px;
+            }
+            .recommend-card .rec-detail {
+                font-size: 10px;
+            }
+        }
+
+        /* 更小螢幕 (max-width: 400px) 再調整 */
+        @media (max-width: 400px) {
+            .opponent-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .type-grid {
+                grid-template-columns: repeat(auto-fill, minmax(56px, 1fr));
+            }
+            .type-btn {
+                font-size: 10px;
+                padding: 4px 2px;
+            }
+            .type-btn img {
+                width: 14px;
+                height: 14px;
+            }
         }
     </style>
 </head>
@@ -496,7 +565,7 @@
             </div>
         </div>
 
-        <!-- 右：欠缺屬性分析（防守盲點 + 推薦抗性屬性） -->
+        <!-- 右：欠缺屬性分析 -->
         <div class="card">
             <h3 style="color: #000;">⚠️ 隊伍欠缺屬性分析</h3>
             <div id="team-deficiency" class="list-group">
@@ -511,7 +580,7 @@
         <div class="opponent-grid" id="opponent-container"></div>
     </div>
 
-    <!-- ===== 推薦卡片（放在最下方） ===== -->
+    <!-- ===== 推薦卡片 ===== -->
     <div class="recommend-section">
         <h2 style="color: #28a745;">🏆 針對對手的最佳上場推薦（前4名）</h2>
         <div id="recommendation-container">
