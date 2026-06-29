@@ -8,7 +8,7 @@
     <link rel="apple-touch-icon" href="images/favicon.png">
 
     <style>
-        /* ----- 所有樣式與上一版相同，僅修改 .opponent-picker 的 transform 與定位相關 ----- */
+        /* ----- 所有樣式與之前相同，僅新增 .deficiency-card 等，其餘不變 ----- */
         .type-btn {
             display: inline-flex;
             align-items: center;
@@ -267,7 +267,7 @@
             font-size: 10px;
         }
 
-        /* 彈出屬性選擇器 - 修改定位，移除 transform，由 JS 控制 left/top */
+        /* 彈出屬性選擇器 */
         .opponent-picker {
             display: none;
             position: fixed;
@@ -283,7 +283,6 @@
             grid-template-columns: repeat(6, 1fr);
             gap: 4px;
             background: #f8f9fa;
-            /* 移除 transform，改用 left/top 直接定位 */
         }
         .opponent-picker .picker-type-btn {
             background: transparent;
@@ -366,6 +365,20 @@
             padding: 0 4px;
             border-radius: 4px;
         }
+
+        /* 新增：欠缺屬性卡片內的清單樣式 */
+        .deficiency-list {
+            margin-top: 6px;
+        }
+        .deficiency-list .list-title {
+            font-weight: bold;
+            font-size: 12px;
+            color: #333;
+            margin-bottom: 4px;
+        }
+        .deficiency-list .badge-container {
+            min-height: 24px;
+        }
     </style>
 </head>
 <body>
@@ -411,15 +424,10 @@
     <h3>隊伍成員屬性分析</h3>
     <div class="team-section" id="team-container"></div>
 
-    <!-- 對手隊伍 -->
-    <div class="opponent-section">
-        <h3 style="margin-top:0; border-bottom: 2px solid #b0b0b0; padding-bottom:4px;">👥 對手隊伍（點擊格子設定屬性）</h3>
-        <div class="opponent-grid" id="opponent-container"></div>
-    </div>
-
-    <!-- 綜合分析與推薦 -->
+    <!-- ===== 隊伍綜合相剋分析（包含新增的欠缺屬性卡片） ===== -->
     <h2>隊伍綜合相剋分析</h2>
     <div class="result-grid">
+        <!-- 防守弱點卡片 -->
         <div class="card">
             <h3 style="color: #000;">隊伍防守弱點 (被克)</h3>
             <div id="team-def-danger" class="list-group">
@@ -436,6 +444,7 @@
             </div>
         </div>
 
+        <!-- 打擊面卡片 -->
         <div class="card">
             <h3 style="color: #000;">隊伍打擊面 (進攻)</h3>
             <div id="team-atk-blind" class="list-group">
@@ -448,13 +457,34 @@
             </div>
         </div>
 
-        <!-- 推薦卡片 -->
+        <!-- ===== 新增：隊伍欠缺屬性分析 (跨兩欄) ===== -->
+        <div class="card" style="grid-column: 1 / -1;">
+            <h3 style="color: #d9534f;">⚠️ 隊伍欠缺屬性分析</h3>
+            <div id="team-deficiency" class="list-group">
+                <div class="deficiency-list">
+                    <div class="list-title">🛡️ 防守盲點 (多隻成員被克制，且缺乏抗性)：</div>
+                    <div class="badge-container" id="deficiency-def"></div>
+                </div>
+                <div class="deficiency-list" style="margin-top:10px;">
+                    <div class="list-title">🗡️ 進攻盲點 (整隊無法造成 2x 克制)：</div>
+                    <div class="badge-container" id="deficiency-atk"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 推薦卡片 (跨兩欄) -->
         <div class="card" style="grid-column: 1 / -1; background: #f8f9fa;">
             <h3 style="color: #28a745;">🏆 針對對手的最佳上場推薦（前4名）</h3>
             <div id="recommendation-container">
                 <div style="color:#888; font-size:13px;">請先設定我方成員與對手屬性</div>
             </div>
         </div>
+    </div>
+
+    <!-- ===== 對手隊伍 (移至綜合分析下方) ===== -->
+    <div class="opponent-section">
+        <h3 style="margin-top:0; border-bottom: 2px solid #b0b0b0; padding-bottom:4px;">👥 對手隊伍（點擊格子設定屬性）</h3>
+        <div class="opponent-grid" id="opponent-container"></div>
     </div>
 </div>
 
@@ -476,7 +506,7 @@
 <script src="pokemon-data.js"></script>
 
 <script>
-// ===== 原有程式碼（與上一版完全相同，僅修改 showOpponentPicker 的定位部分） =====
+// ===== 所有 JavaScript 與上一版相同，僅在 analyzeTotalTeam 結尾新增更新 deficiency 的邏輯 =====
 const types = ["一般", "草", "火", "水", "電", "蟲", "飛行", "岩石", "毒", "地面", "冰", "格鬥", "超能力", "幽靈", "龍", "惡", "鋼", "妖精"];
 
 const chart = {
@@ -529,7 +559,7 @@ function renderTypeButtons() {
     });
 }
 
-// 我方屬性點擊邏輯（也作為對手邏輯的範本）
+// 我方屬性點擊邏輯
 function selectTypeLogic(type) { 
     if (currentT1 === type) { 
         if (currentT2 !== "") { currentT1 = currentT2; currentT2 = ""; } 
@@ -759,6 +789,7 @@ function renderTeamSlots() {
     }
 }
 
+// ===== 修改 analyzeTotalTeam：增加欠缺屬性分析 =====
 function analyzeTotalTeam() {
     const ids = ['team-def-danger', 'team-def-weak', 'team-def-resist', 'team-atk-good', 'team-atk-blind'];
     let activeMembers = teamSlots.filter(m => m !== null && (m.t1 !== "" || m.t2 !== ""));
@@ -766,6 +797,9 @@ function analyzeTotalTeam() {
         ids.forEach(id => {
             document.getElementById(id).querySelector('.badge-container').innerHTML = '<span style="color:#aaa; font-size:12px;">無成員數據</span>';
         });
+        // 同時清空欠缺屬性
+        document.getElementById('deficiency-def').innerHTML = '<span style="color:#aaa; font-size:12px;">無成員數據</span>';
+        document.getElementById('deficiency-atk').innerHTML = '<span style="color:#aaa; font-size:12px;">無成員數據</span>';
         return;
     }
     ids.forEach(id => document.getElementById(id).querySelector('.badge-container').innerHTML = '');
@@ -813,10 +847,27 @@ function analyzeTotalTeam() {
             container.innerHTML = createEmptyBadge();
         }
     });
+
+    // ---- 新增：更新欠缺屬性分析 ----
+    const defDeficiency = types.filter(t => defWeakCount[t] >= 2 && defResistCount[t] < defWeakCount[t]);
+    const atkDeficiency = types.filter(t => !teamCanAtkSuper[t]);
+
+    const defContainer = document.getElementById('deficiency-def');
+    const atkContainer = document.getElementById('deficiency-atk');
+    if (defDeficiency.length === 0) {
+        defContainer.innerHTML = '<span style="color:#28a745; font-size:12px;">✅ 無明顯防守盲點</span>';
+    } else {
+        defContainer.innerHTML = defDeficiency.map(t => createBadge(t)).join(' ');
+    }
+    if (atkDeficiency.length === 0) {
+        atkContainer.innerHTML = '<span style="color:#28a745; font-size:12px;">✅ 無進攻盲點</span>';
+    } else {
+        atkContainer.innerHTML = atkDeficiency.map(t => createBadge(t)).join(' ');
+    }
 }
 
 // ================================================================
-// ===== 對手隊伍邏輯 =====
+// ===== 對手隊伍邏輯（與之前相同） =====
 let opponentSlots = Array(6).fill(null);
 let selectedOpponentIndex = -1;
 
@@ -849,7 +900,6 @@ function renderOpponentSlots() {
     }
 }
 
-// ===== 修改此函數：水平置中於 opponent-section，垂直置中於螢幕 =====
 function showOpponentPicker(slotElement, index) {
     const picker = document.getElementById('opponent-picker');
     picker.innerHTML = '';
@@ -868,7 +918,6 @@ function showOpponentPicker(slotElement, index) {
             if (t === opp.t2) btn.classList.add('selected-t2');
         }
         btn.innerHTML = `<img src="images/types/${t}.png" title="${t}">`;
-        // 完全複製 selectTypeLogic 的點擊邏輯
         btn.onclick = function(e) {
             e.stopPropagation();
             let oppData = opponentSlots[index] || { t1: '', t2: '' };
@@ -899,22 +948,19 @@ function showOpponentPicker(slotElement, index) {
         picker.appendChild(btn);
     });
 
-    // ---- 定位：垂直置中，水平對齊 opponent-section 中心 ----
+    // 定位：垂直置中，水平置中於 opponent-section
     const opponentSection = document.querySelector('.opponent-section');
     const sectionRect = opponentSection.getBoundingClientRect();
-    const pickerWidth = 280;   // 與 CSS width 一致
-    const pickerHeight = 300;  // 估計高度（可調整）
+    const pickerWidth = 280;
+    const pickerHeight = 300;
     const centerX = sectionRect.left + sectionRect.width / 2;
     const left = centerX - pickerWidth / 2;
     const top = (window.innerHeight - pickerHeight) / 2;
-
-    // 確保不超出視窗邊界
     const maxLeft = window.innerWidth - pickerWidth;
     const maxTop = window.innerHeight - pickerHeight;
     picker.style.left = Math.min(Math.max(left, 0), maxLeft) + 'px';
     picker.style.top = Math.min(Math.max(top, 0), maxTop) + 'px';
-    picker.style.transform = 'none';  // 確保無 transform 干擾
-
+    picker.style.transform = 'none';
     picker.style.display = 'grid';
 }
 
