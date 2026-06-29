@@ -8,6 +8,7 @@
     <link rel="apple-touch-icon" href="images/favicon.png">
 
     <style>
+        /* ----- 所有樣式與上一版相同，僅修改 .opponent-picker 的 transform 與定位相關 ----- */
         .type-btn {
             display: inline-flex;
             align-items: center;
@@ -40,7 +41,6 @@
         }
         h1, h2, h3 { text-align: center; color: #2c3e50; font-size: 1.4rem; margin: 10px 0; }
         
-        /* 1. 屬性方塊選擇區 */
         .select-section {
             background: #e3e7eb;
             padding: 12px;
@@ -75,7 +75,6 @@
         .type-btn.selected-t1 { border-color: #000 !important; box-shadow: 0 0 8px #000; transform: scale(1.05); }
         .type-btn.selected-t2 { border-color: #ff007f !important; box-shadow: 0 0 8px #ff007f; transform: scale(1.05); }
 
-        /* 功能按鈕區 */
         .action-container {
             display: flex;
             justify-content: center; gap: 8px; flex-wrap: wrap; margin-top: 10px;
@@ -89,23 +88,19 @@
         }
         .btn-update { background-color: #d2d6db; color: #e9ecef; }
         .btn-update:hover { background-color: #5a6268; }
-
         .btn-remove { background-color: #d2d6db; color: #e9ecef; }
         .btn-remove:hover { background-color: #5a6268; }
-
         .btn-clear { background-color: #d2d6db; color: #e9ecef; }
         .btn-clear:hover { background-color: #5a6268; }
 
-        /* 2. 單體即時預覽區 */
         .single-preview {
             background: #e3e7eb;
             border: 1px solid #dee2e6; border-radius: 12px;
-            padding: 12px; margin-bottom: 20px; box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);
+            padding: 12px; margin-bottom: 20px;
         }
         .preview-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
         .preview-box { background: #d6dae0; padding: 6px 8px; border-radius: 8px; border-left: 3px solid #ccc; }
 
-        /* 3. 隊伍顯示區 (我方) */
         .team-section {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; margin-bottom: 25px;
@@ -139,14 +134,12 @@
         .status-selected { background: #6c757d; color: white; }
         .status-filled { background: #ced4da; color: white; }
 
-        /* 分組排版結構樣式 */
         .member-details { font-size: 11px; cursor: pointer; }
         .member-detail-row { margin-bottom: 4px; background: #d6dae0; padding: 5px; border-radius: 4px; }
         .member-detail-title { font-weight: bold; font-size: 11px; margin-bottom: 3px;}
         .sub-group { margin-top: 3px; padding-left: 4px; border-left: 2px solid #e2e8f0; }
         .sub-title { font-size: 10px; color: #718096; font-weight: bold; margin-bottom: 2px; }
 
-        /* 4. 底部整隊綜合分析 */
         .result-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 15px; }
         .card { 
             background: #e3e7eb;
@@ -159,7 +152,6 @@
         .list-group { margin-bottom: 10px; }
         .list-title { font-weight: bold; margin-bottom: 3px; font-size: 12px; color: #555; }
         
-        /* 屬性標籤與計數器 */
         .badge-container { display: flex; flex-wrap: wrap; gap: 3px; min-height: 16px; align-items: center;}
         .type-badge {
             padding: 1px 5px;
@@ -168,7 +160,6 @@
             display: inline-block;
         }
         .count-tag {
-            /* 取消黑色底框，保留文字 */
             background: transparent;
             color: #333;
             font-size: 9px;
@@ -177,7 +168,6 @@
             margin-left: 1px;
         }
 
-        /* 屬性官方色彩 */
         .type-一般 { background-color: #949495; }
         .type-草 { background-color: #5fbd58; }
         .type-火 { background-color: #ff9944; }
@@ -197,7 +187,6 @@
         .type-鋼 { background-color: #b7b7c8; }
         .type-妖精 { background-color: #f4a2e5; }
 
-        /* 搜尋彈窗 */
         .search-modal {
             display: none;
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -241,7 +230,7 @@
         }
         .opponent-grid {
             display: grid;
-            grid-template-columns: repeat(6, 1fr);  /* 固定6欄等寬 */
+            grid-template-columns: repeat(6, 1fr);
             gap: 8px;
         }
         .opponent-slot {
@@ -278,7 +267,7 @@
             font-size: 10px;
         }
 
-        /* 彈出屬性選擇器 (位置置中) */
+        /* 彈出屬性選擇器 - 修改定位，移除 transform，由 JS 控制 left/top */
         .opponent-picker {
             display: none;
             position: fixed;
@@ -294,7 +283,7 @@
             grid-template-columns: repeat(6, 1fr);
             gap: 4px;
             background: #f8f9fa;
-            transform: translate(-50%, -50%); /* 置中偏移 */
+            /* 移除 transform，改用 left/top 直接定位 */
         }
         .opponent-picker .picker-type-btn {
             background: transparent;
@@ -349,7 +338,7 @@
         .recommend-card .rec-rank {
             font-weight: bold;
             font-size: 16px;
-            color: #000;           /* 改為黑色 */
+            color: #000;
             min-width: 30px;
         }
         .recommend-card .rec-name {
@@ -385,11 +374,10 @@
             <img src="images/Pokemon-Logo.png" alt="logo" style="height: 200px; margin-bottom: 4px;">
         </h1>
     
-    <!-- 原有屬性選擇區 -->
+    <!-- 屬性選擇區 -->
     <div class="select-section">
         <div class="picker-title">選擇第一 / 第二屬性</div>
         <div class="type-grid" id="type-button-container"></div>
-        
         <div class="action-container">
             <button class="btn btn-update" onclick="updateSelectedSlot()">更新</button>
             <button class="btn btn-remove" onclick="removeSelectedSlot()">清除</button>
@@ -423,13 +411,13 @@
     <h3>隊伍成員屬性分析</h3>
     <div class="team-section" id="team-container"></div>
 
-    <!-- ===== 對手隊伍 ===== -->
+    <!-- 對手隊伍 -->
     <div class="opponent-section">
         <h3 style="margin-top:0; border-bottom: 2px solid #b0b0b0; padding-bottom:4px;">👥 對手隊伍（點擊格子設定屬性）</h3>
         <div class="opponent-grid" id="opponent-container"></div>
     </div>
 
-    <!-- 原有綜合分析 + 推薦卡片 -->
+    <!-- 綜合分析與推薦 -->
     <h2>隊伍綜合相剋分析</h2>
     <div class="result-grid">
         <div class="card">
@@ -460,7 +448,7 @@
             </div>
         </div>
 
-        <!-- 推薦卡片（跨兩欄） -->
+        <!-- 推薦卡片 -->
         <div class="card" style="grid-column: 1 / -1; background: #f8f9fa;">
             <h3 style="color: #28a745;">🏆 針對對手的最佳上場推薦（前4名）</h3>
             <div id="recommendation-container">
@@ -480,16 +468,15 @@
     </div>
 </div>
 
-<!-- 對手屬性選擇器（彈出面板） -->
+<!-- 對手屬性選擇器 -->
 <div id="opponent-picker" class="opponent-picker">
     <div class="picker-close" onclick="closeOpponentPicker()">✕ 關閉</div>
-    <!-- 動態由 JavaScript 生成 -->
 </div>
 
 <script src="pokemon-data.js"></script>
 
 <script>
-// ===== 原有程式碼 (保持不變) =====
+// ===== 原有程式碼（與上一版完全相同，僅修改 showOpponentPicker 的定位部分） =====
 const types = ["一般", "草", "火", "水", "電", "蟲", "飛行", "岩石", "毒", "地面", "冰", "格鬥", "超能力", "幽靈", "龍", "惡", "鋼", "妖精"];
 
 const chart = {
@@ -527,7 +514,7 @@ window.onload = function() {
     updateRecommendations();
 };
 
-// 原有 renderTypeButtons
+// 我方屬性按鈕渲染
 function renderTypeButtons() {
     const container = document.getElementById('type-button-container');
     container.innerHTML = '';
@@ -542,6 +529,7 @@ function renderTypeButtons() {
     });
 }
 
+// 我方屬性點擊邏輯（也作為對手邏輯的範本）
 function selectTypeLogic(type) { 
     if (currentT1 === type) { 
         if (currentT2 !== "") { currentT1 = currentT2; currentT2 = ""; } 
@@ -561,7 +549,6 @@ function createBadge(textWithFactor) {
 }
 
 function createBadgeWithCount(type, count) {
-    // 修改：count-tag 已無背景色
     return `<div><span class="type-badge type-${type}">${type}</span><span class="count-tag">${count}隻</span></div>`;
 }
 
@@ -862,7 +849,7 @@ function renderOpponentSlots() {
     }
 }
 
-// 顯示屬性選擇器（置中）
+// ===== 修改此函數：水平置中於 opponent-section，垂直置中於螢幕 =====
 function showOpponentPicker(slotElement, index) {
     const picker = document.getElementById('opponent-picker');
     picker.innerHTML = '';
@@ -881,50 +868,53 @@ function showOpponentPicker(slotElement, index) {
             if (t === opp.t2) btn.classList.add('selected-t2');
         }
         btn.innerHTML = `<img src="images/types/${t}.png" title="${t}">`;
+        // 完全複製 selectTypeLogic 的點擊邏輯
         btn.onclick = function(e) {
-        e.stopPropagation();
-        let oppData = opponentSlots[index] || { t1: '', t2: '' };
-        // 複製 selectTypeLogic 邏輯
-        if (oppData.t1 === t) {
-            if (oppData.t2 !== "") {
-                oppData.t1 = oppData.t2;
+            e.stopPropagation();
+            let oppData = opponentSlots[index] || { t1: '', t2: '' };
+            if (oppData.t1 === t) {
+                if (oppData.t2 !== "") {
+                    oppData.t1 = oppData.t2;
+                    oppData.t2 = "";
+                } else {
+                    oppData.t1 = "";
+                }
+            } else if (oppData.t2 === t) {
                 oppData.t2 = "";
             } else {
-                oppData.t1 = "";
+                if (oppData.t1 === "") {
+                    oppData.t1 = t;
+                } else if (oppData.t2 === "") {
+                    oppData.t2 = t;
+                } else {
+                    oppData.t1 = t;
+                    oppData.t2 = "";
+                }
             }
-        } else if (oppData.t2 === t) {
-            oppData.t2 = "";
-        } else {
-            if (oppData.t1 === "") {
-                oppData.t1 = t;
-            } else if (oppData.t2 === "") {
-                oppData.t2 = t;
-            } else {
-                oppData.t1 = t;
-                oppData.t2 = "";
-            }
-        }
-        opponentSlots[index] = oppData;
-        renderOpponentSlots();
-        showOpponentPicker(slotElement, index);
-        updateRecommendations();
-    };
+            opponentSlots[index] = oppData;
+            renderOpponentSlots();
+            showOpponentPicker(slotElement, index);
+            updateRecommendations();
+        };
         picker.appendChild(btn);
     });
 
-    // 定位到格子中央
-    const rect = slotElement.getBoundingClientRect();
-    const pickerWidth = 280; // 與 CSS 一致
-    const pickerHeight = 300; // 約略
-    let left = rect.left + rect.width / 2;
-    let top = rect.top + rect.height / 2;
-    // 防止超出螢幕
-    if (left - pickerWidth/2 < 0) left = pickerWidth/2;
-    if (left + pickerWidth/2 > window.innerWidth) left = window.innerWidth - pickerWidth/2;
-    if (top - pickerHeight/2 < 0) top = pickerHeight/2;
-    if (top + pickerHeight/2 > window.innerHeight) top = window.innerHeight - pickerHeight/2;
-    picker.style.left = left + 'px';
-    picker.style.top = top + 'px';
+    // ---- 定位：垂直置中，水平對齊 opponent-section 中心 ----
+    const opponentSection = document.querySelector('.opponent-section');
+    const sectionRect = opponentSection.getBoundingClientRect();
+    const pickerWidth = 280;   // 與 CSS width 一致
+    const pickerHeight = 300;  // 估計高度（可調整）
+    const centerX = sectionRect.left + sectionRect.width / 2;
+    const left = centerX - pickerWidth / 2;
+    const top = (window.innerHeight - pickerHeight) / 2;
+
+    // 確保不超出視窗邊界
+    const maxLeft = window.innerWidth - pickerWidth;
+    const maxTop = window.innerHeight - pickerHeight;
+    picker.style.left = Math.min(Math.max(left, 0), maxLeft) + 'px';
+    picker.style.top = Math.min(Math.max(top, 0), maxTop) + 'px';
+    picker.style.transform = 'none';  // 確保無 transform 干擾
+
     picker.style.display = 'grid';
 }
 
@@ -941,7 +931,7 @@ document.addEventListener('click', function(e) {
     }
 });
 
-// ===== 推薦功能（增加克制/抗性說明） =====
+// ===== 推薦功能 =====
 function getTypeEffectiveness(attackType, defenseType) {
     if (!attackType || !defenseType) return 1;
     if (chart[attackType] && chart[attackType][defenseType] !== undefined) {
@@ -952,13 +942,12 @@ function getTypeEffectiveness(attackType, defenseType) {
 
 function evaluateMemberAgainstOpponents(member, opponents) {
     let totalScore = 0;
-    let strongAgainst = new Set();   // 該成員能克制的對手屬性（2x）
-    let resistantTo = new Set();     // 該成員能抵抗的對手攻擊屬性（0.5x或0x）
+    let strongAgainst = new Set();
+    let resistantTo = new Set();
     opponents.forEach((opp) => {
         if (!opp || (!opp.t1 && !opp.t2)) return;
         let oppTypes = [opp.t1, opp.t2].filter(t => t);
         let memberTypes = [member.t1, member.t2].filter(t => t);
-        // 攻擊克制
         memberTypes.forEach(atk => {
             oppTypes.forEach(def => {
                 let eff = getTypeEffectiveness(atk, def);
@@ -968,11 +957,10 @@ function evaluateMemberAgainstOpponents(member, opponents) {
                 } else if (eff === 0.5) {
                     totalScore += 0.5;
                 } else if (eff === 0) {
-                    totalScore += 2;   // 免疫視為極佳
+                    totalScore += 2;
                 }
             });
         });
-        // 防守抗性 (對手攻擊該成員)
         oppTypes.forEach(atk => {
             memberTypes.forEach(def => {
                 let eff = getTypeEffectiveness(atk, def);
@@ -983,7 +971,7 @@ function evaluateMemberAgainstOpponents(member, opponents) {
                     resistantTo.add(atk);
                     totalScore += 2;
                 } else if (eff === 2) {
-                    totalScore -= 2;   // 弱點扣分
+                    totalScore -= 2;
                 }
             });
         });
