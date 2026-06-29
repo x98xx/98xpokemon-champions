@@ -882,27 +882,33 @@ function showOpponentPicker(slotElement, index) {
         }
         btn.innerHTML = `<img src="images/types/${t}.png" title="${t}">`;
         btn.onclick = function(e) {
-            e.stopPropagation();
-            let oppData = opponentSlots[index] || { t1: '', t2: '' };
-            if (!oppData.t1) {
+        e.stopPropagation();
+        let oppData = opponentSlots[index] || { t1: '', t2: '' };
+        // 複製 selectTypeLogic 邏輯
+        if (oppData.t1 === t) {
+            if (oppData.t2 !== "") {
+                oppData.t1 = oppData.t2;
+                oppData.t2 = "";
+            } else {
+                oppData.t1 = "";
+            }
+        } else if (oppData.t2 === t) {
+            oppData.t2 = "";
+        } else {
+            if (oppData.t1 === "") {
                 oppData.t1 = t;
-            } else if (oppData.t1 === t) {
-                if (!oppData.t2) {
-                    oppData.t2 = t;
-                } else {
-                    oppData.t2 = '';
-                }
-            } else if (!oppData.t2) {
+            } else if (oppData.t2 === "") {
                 oppData.t2 = t;
             } else {
                 oppData.t1 = t;
-                oppData.t2 = '';
+                oppData.t2 = "";
             }
-            opponentSlots[index] = oppData;
-            renderOpponentSlots();
-            showOpponentPicker(slotElement, index);
-            updateRecommendations();
-        };
+        }
+        opponentSlots[index] = oppData;
+        renderOpponentSlots();
+        showOpponentPicker(slotElement, index);
+        updateRecommendations();
+    };
         picker.appendChild(btn);
     });
 
