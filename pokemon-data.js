@@ -9,61 +9,61 @@ const pokemonDatabase = [
         "name": "超級妙蛙花",
         "t1": "草",
         "t2": "毒",
-        "image": ""
+        "image": "images/pokemon/妙蛙花.png"
     },
     {
         "name": "噴火龍",
         "t1": "火",
         "t2": "飛行",
-        "image": ""
+        "image": "images/pokemon/噴火龍.png"
     },
     {
         "name": "超級噴火龍Ｘ",
         "t1": "火",
         "t2": "龍",
-        "image": ""
+        "image": "images/pokemon/超級噴火龍Ｘ.png"
     },
     {
         "name": "超級噴火龍Ｙ",
         "t1": "火",
         "t2": "飛行",
-        "image": ""
+        "image": "images/pokemon/超級噴火龍Y.png"
     },
     {
         "name": "水箭龜",
         "t1": "水",
         "t2": "",
-        "image": ""
+        "image": "images/pokemon/水箭龜.png"
     },
     {
         "name": "超級水箭龜",
         "t1": "水",
         "t2": "",
-        "image": ""
+        "image": "images/pokemon/超級水箭龜.png"
     },
     {
         "name": "大針蜂",
         "t1": "蟲",
         "t2": "毒",
-        "image": ""
+        "image": "images/pokemon/大針蜂.png"
     },
     {
         "name": "超級大針蜂",
         "t1": "蟲",
         "t2": "毒",
-        "image": ""
+        "image": "images/pokemon/超級大針蜂.png"
     },
     {
         "name": "大比鳥",
         "t1": "一般",
         "t2": "飛行",
-        "image": ""
+        "image": "images/pokemon/大比鳥.png"
     },
     {
         "name": "超級大比鳥",
         "t1": "一般",
         "t2": "飛行",
-        "image": ""
+        "image": "images/pokemon/超級大比鳥.png"
     },
     {
         "name": "阿柏怪",
@@ -1065,7 +1065,7 @@ const pokemonDatabase = [
         "name": "火神蛾",
         "t1": "蟲",
         "t2": "火",
-        "image": ""
+        "image": "images/pokemon/火神蛾.png"
     },
     {
         "name": "布里卡隆",
@@ -1425,7 +1425,7 @@ const pokemonDatabase = [
         "name": "蘋裹龍",
         "t1": "草",
         "t2": "龍",
-        "image": ""
+        "image": "images/pokemon/蘋裹龍.png"
     },
     {
         "name": "豐蜜龍",
@@ -1650,22 +1650,16 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "來悲粗茶|凡作的樣子",
+        "name": "來悲粗茶",
         "t1": "草",
         "t2": "幽靈",
-        "image": ""
-    },
-    {
-        "name": "來悲粗茶|傑作的樣子",
-        "t1": "草",
-        "t2": "幽靈",
-        "image": ""
+        "image": "images/pokemon/來悲粗茶.png"
     },
     {
         "name": "鋁鋼橋龍",
         "t1": "鋼",
         "t2": "龍",
-        "image": ""
+        "image": "images/pokemon/鋁鋼橋龍.png"
     },
     {
         "name": "蜜集大蛇",
@@ -1905,6 +1899,6 @@ const pokemonDatabase = [
         "name": "賽富豪",
         "t1": "鋼",
         "t2": "幽靈",
-        "image": ""
+        "image": "images/pokemon/賽富豪.png"
     }
 ];
