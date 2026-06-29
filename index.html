@@ -885,22 +885,22 @@ function showOpponentPicker(slotElement, index) {
         e.stopPropagation();
         let oppData = opponentSlots[index] || { t1: '', t2: '' };
         // 複製 selectTypeLogic 邏輯
-        if (oppData.t1 === type) {
+        if (oppData.t1 === t) {
             if (oppData.t2 !== "") {
                 oppData.t1 = oppData.t2;
                 oppData.t2 = "";
             } else {
                 oppData.t1 = "";
             }
-        } else if (oppData.t2 === type) {
+        } else if (oppData.t2 === t) {
             oppData.t2 = "";
         } else {
             if (oppData.t1 === "") {
-                oppData.t1 = type;
+                oppData.t1 = t;
             } else if (oppData.t2 === "") {
-                oppData.t2 = type;
+                oppData.t2 = t;
             } else {
-                oppData.t1 = type;
+                oppData.t1 = t;
                 oppData.t2 = "";
             }
         }
