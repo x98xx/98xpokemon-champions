@@ -38,10 +38,8 @@
             border-radius: 16px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.06);
         }
-        h1, h2, h3 { text-align: center; color: #2c3e50; font-size: 1.4rem;
-            margin: 10px 0; }
-        h2 { border-bottom: 2px solid #e9ecef; padding-bottom: 6px;
-            margin-top: 25px; }
+        h1, h2, h3 { text-align: center; color: #2c3e50; font-size: 1.4rem; margin: 10px 0; }
+        h2 { border-bottom: 2px solid #e9ecef; padding-bottom: 6px; margin-top: 25px; }
         
         /* 1. 屬性方塊選擇區 */
         .select-section {
@@ -73,10 +71,8 @@
             transition: all 0.15s ease;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
-        .type-btn.selected-t1 { border-color: #000 !important; box-shadow: 0 0 8px #000; transform: scale(1.05);
-        }
-        .type-btn.selected-t2 { border-color: #ff007f !important; box-shadow: 0 0 8px #ff007f; transform: scale(1.05);
-        }
+        .type-btn.selected-t1 { border-color: #000 !important; box-shadow: 0 0 8px #000; transform: scale(1.05); }
+        .type-btn.selected-t2 { border-color: #ff007f !important; box-shadow: 0 0 8px #ff007f; transform: scale(1.05); }
 
         /* 功能按鈕區 */
         .action-container {
@@ -90,16 +86,11 @@
             display: inline-flex; align-items: center; gap: 4px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-        .btn-update { background-color: #28a745; color: white;
-        }
-        .btn-update:hover { background-color: #218838;
-        }
-        .btn-remove { background-color: #dc3545; color: white;
-        }
-        .btn-remove:hover { background-color: #c82333;
-        }
-        .btn-clear { background-color: #6c757d; color: white;
-        }
+        .btn-update { background-color: #28a745; color: white; }
+        .btn-update:hover { background-color: #218838; }
+        .btn-remove { background-color: #dc3545; color: white; }
+        .btn-remove:hover { background-color: #c82333; }
+        .btn-clear { background-color: #6c757d; color: white; }
 
         /* 2. 單體即時預覽區 */
         .single-preview {
@@ -107,10 +98,8 @@
             border: 1px solid #dee2e6; border-radius: 12px;
             padding: 12px; margin-bottom: 20px; box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);
         }
-        .preview-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;
-        }
-        .preview-box { background: #fafafa; padding: 6px 8px; border-radius: 8px;
-            border-left: 3px solid #ccc; }
+        .preview-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+        .preview-box { background: #fafafa; padding: 6px 8px; border-radius: 8px; border-left: 3px solid #ccc; }
 
         /* 3. 隊伍顯示區 */
         .team-section {
@@ -128,8 +117,7 @@
             background: #f8f9fa;                    /* 可保留淺色背景，不改也可以 */
             box-shadow: 0 0 10px rgba(108,117,125,0.15); /* 陰影也調成灰色 */
         }
-        .team-slot.active { border-style: solid;
-            border-color: #ced4da; background: #fff; }
+        .team-slot.active { border-style: solid; border-color: #ced4da; background: #fff; }
         
         .slot-header {
             display: flex;
@@ -143,45 +131,34 @@
         }
         .slot-title:hover { background: #495057; color: #fff; }
         
-        .slot-title:hover { background: #007bff; color: white;
-        }
-        .slot-status { font-size: 10px; padding: 1px 5px; border-radius: 8px;
-        }
-        .status-empty { background: #e9ecef; color: #6c757d;
-        }
-        .status-selected { background: #6c757d; color: white;
-        }
-        .status-filled { background: #007bff; color: white;
-        }
+        .slot-title:hover { background: #007bff; color: white; }
+        .slot-status { font-size: 10px; padding: 1px 5px; border-radius: 8px; }
+        .status-empty { background: #e9ecef; color: #6c757d; }
+        .status-selected { background: #6c757d; color: white; }
+        .status-filled { background: #007bff; color: white; }
 
         /* 分組排版結構樣式 */
-        .member-details { font-size: 11px;
-            cursor: pointer; }
-        .member-detail-row { margin-bottom: 4px; background: #fafafa; padding: 5px; border-radius: 4px;
-        }
-        .member-detail-title { font-weight: bold; font-size: 11px;
-            margin-bottom: 3px;}
-        .sub-group { margin-top: 3px; padding-left: 4px; border-left: 2px solid #e2e8f0;
-        }
-        .sub-title { font-size: 10px; color: #718096; font-weight: bold; margin-bottom: 2px;
-        }
+        .member-details { font-size: 11px; cursor: pointer; }
+        .member-detail-row { margin-bottom: 4px; background: #fafafa; padding: 5px; border-radius: 4px; }
+        .member-detail-title { font-weight: bold; font-size: 11px; margin-bottom: 3px;}
+        .sub-group { margin-top: 3px; padding-left: 4px; border-left: 2px solid #e2e8f0; }
+        .sub-title { font-size: 10px; color: #718096; font-weight: bold; margin-bottom: 2px; }
 
         /* 4. 底部整隊綜合分析 */
-        .result-grid { display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 15px; }
-        .card { background: #fff;
-            border: 1px solid #e9ecef; border-radius: 12px; padding: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        .result-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 15px; }
+        .card { 
+            background: #fff;
+            border: 1px solid #e9ecef; 
+            border-radius: 12px; 
+            padding: 12px; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
         }
-        .card h3 { text-align: left; margin-top: 0; font-size: 14px; padding-bottom: 4px;
-            border-bottom: 1px solid #eee;}
-        .list-group { margin-bottom: 10px;
-        }
-        .list-title { font-weight: bold; margin-bottom: 3px; font-size: 12px; color: #555;
-        }
+        .card h3 { text-align: left; margin-top: 0; font-size: 14px; padding-bottom: 4px; border-bottom: 1px solid #eee;}
+        .list-group { margin-bottom: 10px; }
+        .list-title { font-weight: bold; margin-bottom: 3px; font-size: 12px; color: #555; }
         
         /* 屬性標籤與計數器 */
-        .badge-container { display: flex;
-            flex-wrap: wrap; gap: 3px; min-height: 16px; align-items: center;}
+        .badge-container { display: flex; flex-wrap: wrap; gap: 3px; min-height: 16px; align-items: center;}
         .type-badge {
             padding: 1px 5px;
             border-radius: 4px; color: white;
@@ -240,7 +217,8 @@
             padding: 10px 12px;
             cursor: pointer; border-bottom: 1px solid #f8f9fa; display: flex; justify-content: space-between; align-items: center;
         }
-        .search-item:hover { background-color: #f1f3f5;
+        .search-item:hover { 
+            background-color: #f1f3f5;
         }
         .close-modal-btn {
             float: right;
@@ -248,8 +226,7 @@
         }
         .close-modal-btn:hover { color: #333;
         }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px);
-        } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
@@ -390,23 +367,16 @@ function renderTypeButtons() {
 
 function selectTypeLogic(type) { 
     if (currentT1 === type) { 
-        if (currentT2 !== "") { 
-            currentT1 = currentT2;
-            currentT2 = "";
-        } else {
-            currentT1 = "";
-        }
-    } else if (currentT2 === type) { 
-        currentT2 = "";
-    } else { 
-        if (currentT1 === "") {
-            currentT1 = type;
-        } else if (currentT2 === "") { 
-            currentT2 = type;
-        } else { 
-            currentT1 = type;
-            currentT2 = ""; 
-        } 
+        if (currentT2 !== "") { currentT1 = currentT2; currentT2 = ""; } 
+        else
+        { currentT1 = ""; }
+    } 
+        else if (currentT2 === type) { currentT2 = ""; } 
+        else
+        { if (currentT1 === "") { currentT1 = type; } 
+        else if (currentT2 === "") { currentT2 = type; } 
+        else
+        { currentT1 = type; currentT2 = ""; } 
     } 
     renderTypeButtons(); 
     calculateSingle();
@@ -429,15 +399,9 @@ function getStructuredAnalysis(t1, t2) {
     let defWeaks = [], defResists = [];
     let atkStrongs = {}, atkWeaks = {};
     
-    if (t1) {
-        atkStrongs[t1] = [];
-        atkWeaks[t1] = [];
-    }
-    if (t2) {
-        atkStrongs[t2] = [];
-        atkWeaks[t2] = [];
-    }
-
+    if (t1) { atkStrongs[t1] = []; atkWeaks[t1] = []; }
+    if (t2) { atkStrongs[t2] = []; atkWeaks[t2] = []; }
+    
     types.forEach(atkType => {
         if (!t1 && !t2) return; 
         let f1 = (t1 && chart[atkType] && chart[atkType][t1] !== undefined) ? chart[atkType][t1] : 1;
