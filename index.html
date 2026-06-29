@@ -8,40 +8,7 @@
     <link rel="apple-touch-icon" href="images/favicon.png">
 
     <style>
-        /* ----- 基本樣式與之前相同，僅加入手機版 media query ----- */
-        /* 折疊標題列 */
-.section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 10px 0;
-}
-
-/* 折疊按鈕 */
-.collapse-btn {
-    background: none;
-    border: none;
-    font-size: 0.7rem;
-    color: #6c757d;
-    cursor: pointer;
-    padding: 4px 8px;
-    border-radius: 4px;
-    transition: background 0.2s;
-}
-.collapse-btn:hover {
-    background: #e9ecef;
-}
-
-/* 折疊內容（預設展開） */
-.collapse-content {
-    display: block;
-}
-
-/* 折疊狀態（隱藏） */
-.collapse-content.collapsed {
-    display: none;
-}
-        
+        /* ----- 基本樣式 (與前版相同) ----- */
         .type-btn {
             display: inline-flex;
             align-items: center;
@@ -72,23 +39,23 @@
             border-radius: 16px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.06);
         }
-        /* 標題字體減半 */
+        /* 標題字體統一 */
         h1, h2, h3 { 
             text-align: center; 
             color: #2c3e50; 
-            font-size: 0.8rem; 
+            font-size: 0.7rem; 
             margin: 10px 0; 
         }
         .card h3 { 
-            font-size: 0.8rem; 
+            font-size: 0.7rem; 
             text-align: left; 
             margin-top: 0; 
             padding-bottom: 4px; 
             border-bottom: 1px solid #b0b0b0; 
             color: #000; 
         }
-        h2 { font-size: 0.8rem; }
-        h3 { font-size: 0.8rem; }
+        h2 { font-size: 0.7rem; }
+        h3 { font-size: 0.7rem; }
         
         .select-section {
             background: #e3e7eb;
@@ -203,7 +170,7 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.02);
         }
         .card h3 { 
-            font-size: 0.8rem; 
+            font-size: 0.7rem; 
             text-align: left; 
             margin-top: 0; 
             padding-bottom: 4px; 
@@ -308,7 +275,7 @@
             justify-content: center;
             align-items: center;
             position: relative;
-            overflow: hidden; /* 防止溢出 */
+            overflow: hidden;
         }
         .opponent-slot .opp-label {
             font-size: 10px;
@@ -324,7 +291,7 @@
             max-width: 100%;
         }
         .opponent-slot .opp-types .type-badge {
-            font-size: 9px;  /* 手機版稍小 */
+            font-size: 9px;
             padding: 1px 4px;
             white-space: nowrap;
         }
@@ -431,7 +398,6 @@
             border-radius: 4px;
         }
 
-        /* 欠缺屬性卡片內的推薦屬性 */
         .deficiency-item {
             margin-bottom: 10px;
             padding: 6px;
@@ -451,19 +417,49 @@
             margin-top: 3px;
         }
 
-        /* ===== 手機版專用樣式 (max-width: 600px) ===== */
+        /* ===== 折疊功能專用樣式 ===== */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
+        }
+        .section-header h2, .section-header h3 {
+            flex: 1;
+            text-align: center;
+            margin: 0;
+        }
+        .collapse-btn {
+            background: none;
+            border: none;
+            font-size: 0.7rem;
+            color: #6c757d;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: background 0.2s;
+            white-space: nowrap;
+        }
+        .collapse-btn:hover {
+            background: #e9ecef;
+        }
+        .collapse-content {
+            display: block;
+        }
+        .collapse-content.collapsed {
+            display: none;
+        }
+
+        /* ===== 手機版優化 ===== */
         @media (max-width: 600px) {
-            /* 綜合分析三欄變直排 */
             .result-grid {
                 grid-template-columns: 1fr;
                 gap: 12px;
             }
-            /* 對手隊伍六欄變三欄，讓格子有足夠空間 */
             .opponent-grid {
                 grid-template-columns: repeat(3, 1fr);
                 gap: 6px;
             }
-            /* 對手格子內字體再小一點 */
             .opponent-slot .opp-types .type-badge {
                 font-size: 8px;
                 padding: 1px 3px;
@@ -472,7 +468,6 @@
                 min-height: 50px;
                 padding: 4px;
             }
-            /* 屬性選擇器在手機上寬度調整 */
             .opponent-picker {
                 width: 90%;
                 max-width: 280px;
@@ -481,7 +476,6 @@
                 top: 50% !important;
                 transform: translate(-50%, -50%) !important;
             }
-            /* 讓卡片內文字更緊湊 */
             .card {
                 padding: 8px;
             }
@@ -502,8 +496,6 @@
                 font-size: 10px;
             }
         }
-
-        /* 更小螢幕 (max-width: 400px) 再調整 */
         @media (max-width: 400px) {
             .opponent-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -561,7 +553,7 @@
         </div>
     </div>
 
-    <!-- 我方隊伍 -->
+    <!-- ===== 隊伍成員屬性分析（可折疊） ===== -->
     <div class="section-header">
         <h3 style="margin:0;">隊伍成員屬性分析</h3>
         <button class="collapse-btn" onclick="toggleCollapse('teamCollapse', this)">− 折疊</button>
@@ -570,61 +562,62 @@
         <div class="team-section" id="team-container"></div>
     </div>
 
-    <!-- ===== 隊伍綜合相剋分析（三欄） ===== -->
+    <!-- ===== 隊伍綜合相剋分析（可折疊） ===== -->
     <div class="section-header">
         <h2 style="margin:0;">隊伍綜合相剋分析</h2>
         <button class="collapse-btn" onclick="toggleCollapse('resultCollapse', this)">− 折疊</button>
     </div>
     <div id="resultCollapse" class="collapse-content">
         <div class="result-grid">
-        <!-- 左：防守弱點 -->
-        <div class="card">
-            <h3 style="color: #000;">隊伍防守弱點 (被克)</h3>
-            <div id="team-def-danger" class="list-group">
-                <div class="list-title" style="color: #c03028; font-size:12px;">⚠️ 防守盲點 (3隻以上怕它，且少人能抗)：</div>
-                <div class="badge-container"></div>
+            <!-- 防守弱點卡片 -->
+            <div class="card">
+                <h3 style="color: #000;">隊伍防守弱點 (被克)</h3>
+                <div id="team-def-danger" class="list-group">
+                    <div class="list-title" style="color: #c03028; font-size:12px;">⚠️ 防守盲點 (3隻以上怕它，且少人能抗)：</div>
+                    <div class="badge-container"></div>
+                </div>
+                <div id="team-def-weak" class="list-group">
+                    <div class="list-title" style="color: #000; font-size:12px;">成員弱點 (受 2x/4x 傷害)：</div>
+                    <div class="badge-container"></div>
+                </div>
+                <div id="team-def-resist" class="list-group">
+                    <div class="list-title" style="color: #000; font-size:12px;">成員抗性 (0.5x/0x 傷害)：</div>
+                    <div class="badge-container"></div>
+                </div>
             </div>
-            <div id="team-def-weak" class="list-group">
-                <div class="list-title" style="color: #000; font-size:12px;">成員弱點 (受 2x/4x 傷害)：</div>
-                <div class="badge-container"></div>
-            </div>
-            <div id="team-def-resist" class="list-group">
-                <div class="list-title" style="color: #000; font-size:12px;">成員抗性 (0.5x/0x 傷害)：</div>
-                <div class="badge-container"></div>
-            </div>
-        </div>
 
-        <!-- 中：打擊面 -->
-        <div class="card">
-            <h3 style="color: #000;">隊伍打擊面 (進攻)</h3>
-            <div id="team-atk-blind" class="list-group">
-                <div class="list-title" style="color: #c03028; font-size:12px;">⚠️ 進攻盲點 (整隊招式都無法克制)：</div>
-                <div class="badge-container"></div>
+            <!-- 打擊面卡片 -->
+            <div class="card">
+                <h3 style="color: #000;">隊伍打擊面 (進攻)</h3>
+                <div id="team-atk-blind" class="list-group">
+                    <div class="list-title" style="color: #c03028; font-size:12px;">⚠️ 進攻盲點 (整隊招式都無法克制)：</div>
+                    <div class="badge-container"></div>
+                </div>
+                <div id="team-atk-good" class="list-group">
+                    <div class="list-title" style="color: #000; font-size:12px;">可克制 (2x) 的屬性目標：</div>
+                    <div class="badge-container"></div>
+                </div>
             </div>
-            <div id="team-atk-good" class="list-group">
-                <div class="list-title" style="color: #000; font-size:12px;">可克制 (2x) 的屬性目標：</div>
-                <div class="badge-container"></div>
-            </div>
-        </div>
 
-        <!-- 右：欠缺屬性分析 -->
-        <div class="card">
-            <h3 style="color: #000;">隊伍欠缺屬性分析</h3>
-            <div id="team-deficiency" class="list-group">
-                <!-- 動態生成 -->
+            <!-- 欠缺屬性分析卡片 -->
+            <div class="card">
+                <h3 style="color: #000;">⚠️ 隊伍欠缺屬性分析</h3>
+                <div id="team-deficiency" class="list-group">
+                    <!-- 動態生成 -->
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- ===== 對手隊伍 ===== -->
+    <!-- ===== 對手隊伍（獨立，不受折疊影響） ===== -->
     <div class="opponent-section">
-        <h3 style="margin-top:0; border-bottom: 2px solid #b0b0b0; padding-bottom:4px;">對手隊伍屬性設定</h3>
+        <h3 style="margin-top:0; border-bottom: 2px solid #b0b0b0; padding-bottom:4px;">👥 對手隊伍（點擊格子設定屬性）</h3>
         <div class="opponent-grid" id="opponent-container"></div>
     </div>
 
-    <!-- ===== 推薦卡片 ===== -->
+    <!-- ===== 推薦卡片（獨立，不受折疊影響） ===== -->
     <div class="recommend-section">
-        <h2 style="color: #28a745;">🏆最佳上場推薦</h2>
+        <h2 style="color: #28a745;">🏆 針對對手的最佳上場推薦（前4名）</h2>
         <div id="recommendation-container">
             <div style="color:#888; font-size:13px;">請先設定我方成員與對手屬性</div>
         </div>
@@ -688,7 +681,7 @@ window.onload = function() {
     updateRecommendations();
 };
 
-    // 折疊功能
+// 折疊功能（新增）
 function toggleCollapse(id, btn) {
     var el = document.getElementById(id);
     if (el.classList.contains('collapsed')) {
