@@ -40,7 +40,7 @@
         }
         h1, h2, h3 { text-align: center; color: #2c3e50; font-size: 1.4rem; margin: 10px 0; }
         
-        /* 1. 屬性方塊選擇區 (保持原樣) */
+        /* 1. 屬性方塊選擇區 */
         .select-section {
             background: #e3e7eb;
             padding: 12px;
@@ -146,7 +146,7 @@
         .sub-group { margin-top: 3px; padding-left: 4px; border-left: 2px solid #e2e8f0; }
         .sub-title { font-size: 10px; color: #718096; font-weight: bold; margin-bottom: 2px; }
 
-        /* 4. 底部整隊綜合分析 (保持原樣) */
+        /* 4. 底部整隊綜合分析 */
         .result-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 15px; }
         .card { 
             background: #e3e7eb;
@@ -168,9 +168,13 @@
             display: inline-block;
         }
         .count-tag {
-            background: #333;
-            color: #fff; font-size: 9px;
-            padding: 1px 3px; border-radius: 3px; margin-left: 1px;
+            /* 取消黑色底框，保留文字 */
+            background: transparent;
+            color: #333;
+            font-size: 9px;
+            padding: 1px 3px;
+            border-radius: 3px;
+            margin-left: 1px;
         }
 
         /* 屬性官方色彩 */
@@ -193,7 +197,7 @@
         .type-鋼 { background-color: #b7b7c8; }
         .type-妖精 { background-color: #f4a2e5; }
 
-        /* 搜尋彈窗 (Modal) 樣式 (不變) */
+        /* 搜尋彈窗 */
         .search-modal {
             display: none;
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -227,7 +231,7 @@
         .close-modal-btn:hover { color: #333; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* ===== 新增：對手隊伍樣式 ===== */
+        /* ===== 對手隊伍樣式 ===== */
         .opponent-section {
             margin-top: 20px;
             background: #e3e7eb;
@@ -237,7 +241,7 @@
         }
         .opponent-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            grid-template-columns: repeat(6, 1fr);  /* 固定6欄等寬 */
             gap: 8px;
         }
         .opponent-slot {
@@ -274,7 +278,7 @@
             font-size: 10px;
         }
 
-        /* 彈出屬性選擇器 (位置在點擊的格子旁) */
+        /* 彈出屬性選擇器 (位置置中) */
         .opponent-picker {
             display: none;
             position: fixed;
@@ -290,6 +294,7 @@
             grid-template-columns: repeat(6, 1fr);
             gap: 4px;
             background: #f8f9fa;
+            transform: translate(-50%, -50%); /* 置中偏移 */
         }
         .opponent-picker .picker-type-btn {
             background: transparent;
@@ -339,11 +344,12 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            flex-wrap: wrap;
         }
         .recommend-card .rec-rank {
             font-weight: bold;
             font-size: 16px;
-            color: #28a745;
+            color: #000;           /* 改為黑色 */
             min-width: 30px;
         }
         .recommend-card .rec-name {
@@ -358,6 +364,18 @@
         .recommend-card .rec-types {
             display: flex;
             gap: 4px;
+        }
+        .recommend-card .rec-stats {
+            font-size: 11px;
+            color: #333;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .recommend-card .rec-stats span {
+            background: #e9ecef;
+            padding: 0 4px;
+            border-radius: 4px;
         }
     </style>
 </head>
@@ -405,13 +423,13 @@
     <h3>隊伍成員屬性分析</h3>
     <div class="team-section" id="team-container"></div>
 
-    <!-- ===== 新增：對手隊伍 ===== -->
+    <!-- ===== 對手隊伍 ===== -->
     <div class="opponent-section">
         <h3 style="margin-top:0; border-bottom: 2px solid #b0b0b0; padding-bottom:4px;">👥 對手隊伍（點擊格子設定屬性）</h3>
         <div class="opponent-grid" id="opponent-container"></div>
     </div>
 
-    <!-- 原有綜合分析 + 推薦卡片（新增） -->
+    <!-- 原有綜合分析 + 推薦卡片 -->
     <h2>隊伍綜合相剋分析</h2>
     <div class="result-grid">
         <div class="card">
@@ -442,7 +460,7 @@
             </div>
         </div>
 
-        <!-- ===== 新增：推薦卡片（跨兩欄） ===== -->
+        <!-- 推薦卡片（跨兩欄） -->
         <div class="card" style="grid-column: 1 / -1; background: #f8f9fa;">
             <h3 style="color: #28a745;">🏆 針對對手的最佳上場推薦（前4名）</h3>
             <div id="recommendation-container">
@@ -452,7 +470,7 @@
     </div>
 </div>
 
-<!-- 搜尋模態框 (不變) -->
+<!-- 搜尋模態框 -->
 <div id="search-modal" class="search-modal" onclick="closeSearchModal(event)">
     <div class="search-modal-content" onclick="event.stopPropagation()">
         <button class="close-modal-btn" onclick="document.getElementById('search-modal').style.display='none'">×</button>
@@ -505,11 +523,11 @@ window.onload = function() {
     renderTeamSlots();
     calculateSingle();
     analyzeTotalTeam();
-    renderOpponentSlots();   // 新增
-    updateRecommendations(); // 新增
+    renderOpponentSlots();
+    updateRecommendations();
 };
 
-// 原有 renderTypeButtons (不變)
+// 原有 renderTypeButtons
 function renderTypeButtons() {
     const container = document.getElementById('type-button-container');
     container.innerHTML = '';
@@ -543,6 +561,7 @@ function createBadge(textWithFactor) {
 }
 
 function createBadgeWithCount(type, count) {
+    // 修改：count-tag 已無背景色
     return `<div><span class="type-badge type-${type}">${type}</span><span class="count-tag">${count}隻</span></div>`;
 }
 
@@ -601,7 +620,7 @@ function calculateSingle() {
     document.getElementById('single-atk-weak').innerHTML = buildHtmlGroup(res.atkWeaks);
 }
 
-// 搜尋相關（不變）
+// 搜尋相關
 function openSearchModal(index, e) {
     e.stopPropagation();
     selectedSlotIndex = index;
@@ -647,7 +666,7 @@ function applyPokemonToSlot(name, t1, t2, image) {
     calculateSingle();
     renderTeamSlots();
     analyzeTotalTeam();
-    updateRecommendations(); // 新增：更新推薦
+    updateRecommendations();
 }
 
 function selectSlot(index) {
@@ -810,11 +829,10 @@ function analyzeTotalTeam() {
 }
 
 // ================================================================
-// ===== 新增：對手隊伍邏輯 =====
-let opponentSlots = Array(6).fill(null); // 每個 { t1, t2 }
+// ===== 對手隊伍邏輯 =====
+let opponentSlots = Array(6).fill(null);
 let selectedOpponentIndex = -1;
 
-// 渲染對手格子
 function renderOpponentSlots() {
     const container = document.getElementById('opponent-container');
     container.innerHTML = '';
@@ -837,31 +855,26 @@ function renderOpponentSlots() {
             return function(e) {
                 selectedOpponentIndex = idx;
                 renderOpponentSlots();
-                // 顯示選擇器
-                showOpponentPicker(e.target, idx);
+                showOpponentPicker(e.target.closest('.opponent-slot'), idx);
             };
         })(i);
         container.appendChild(slot);
     }
 }
 
-// 顯示屬性選擇器（彈出面板）
-function showOpponentPicker(clickedElement, index) {
+// 顯示屬性選擇器（置中）
+function showOpponentPicker(slotElement, index) {
     const picker = document.getElementById('opponent-picker');
-    // 清空並填入屬性按鈕
     picker.innerHTML = '';
-    // 加入關閉按鈕
     const closeBtn = document.createElement('div');
     closeBtn.className = 'picker-close';
     closeBtn.textContent = '✕ 關閉';
     closeBtn.onclick = closeOpponentPicker;
     picker.appendChild(closeBtn);
 
-    // 產生18個屬性按鈕（僅圖片）
     types.forEach(t => {
         const btn = document.createElement('div');
         btn.className = 'picker-type-btn';
-        // 檢查當前對手是否已選此屬性
         const opp = opponentSlots[index];
         if (opp) {
             if (t === opp.t1) btn.classList.add('selected-t1');
@@ -870,48 +883,40 @@ function showOpponentPicker(clickedElement, index) {
         btn.innerHTML = `<img src="images/types/${t}.png" title="${t}">`;
         btn.onclick = function(e) {
             e.stopPropagation();
-            // 處理屬性點擊
             let oppData = opponentSlots[index] || { t1: '', t2: '' };
             if (!oppData.t1) {
                 oppData.t1 = t;
             } else if (oppData.t1 === t) {
-                // 如果已選第一屬性，再點擊同一屬性則設為第二屬性
                 if (!oppData.t2) {
                     oppData.t2 = t;
                 } else {
-                    // 若已有第二屬性，則清空第二屬性（快速清除）
                     oppData.t2 = '';
                 }
             } else if (!oppData.t2) {
                 oppData.t2 = t;
             } else {
-                // 兩個屬性都已有，則重設為該屬性（覆蓋）
                 oppData.t1 = t;
                 oppData.t2 = '';
             }
             opponentSlots[index] = oppData;
             renderOpponentSlots();
-            // 重新顯示picker更新高亮
-            showOpponentPicker(clickedElement, index);
-            // 更新推薦
+            showOpponentPicker(slotElement, index);
             updateRecommendations();
         };
         picker.appendChild(btn);
     });
 
-    // 定位：在點擊的格子附近
-    const rect = clickedElement.getBoundingClientRect();
-    // 嘗試放在格子右側或下方
-    let left = rect.right + 10;
-    let top = rect.top;
-    // 如果超出右邊界，改放左邊
-    if (left + 300 > window.innerWidth) {
-        left = rect.left - 310;
-    }
-    if (top + 300 > window.innerHeight) {
-        top = window.innerHeight - 310;
-    }
-    if (top < 10) top = 10;
+    // 定位到格子中央
+    const rect = slotElement.getBoundingClientRect();
+    const pickerWidth = 280; // 與 CSS 一致
+    const pickerHeight = 300; // 約略
+    let left = rect.left + rect.width / 2;
+    let top = rect.top + rect.height / 2;
+    // 防止超出螢幕
+    if (left - pickerWidth/2 < 0) left = pickerWidth/2;
+    if (left + pickerWidth/2 > window.innerWidth) left = window.innerWidth - pickerWidth/2;
+    if (top - pickerHeight/2 < 0) top = pickerHeight/2;
+    if (top + pickerHeight/2 > window.innerHeight) top = window.innerHeight - pickerHeight/2;
     picker.style.left = left + 'px';
     picker.style.top = top + 'px';
     picker.style.display = 'grid';
@@ -921,7 +926,6 @@ function closeOpponentPicker() {
     document.getElementById('opponent-picker').style.display = 'none';
 }
 
-// 關閉點擊外部
 document.addEventListener('click', function(e) {
     const picker = document.getElementById('opponent-picker');
     if (picker.style.display === 'grid') {
@@ -931,7 +935,7 @@ document.addEventListener('click', function(e) {
     }
 });
 
-// ===== 推薦功能 =====
+// ===== 推薦功能（增加克制/抗性說明） =====
 function getTypeEffectiveness(attackType, defenseType) {
     if (!attackType || !defenseType) return 1;
     if (chart[attackType] && chart[attackType][defenseType] !== undefined) {
@@ -942,31 +946,47 @@ function getTypeEffectiveness(attackType, defenseType) {
 
 function evaluateMemberAgainstOpponents(member, opponents) {
     let totalScore = 0;
+    let strongAgainst = new Set();   // 該成員能克制的對手屬性（2x）
+    let resistantTo = new Set();     // 該成員能抵抗的對手攻擊屬性（0.5x或0x）
     opponents.forEach((opp) => {
         if (!opp || (!opp.t1 && !opp.t2)) return;
         let oppTypes = [opp.t1, opp.t2].filter(t => t);
         let memberTypes = [member.t1, member.t2].filter(t => t);
-        let atkScore = 0;
+        // 攻擊克制
         memberTypes.forEach(atk => {
             oppTypes.forEach(def => {
                 let eff = getTypeEffectiveness(atk, def);
-                if (eff === 2) atkScore += 2;
-                else if (eff === 0.5) atkScore += 0.5;
-                else if (eff === 0) atkScore += 2;
+                if (eff === 2) {
+                    strongAgainst.add(def);
+                    totalScore += 2;
+                } else if (eff === 0.5) {
+                    totalScore += 0.5;
+                } else if (eff === 0) {
+                    totalScore += 2;   // 免疫視為極佳
+                }
             });
         });
-        let defScore = 0;
+        // 防守抗性 (對手攻擊該成員)
         oppTypes.forEach(atk => {
             memberTypes.forEach(def => {
                 let eff = getTypeEffectiveness(atk, def);
-                if (eff === 2) defScore -= 2;
-                else if (eff === 0.5) defScore += 0.5;
-                else if (eff === 0) defScore += 2;
+                if (eff === 0.5) {
+                    resistantTo.add(atk);
+                    totalScore += 0.5;
+                } else if (eff === 0) {
+                    resistantTo.add(atk);
+                    totalScore += 2;
+                } else if (eff === 2) {
+                    totalScore -= 2;   // 弱點扣分
+                }
             });
         });
-        totalScore += atkScore + defScore;
     });
-    return totalScore;
+    return {
+        totalScore: totalScore,
+        strong: Array.from(strongAgainst).join('、'),
+        resist: Array.from(resistantTo).join('、')
+    };
 }
 
 function updateRecommendations() {
@@ -978,8 +998,8 @@ function updateRecommendations() {
         return;
     }
     let scores = myMembers.map((member, idx) => {
-        let total = evaluateMemberAgainstOpponents(member, opponentSlots);
-        return { index: idx, member: member, totalScore: total };
+        let result = evaluateMemberAgainstOpponents(member, opponentSlots);
+        return { index: idx, member: member, totalScore: result.totalScore, strong: result.strong, resist: result.resist };
     });
     scores.sort((a, b) => b.totalScore - a.totalScore);
     let top4 = scores.slice(0, 4);
@@ -989,12 +1009,17 @@ function updateRecommendations() {
         let typeTags = '';
         if (item.member.t1) typeTags += `<span class="type-badge type-${item.member.t1}">${item.member.t1}</span>`;
         if (item.member.t2) typeTags += `<span class="type-badge type-${item.member.t2}">${item.member.t2}</span>`;
+        let detailParts = [];
+        if (item.strong) detailParts.push(`克制: ${item.strong}`);
+        if (item.resist) detailParts.push(`抗性: ${item.resist}`);
+        let detailText = detailParts.join(' | ');
         html += `
             <div class="recommend-card">
                 <div class="rec-rank">#${rank+1}</div>
                 <div class="rec-name">${name}</div>
                 <div class="rec-types">${typeTags}</div>
                 <div class="rec-detail">得分 ${item.totalScore.toFixed(1)}</div>
+                <div class="rec-stats"><span>${detailText}</span></div>
             </div>
         `;
     });
