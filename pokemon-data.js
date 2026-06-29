@@ -6,7 +6,7 @@ const pokemonDatabase = [
         "image": "images/pokemon/妙蛙花.png"
     },
     {
-        "name": "妙蛙花|超級妙蛙花",
+        "name": "超級妙蛙花",
         "t1": "草",
         "t2": "毒",
         "image": ""
@@ -18,13 +18,13 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "噴火龍|超級噴火龍Ｘ",
+        "name": "超級噴火龍Ｘ",
         "t1": "火",
         "t2": "龍",
         "image": ""
     },
     {
-        "name": "噴火龍|超級噴火龍Ｙ",
+        "name": "超級噴火龍Ｙ",
         "t1": "火",
         "t2": "飛行",
         "image": ""
@@ -36,7 +36,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "水箭龜|超級水箭龜",
+        "name": "超級水箭龜",
         "t1": "水",
         "t2": "",
         "image": ""
@@ -48,7 +48,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "大針蜂|超級大針蜂",
+        "name": "超級大針蜂",
         "t1": "蟲",
         "t2": "毒",
         "image": ""
@@ -60,7 +60,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "大比鳥|超級大比鳥",
+        "name": "超級大比鳥",
         "t1": "一般",
         "t2": "飛行",
         "image": ""
@@ -96,7 +96,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "皮可西|超級皮可西",
+        "name": "超級皮可西",
         "t1": "妖精",
         "t2": "飛行",
         "image": ""
@@ -132,7 +132,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "胡地|超級胡地",
+        "name": "超級胡地",
         "t1": "超能力",
         "t2": "",
         "image": ""
@@ -150,7 +150,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "大食花|超級大食花",
+        "name": "超級大食花",
         "t1": "草",
         "t2": "毒",
         "image": ""
@@ -168,7 +168,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "呆殼獸|超級呆殼獸",
+        "name": "超級呆殼獸",
         "t1": "水",
         "t2": "超能力",
         "image": ""
@@ -180,7 +180,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "耿鬼|超級耿鬼",
+        "name": "超級耿鬼",
         "t1": "幽靈",
         "t2": "毒",
         "image": ""
@@ -192,7 +192,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "袋獸|超級袋獸",
+        "name": "超級袋獸",
         "t1": "一般",
         "t2": "",
         "image": ""
@@ -204,7 +204,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "寶石海星|超級寶石海星",
+        "name": "超級寶石海星",
         "t1": "水",
         "t2": "超能力",
         "image": ""
@@ -216,7 +216,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "凱羅斯|超級凱羅斯",
+        "name": "超級凱羅斯",
         "t1": "蟲",
         "t2": "飛行",
         "image": ""
@@ -228,19 +228,19 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "肯泰羅",
+        "name": "肯泰羅|水瀾種",
         "t1": "格鬥",
         "t2": "水",
         "image": ""
     },
     {
-        "name": "肯泰羅",
+        "name": "肯泰羅|火熾種",
         "t1": "格鬥",
         "t2": "火",
         "image": ""
     },
     {
-        "name": "肯泰羅",
+        "name": "肯泰羅|鬥戰種",
         "t1": "格鬥",
         "t2": "",
         "image": ""
@@ -252,7 +252,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "暴鯉龍|超級暴鯉龍",
+        "name": "超級暴鯉龍",
         "t1": "水",
         "t2": "惡",
         "image": ""
@@ -288,7 +288,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "化石翼龍|超級化石翼龍",
+        "name": "超級化石翼龍",
         "t1": "岩石",
         "t2": "飛行",
         "image": ""
@@ -306,7 +306,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "快龍|超級快龍",
+        "name": "超級快龍",
         "t1": "龍",
         "t2": "飛行",
         "image": ""
@@ -318,7 +318,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "大竺葵|超級大竺葵",
+        "name": "超級大竺葵",
         "t1": "草",
         "t2": "妖精",
         "image": ""
@@ -342,7 +342,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "大力鱷|超級大力鱷",
+        "name": "超級大力鱷",
         "t1": "水",
         "t2": "龍",
         "image": ""
@@ -360,7 +360,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "電龍|超級電龍",
+        "name": "超級電龍",
         "t1": "電",
         "t2": "龍",
         "image": ""
@@ -414,7 +414,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "大鋼蛇|超級大鋼蛇",
+        "name": "超級大鋼蛇",
         "t1": "鋼",
         "t2": "地面",
         "image": ""
@@ -426,7 +426,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "巨鉗螳螂|超級巨鉗螳螂",
+        "name": "超級巨鉗螳螂",
         "t1": "蟲",
         "t2": "鋼",
         "image": ""
@@ -438,7 +438,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "赫拉克羅斯|超級赫拉克羅斯",
+        "name": "超級赫拉克羅斯",
         "t1": "蟲",
         "t2": "格鬥",
         "image": ""
@@ -450,7 +450,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "盔甲鳥|超級盔甲鳥",
+        "name": "超級盔甲鳥",
         "t1": "鋼",
         "t2": "飛行",
         "image": ""
@@ -462,7 +462,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "黑魯加|超級黑魯加",
+        "name": "超級黑魯加",
         "t1": "惡",
         "t2": "火",
         "image": ""
@@ -474,7 +474,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "班基拉斯|超級班基拉斯",
+        "name": "超級班基拉斯",
         "t1": "岩石",
         "t2": "惡",
         "image": ""
@@ -492,7 +492,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "沙奈朵|超級沙奈朵",
+        "name": "超級沙奈朵",
         "t1": "超能力",
         "t2": "妖精",
         "image": ""
@@ -504,7 +504,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "勾魂眼|超級勾魂眼",
+        "name": "超級勾魂眼",
         "t1": "惡",
         "t2": "幽靈",
         "image": ""
@@ -516,7 +516,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "波士可多拉|超級波士可多拉",
+        "name": "超級波士可多拉",
         "t1": "鋼",
         "t2": "",
         "image": ""
@@ -528,7 +528,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "恰雷姆|超級恰雷姆",
+        "name": "超級恰雷姆",
         "t1": "格鬥",
         "t2": "超能力",
         "image": ""
@@ -540,7 +540,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "雷電獸|超級雷電獸",
+        "name": "超級雷電獸",
         "t1": "電",
         "t2": "",
         "image": ""
@@ -552,7 +552,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "巨牙鯊|超級巨牙鯊",
+        "name": "超級巨牙鯊",
         "t1": "水",
         "t2": "惡",
         "image": ""
@@ -564,7 +564,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "噴火駝|超級噴火駝",
+        "name": "超級噴火駝",
         "t1": "火",
         "t2": "地面",
         "image": ""
@@ -582,7 +582,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "七夕青鳥|超級七夕青鳥",
+        "name": "超級七夕青鳥",
         "t1": "龍",
         "t2": "妖精",
         "image": ""
@@ -624,7 +624,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "詛咒娃娃|超級詛咒娃娃",
+        "name": "超級詛咒娃娃",
         "t1": "幽靈",
         "t2": "",
         "image": ""
@@ -636,7 +636,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "風鈴鈴|超級風鈴鈴",
+        "name": "超級風鈴鈴",
         "t1": "超能力",
         "t2": "鋼",
         "image": ""
@@ -648,7 +648,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "阿勃梭魯|超級阿勃梭魯",
+        "name": "超級阿勃梭魯",
         "t1": "惡",
         "t2": "",
         "image": ""
@@ -660,7 +660,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "冰鬼護|超級冰鬼護",
+        "name": "超級冰鬼護",
         "t1": "冰",
         "t2": "",
         "image": ""
@@ -714,7 +714,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "長耳兔|超級長耳兔",
+        "name": "超級長耳兔",
         "t1": "一般",
         "t2": "格鬥",
         "image": ""
@@ -732,7 +732,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "烈咬陸鯊|超級烈咬陸鯊",
+        "name": "超級烈咬陸鯊",
         "t1": "龍",
         "t2": "地面",
         "image": ""
@@ -744,7 +744,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "路卡利歐|超級路卡利歐",
+        "name": "超級路卡利歐",
         "t1": "格鬥",
         "t2": "鋼",
         "image": ""
@@ -768,7 +768,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "暴雪王|超級暴雪王",
+        "name": "超級暴雪王",
         "t1": "草",
         "t2": "冰",
         "image": ""
@@ -816,7 +816,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "艾路雷朵|超級艾路雷朵",
+        "name": "超級艾路雷朵",
         "t1": "超能力",
         "t2": "格鬥",
         "image": ""
@@ -828,13 +828,13 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "雪妖女|超級雪妖女",
+        "name": "超級雪妖女",
         "t1": "冰",
         "t2": "幽靈",
         "image": ""
     },
     {
-        "name": "洛托姆|洛托姆的樣子",
+        "name": "洛托姆",
         "t1": "電",
         "t2": "幽靈",
         "image": ""
@@ -882,7 +882,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "炎武王|超級炎武王",
+        "name": "超級炎武王",
         "t1": "火",
         "t2": "格鬥",
         "image": ""
@@ -936,7 +936,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "龍頭地鼠|超級龍頭地鼠",
+        "name": "超級龍頭地鼠",
         "t1": "地面",
         "t2": "鋼",
         "image": ""
@@ -948,7 +948,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "差不多娃娃|超級差不多娃娃",
+        "name": "超級差不多娃娃",
         "t1": "一般",
         "t2": "妖精",
         "image": ""
@@ -1020,7 +1020,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "水晶燈火靈|超級水晶燈火靈",
+        "name": "超級水晶燈火靈",
         "t1": "幽靈",
         "t2": "火",
         "image": ""
@@ -1050,7 +1050,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "泥偶巨人|超級泥偶巨人",
+        "name": "超級泥偶巨人",
         "t1": "地面",
         "t2": "幽靈",
         "image": ""
@@ -1074,7 +1074,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "布里卡隆|超級布里卡隆",
+        "name": "超級布里卡隆",
         "t1": "草",
         "t2": "格鬥",
         "image": ""
@@ -1086,7 +1086,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "妖火紅狐|超級妖火紅狐",
+        "name": "超級妖火紅狐",
         "t1": "火",
         "t2": "超能力",
         "image": ""
@@ -1098,7 +1098,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "甲賀忍蛙|超級甲賀忍蛙",
+        "name": "超級甲賀忍蛙",
         "t1": "水",
         "t2": "惡",
         "image": ""
@@ -1116,163 +1116,25 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "花園花紋",
+        "name": "彩粉蝶",
         "t1": "蟲",
         "t2": "飛行",
-        "image": ""
+        "image": "" 
     },
     {
-        "name": "群島花紋",
-        "t1": "蟲",
-        "t2": "飛行",
-        "image": ""
-    },
-    {
-        "name": "大陸花紋",
-        "t1": "蟲",
-        "t2": "飛行",
-        "image": ""
-    },
-    {
-        "name": "高雅花紋",
-        "t1": "蟲",
-        "t2": "飛行",
-        "image": ""
-    },
-    {
-        "name": "幻彩花紋",
-        "t1": "蟲",
-        "t2": "飛行",
-        "image": ""
-    },
-    {
-        "name": "庭園花紋",
-        "t1": "蟲",
-        "t2": "飛行",
-        "image": ""
-    },
-    {
-        "name": "荒野花紋",
-        "t1": "蟲",
-        "t2": "飛行",
-        "image": ""
-    },
-    {
-        "name": "冰雪花紋",
-        "t1": "蟲",
-        "t2": "飛行",
-        "image": ""
-    },
-    {
-        "name": "熱帶雨林花紋",
-        "t1": "蟲",
-        "t2": "飛行",
-        "image": ""
-    },
-    {
-        "name": "大海花紋",
-        "t1": "蟲",
-        "t2": "飛行",
-        "image": ""
-    },
-    {
-        "name": "摩登花紋",
-        "t1": "蟲",
-        "t2": "飛行",
-        "image": ""
-    },
-    {
-        "name": "驟雨花紋",
-        "t1": "蟲",
-        "t2": "飛行",
-        "image": ""
-    },
-    {
-        "name": "大洋花紋",
-        "t1": "蟲",
-        "t2": "飛行",
-        "image": ""
-    },
-    {
-        "name": "球球花紋",
-        "t1": "蟲",
-        "t2": "飛行",
-        "image": ""
-    },
-    {
-        "name": "雪國花紋",
-        "t1": "蟲",
-        "t2": "飛行",
-        "image": ""
-    },
-    {
-        "name": "大河花紋",
-        "t1": "蟲",
-        "t2": "飛行",
-        "image": ""
-    },
-    {
-        "name": "沙塵花紋",
-        "t1": "蟲",
-        "t2": "飛行",
-        "image": ""
-    },
-    {
-        "name": "熱帶草原花紋",
-        "t1": "蟲",
-        "t2": "飛行",
-        "image": ""
-    },
-    {
-        "name": "太陽花紋",
-        "t1": "蟲",
-        "t2": "飛行",
-        "image": ""
-    },
-    {
-        "name": "雪原花紋",
-        "t1": "蟲",
-        "t2": "飛行",
-        "image": ""
-    },
-    {
-        "name": "永恆之花",
+        "name": "花葉蒂 永恆之花",
         "t1": "妖精",
         "t2": "",
         "image": ""
     },
     {
-        "name": "花葉蒂|超級花葉蒂",
+        "name": "超級花葉蒂",
         "t1": "妖精",
         "t2": "",
         "image": ""
     },
     {
-        "name": "紅花",
-        "t1": "妖精",
-        "t2": "",
-        "image": ""
-    },
-    {
-        "name": "藍花",
-        "t1": "妖精",
-        "t2": "",
-        "image": ""
-    },
-    {
-        "name": "橙花",
-        "t1": "妖精",
-        "t2": "",
-        "image": ""
-    },
-    {
-        "name": "白花",
-        "t1": "妖精",
-        "t2": "",
-        "image": ""
-    },
-    {
-        "name": "黃花",
+        "name": "花潔夫人",
         "t1": "妖精",
         "t2": "",
         "image": ""
@@ -1284,61 +1146,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "多麗米亞|野生的樣子",
-        "t1": "一般",
-        "t2": "",
-        "image": ""
-    },
-    {
-        "name": "紳士造型",
-        "t1": "一般",
-        "t2": "",
-        "image": ""
-    },
-    {
-        "name": "淑女造型",
-        "t1": "一般",
-        "t2": "",
-        "image": ""
-    },
-    {
-        "name": "菱形造型",
-        "t1": "一般",
-        "t2": "",
-        "image": ""
-    },
-    {
-        "name": "心形造型",
-        "t1": "一般",
-        "t2": "",
-        "image": ""
-    },
-    {
-        "name": "歌舞伎造型",
-        "t1": "一般",
-        "t2": "",
-        "image": ""
-    },
-    {
-        "name": "女王造型",
-        "t1": "一般",
-        "t2": "",
-        "image": ""
-    },
-    {
-        "name": "貴婦造型",
-        "t1": "一般",
-        "t2": "",
-        "image": ""
-    },
-    {
-        "name": "國王造型",
-        "t1": "一般",
-        "t2": "",
-        "image": ""
-    },
-    {
-        "name": "星形造型",
+        "name": "多麗米亞",
         "t1": "一般",
         "t2": "",
         "image": ""
@@ -1356,19 +1164,19 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "超能妙喵|超級超能妙喵",
+        "name": "超級超能妙喵",
         "t1": "超能力",
         "t2": "",
         "image": ""
     },
     {
-        "name": "盾牌形態",
+        "name": "堅盾劍怪|盾牌形態",
         "t1": "鋼",
         "t2": "幽靈",
         "image": ""
     },
     {
-        "name": "刀劍形態",
+        "name": "堅盾劍怪|刀劍形態",
         "t1": "鋼",
         "t2": "幽靈",
         "image": ""
@@ -1422,7 +1230,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "摔角鷹人|超級摔角鷹人",
+        "name": "超級摔角鷹人",
         "t1": "格鬥",
         "t2": "飛行",
         "image": ""
@@ -1458,25 +1266,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "南瓜怪人|中顆種",
-        "t1": "幽靈",
-        "t2": "草",
-        "image": ""
-    },
-    {
-        "name": "南瓜怪人|巨顆種",
-        "t1": "幽靈",
-        "t2": "草",
-        "image": ""
-    },
-    {
-        "name": "南瓜怪人|大顆種",
-        "t1": "幽靈",
-        "t2": "草",
-        "image": ""
-    },
-    {
-        "name": "南瓜怪人|小顆種",
+        "name": "南瓜怪人",
         "t1": "幽靈",
         "t2": "草",
         "image": ""
@@ -1536,7 +1326,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "好勝毛蟹|超級好勝毛蟹",
+        "name": "超級好勝毛蟹",
         "t1": "格鬥",
         "t2": "冰",
         "image": ""
@@ -1602,7 +1392,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "謎拟Ｑ|化形的樣子",
+        "name": "謎擬Q",
         "t1": "幽靈",
         "t2": "妖精",
         "image": ""
@@ -1614,7 +1404,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "老翁龍|超級老翁龍",
+        "name": "超級老翁龍",
         "t1": "一般",
         "t2": "龍",
         "image": ""
@@ -1650,13 +1440,13 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "贗品形態",
+        "name": "怖思壶|贗品形態",
         "t1": "幽靈",
         "t2": "",
         "image": ""
     },
     {
-        "name": "真品形態",
+        "name": "怖思壶|真品形態",
         "t1": "幽靈",
         "t2": "",
         "image": ""
@@ -1680,67 +1470,19 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "奶香香草",
+        "name": "霜奶仙",
         "t1": "妖精",
         "t2": "",
         "image": ""
     },
     {
-        "name": "焦糖綜合",
-        "t1": "妖精",
-        "t2": "",
-        "image": ""
-    },
-    {
-        "name": "奶香檸檬",
-        "t1": "妖精",
-        "t2": "",
-        "image": ""
-    },
-    {
-        "name": "奶香抹茶",
-        "t1": "妖精",
-        "t2": "",
-        "image": ""
-    },
-    {
-        "name": "奶香薄荷",
-        "t1": "妖精",
-        "t2": "",
-        "image": ""
-    },
-    {
-        "name": "三色綜合",
-        "t1": "妖精",
-        "t2": "",
-        "image": ""
-    },
-    {
-        "name": "奶香紅鑽",
-        "t1": "妖精",
-        "t2": "",
-        "image": ""
-    },
-    {
-        "name": "紅鑽綜合",
-        "t1": "妖精",
-        "t2": "",
-        "image": ""
-    },
-    {
-        "name": "奶香雪鹽",
-        "t1": "妖精",
-        "t2": "",
-        "image": ""
-    },
-    {
-        "name": "滿腹花紋",
+        "name": "莫魯貝可|滿腹花紋",
         "t1": "電",
         "t2": "惡",
         "image": ""
     },
     {
-        "name": "空腹花紋",
+        "name": "莫魯貝可|空腹花紋",
         "t1": "電",
         "t2": "惡",
         "image": ""
@@ -1806,13 +1548,13 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "四隻家庭",
+        "name": "一家鼠|四隻家庭",
         "t1": "一般",
         "t2": "",
         "image": ""
     },
     {
-        "name": "三隻家庭",
+        "name": "一家鼠|三隻家庭",
         "t1": "一般",
         "t2": "",
         "image": ""
@@ -1848,7 +1590,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "狠辣椒|超級狠辣椒",
+        "name": "超級狠辣椒",
         "t1": "草",
         "t2": "火",
         "image": ""
@@ -1890,7 +1632,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "晶光花|超級晶光花",
+        "name": "超級晶光花",
         "t1": "岩石",
         "t2": "毒",
         "image": ""
@@ -1902,7 +1644,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "仆斬将军",
+        "name": "仆斬將軍",
         "t1": "惡",
         "t2": "鋼",
         "image": ""
@@ -1932,13 +1674,13 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "雷丘|超級雷丘Ｘ",
+        "name": "超級雷丘Ｘ",
         "t1": "電",
         "t2": "",
         "image": ""
     },
     {
-        "name": "雷丘|超級雷丘Ｙ",
+        "name": "超級雷丘Ｙ",
         "t1": "電",
         "t2": "",
         "image": ""
@@ -1962,7 +1704,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "蜥蜴王|超級蜥蜴王",
+        "name": "超級蜥蜴王",
         "t1": "草",
         "t2": "龍",
         "image": ""
@@ -1974,7 +1716,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "火焰鸡|超級火焰鸡",
+        "name": "超級火焰鸡",
         "t1": "火",
         "t2": "格鬥",
         "image": ""
@@ -1986,7 +1728,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "巨沼怪|超級巨沼怪",
+        "name": "超級巨沼怪",
         "t1": "水",
         "t2": "地面",
         "image": ""
@@ -1998,7 +1740,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "大嘴娃|超級大嘴娃",
+        "name": "超級大嘴娃",
         "t1": "鋼",
         "t2": "妖精",
         "image": ""
@@ -2010,7 +1752,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "巨金怪|超級巨金怪",
+        "name": "超級巨金怪",
         "t1": "鋼",
         "t2": "超能力",
         "image": ""
@@ -2022,7 +1764,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "姆克鹰|超級姆克鹰",
+        "name": "超級姆克鹰",
         "t1": "格鬥",
         "t2": "飛行",
         "image": ""
@@ -2040,7 +1782,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "蜈蚣王|超級蜈蚣王",
+        "name": "超級蜈蚣王",
         "t1": "蟲",
         "t2": "毒",
         "image": ""
@@ -2052,7 +1794,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "頭巾混混|超級頭巾混混",
+        "name": "超級頭巾混混",
         "t1": "惡",
         "t2": "格鬥",
         "image": ""
@@ -2064,25 +1806,25 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "麻麻鳗魚王|超級麻麻鳗魚王",
+        "name": "超級麻麻鳗魚王",
         "t1": "電",
         "t2": "",
         "image": ""
     },
     {
-        "name": "火炎狮|雄性的樣子）",
+        "name": "火炎狮|雄性的樣子",
         "t1": "火",
         "t2": "一般",
         "image": ""
     },
     {
-        "name": "火炎狮|雌性的樣子）",
+        "name": "火炎狮|雌性的樣子",
         "t1": "火",
         "t2": "一般",
         "image": ""
     },
     {
-        "name": "火炎狮|超級火炎狮",
+        "name": "超級火炎狮",
         "t1": "火",
         "t2": "一般",
         "image": ""
@@ -2094,7 +1836,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "乌賊王|超級乌賊王",
+        "name": "超級乌賊王",
         "t1": "惡",
         "t2": "超能力",
         "image": ""
@@ -2106,7 +1848,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "龜足巨铠|超級龜足巨铠",
+        "name": "超級龜足巨铠",
         "t1": "岩石",
         "t2": "格鬥",
         "image": ""
@@ -2118,7 +1860,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "毒藻龍|超級毒藻龍",
+        "name": "超級毒藻龍",
         "t1": "毒",
         "t2": "龍",
         "image": ""
@@ -2136,7 +1878,7 @@ const pokemonDatabase = [
         "image": ""
     },
     {
-        "name": "列陣兵|超級列陣兵",
+        "name": "超級列陣兵",
         "t1": "格鬥",
         "t2": "",
         "image": ""
