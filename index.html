@@ -9,6 +9,39 @@
 
     <style>
         /* ----- 基本樣式與之前相同，僅加入手機版 media query ----- */
+        /* 折疊標題列 */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+}
+
+/* 折疊按鈕 */
+.collapse-btn {
+    background: none;
+    border: none;
+    font-size: 0.7rem;
+    color: #6c757d;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+.collapse-btn:hover {
+    background: #e9ecef;
+}
+
+/* 折疊內容（預設展開） */
+.collapse-content {
+    display: block;
+}
+
+/* 折疊狀態（隱藏） */
+.collapse-content.collapsed {
+    display: none;
+}
+        
         .type-btn {
             display: inline-flex;
             align-items: center;
@@ -529,12 +562,21 @@
     </div>
 
     <!-- 我方隊伍 -->
-    <h3>隊伍成員屬性分析</h3>
-    <div class="team-section" id="team-container"></div>
+    <div class="section-header">
+        <h3 style="margin:0;">隊伍成員屬性分析</h3>
+        <button class="collapse-btn" onclick="toggleCollapse('teamCollapse', this)">− 折疊</button>
+    </div>
+    <div id="teamCollapse" class="collapse-content">
+        <div class="team-section" id="team-container"></div>
+    </div>
 
     <!-- ===== 隊伍綜合相剋分析（三欄） ===== -->
-    <h2>隊伍綜合相剋分析</h2>
-    <div class="result-grid">
+    <div class="section-header">
+        <h2 style="margin:0;">隊伍綜合相剋分析</h2>
+        <button class="collapse-btn" onclick="toggleCollapse('resultCollapse', this)">− 折疊</button>
+    </div>
+    <div id="resultCollapse" class="collapse-content">
+        <div class="result-grid">
         <!-- 左：防守弱點 -->
         <div class="card">
             <h3 style="color: #000;">隊伍防守弱點 (被克)</h3>
@@ -646,6 +688,18 @@ window.onload = function() {
     updateRecommendations();
 };
 
+    // 折疊功能
+function toggleCollapse(id, btn) {
+    var el = document.getElementById(id);
+    if (el.classList.contains('collapsed')) {
+        el.classList.remove('collapsed');
+        btn.textContent = '− 折疊';
+    } else {
+        el.classList.add('collapsed');
+        btn.textContent = '+ 打開';
+    }
+}
+    
 // 我方屬性按鈕渲染
 function renderTypeButtons() {
     const container = document.getElementById('type-button-container');
