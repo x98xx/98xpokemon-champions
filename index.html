@@ -124,9 +124,9 @@
             transition: 0.2s;
         }
         .team-slot.selected {
-            border: 2px solid #28a745 !important;
-            background: #f1f9f1;
-            box-shadow: 0 0 10px rgba(40,167,69,0.15);
+            border: 2px solid #6c757d !important;   /* 深灰外框 */
+            background: #f8f9fa;                    /* 可保留淺色背景，不改也可以 */
+            box-shadow: 0 0 10px rgba(108,117,125,0.15); /* 陰影也調成灰色 */
         }
         .team-slot.active { border-style: solid;
             border-color: #ced4da; background: #fff; }
@@ -138,16 +138,18 @@
         }
         .slot-title { 
             font-weight: bold;
-            font-size: 13px; color: #007bff; cursor: pointer;
-            padding: 2px 6px; border-radius: 4px; background: #e7f3ff; transition: 0.15s;
+            font-size: 13px; color: #000; cursor: pointer;
+            padding: 2px 6px; border-radius: 4px; background: #6c757d; transition: 0.15s;
         }
+        .slot-title:hover { background: #495057; color: #fff; }
+        
         .slot-title:hover { background: #007bff; color: white;
         }
         .slot-status { font-size: 10px; padding: 1px 5px; border-radius: 8px;
         }
         .status-empty { background: #e9ecef; color: #6c757d;
         }
-        .status-selected { background: #28a745; color: white;
+        .status-selected { background: #6c757d; color: white;
         }
         .status-filled { background: #007bff; color: white;
         }
