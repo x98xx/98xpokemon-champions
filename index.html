@@ -567,7 +567,7 @@
 
         <!-- 右：欠缺屬性分析 -->
         <div class="card">
-            <h3 style="color: #000;">⚠️ 隊伍欠缺屬性分析</h3>
+            <h3 style="color: #000;">隊伍欠缺屬性分析</h3>
             <div id="team-deficiency" class="list-group">
                 <!-- 動態生成 -->
             </div>
@@ -576,13 +576,13 @@
 
     <!-- ===== 對手隊伍 ===== -->
     <div class="opponent-section">
-        <h3 style="margin-top:0; border-bottom: 2px solid #b0b0b0; padding-bottom:4px;">👥 對手隊伍（點擊格子設定屬性）</h3>
+        <h3 style="margin-top:0; border-bottom: 2px solid #b0b0b0; padding-bottom:4px;">對手隊伍屬性設定</h3>
         <div class="opponent-grid" id="opponent-container"></div>
     </div>
 
     <!-- ===== 推薦卡片 ===== -->
     <div class="recommend-section">
-        <h2 style="color: #28a745;">🏆 針對對手的最佳上場推薦（前4名）</h2>
+        <h2 style="color: #28a745;">🏆 最佳上場推薦</h2>
         <div id="recommendation-container">
             <div style="color:#888; font-size:13px;">請先設定我方成員與對手屬性</div>
         </div>
@@ -964,7 +964,7 @@ function analyzeTotalTeam() {
     const defDeficiency = types.filter(t => defWeakCount[t] >= 3 && defResistCount[t] < defWeakCount[t]);
     const deficiencyContainer = document.getElementById('team-deficiency');
     if (defDeficiency.length === 0) {
-        deficiencyContainer.innerHTML = '<div style="color:#28a745; font-size:13px;">✅ 無明顯防守盲點</div>';
+        deficiencyContainer.innerHTML = '<div class="list-title" style="color: #28a745; font-size:12px;">✓ 無明顯防守盲點</div>';
     } else {
         let html = '';
         defDeficiency.forEach(type => {
