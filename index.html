@@ -8,7 +8,7 @@
     <link rel="apple-touch-icon" href="images/favicon.png">
 
     <style>
-        /* ----- 所有樣式與之前相同，僅新增 .deficiency-card 等，其餘不變 ----- */
+        /* ----- 所有樣式與之前大致相同，主要調整 grid 與新增推薦區塊樣式 ----- */
         .type-btn {
             display: inline-flex;
             align-items: center;
@@ -140,7 +140,12 @@
         .sub-group { margin-top: 3px; padding-left: 4px; border-left: 2px solid #e2e8f0; }
         .sub-title { font-size: 10px; color: #718096; font-weight: bold; margin-bottom: 2px; }
 
-        .result-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 15px; }
+        /* 綜合分析卡片：改為三欄均分 */
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
         .card { 
             background: #e3e7eb;
             border: 1px solid #e9ecef; 
@@ -148,11 +153,11 @@
             padding: 12px; 
             box-shadow: 0 2px 8px rgba(0,0,0,0.02);
         }
-        .card h3 { text-align: left; margin-top: 0; font-size: 14px; padding-bottom: 4px; border-bottom: 1px solid #b0b0b0;}
+        .card h3 { text-align: left; margin-top: 0; font-size: 14px; padding-bottom: 4px; border-bottom: 1px solid #b0b0b0; color: #000; }
         .list-group { margin-bottom: 10px; }
         .list-title { font-weight: bold; margin-bottom: 3px; font-size: 12px; color: #555; }
         
-        .badge-container { display: flex; flex-wrap: wrap; gap: 3px; min-height: 16px; align-items: center;}
+        .badge-container { display: flex; flex-wrap: wrap; gap: 3px; min-height: 16px; align-items: center; }
         .type-badge {
             padding: 1px 5px;
             border-radius: 4px; color: white;
@@ -322,7 +327,10 @@
             color: #333;
         }
 
-        /* 推薦卡片 */
+        /* 推薦卡片（放在最下方） */
+        .recommend-section {
+            margin-top: 20px;
+        }
         .recommend-card {
             background: #f8f9fa;
             border-left: 4px solid #28a745;
@@ -366,18 +374,31 @@
             border-radius: 4px;
         }
 
-        /* 新增：欠缺屬性卡片內的清單樣式 */
-        .deficiency-list {
-            margin-top: 6px;
+        /* 欠缺屬性卡片內的推薦成員 */
+        .deficiency-item {
+            margin-bottom: 10px;
+            padding: 6px;
+            background: #f8f9fa;
+            border-radius: 6px;
         }
-        .deficiency-list .list-title {
+        .deficiency-item .def-type {
             font-weight: bold;
-            font-size: 12px;
-            color: #333;
-            margin-bottom: 4px;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
-        .deficiency-list .badge-container {
-            min-height: 24px;
+        .deficiency-item .def-recommend {
+            font-size: 11px;
+            color: #333;
+            margin-top: 3px;
+        }
+        .deficiency-item .def-recommend .member-tag {
+            display: inline-block;
+            background: #e9ecef;
+            padding: 0 4px;
+            border-radius: 4px;
+            margin: 2px 2px 0 0;
         }
     </style>
 </head>
@@ -424,10 +445,10 @@
     <h3>隊伍成員屬性分析</h3>
     <div class="team-section" id="team-container"></div>
 
-    <!-- ===== 隊伍綜合相剋分析（包含新增的欠缺屬性卡片） ===== -->
+    <!-- ===== 隊伍綜合相剋分析（三欄） ===== -->
     <h2>隊伍綜合相剋分析</h2>
     <div class="result-grid">
-        <!-- 防守弱點卡片 -->
+        <!-- 左：防守弱點 -->
         <div class="card">
             <h3 style="color: #000;">隊伍防守弱點 (被克)</h3>
             <div id="team-def-danger" class="list-group">
@@ -444,7 +465,7 @@
             </div>
         </div>
 
-        <!-- 打擊面卡片 -->
+        <!-- 中：打擊面 -->
         <div class="card">
             <h3 style="color: #000;">隊伍打擊面 (進攻)</h3>
             <div id="team-atk-blind" class="list-group">
@@ -457,35 +478,29 @@
             </div>
         </div>
 
-        <!-- ===== 新增：隊伍欠缺屬性分析 (跨兩欄) ===== -->
-        <div class="card" style="grid-column: 1 / -1;">
-            <h3 style="color: #d9534f;">⚠️ 隊伍欠缺屬性分析</h3>
+        <!-- 右：欠缺屬性分析（防守盲點 + 推薦抗性成員） -->
+        <div class="card">
+            <h3 style="color: #000;">⚠️ 隊伍欠缺屬性分析</h3>
             <div id="team-deficiency" class="list-group">
-                <div class="deficiency-list">
-                    <div class="list-title">🛡️ 防守盲點 (多隻成員被克制，且缺乏抗性)：</div>
-                    <div class="badge-container" id="deficiency-def"></div>
-                </div>
-                <div class="deficiency-list" style="margin-top:10px;">
-                    <div class="list-title">🗡️ 進攻盲點 (整隊無法造成 2x 克制)：</div>
-                    <div class="badge-container" id="deficiency-atk"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 推薦卡片 (跨兩欄) -->
-        <div class="card" style="grid-column: 1 / -1; background: #f8f9fa;">
-            <h3 style="color: #28a745;">🏆 針對對手的最佳上場推薦（前4名）</h3>
-            <div id="recommendation-container">
-                <div style="color:#888; font-size:13px;">請先設定我方成員與對手屬性</div>
+                <!-- 動態生成 -->
             </div>
         </div>
     </div>
 
-    <!-- ===== 對手隊伍 (移至綜合分析下方) ===== -->
+    <!-- ===== 對手隊伍 ===== -->
     <div class="opponent-section">
         <h3 style="margin-top:0; border-bottom: 2px solid #b0b0b0; padding-bottom:4px;">👥 對手隊伍（點擊格子設定屬性）</h3>
         <div class="opponent-grid" id="opponent-container"></div>
     </div>
+
+    <!-- ===== 推薦卡片（放在最下方） ===== -->
+    <div class="recommend-section">
+        <h2 style="color: #28a745;">🏆 針對對手的最佳上場推薦（前4名）</h2>
+        <div id="recommendation-container">
+            <div style="color:#888; font-size:13px;">請先設定我方成員與對手屬性</div>
+        </div>
+    </div>
+
 </div>
 
 <!-- 搜尋模態框 -->
@@ -493,7 +508,7 @@
     <div class="search-modal-content" onclick="event.stopPropagation()">
         <button class="close-modal-btn" onclick="document.getElementById('search-modal').style.display='none'">×</button>
         <div style="font-weight: bold; font-size: 15px; color: #2c3e50;" id="search-modal-title">搜尋寶可夢 (位置 1)</div>
-        <input type="text" id="modal-search-input" class="search-input" placeholder="輸入中文名稱... (例如：皮卡丘、烈咬陸鯊)" oninput="filterPokemonResults()">
+        <input type="text" id="modal-search-input" class="search-input" placeholder="輸入中文名稱..." oninput="filterPokemonResults()">
         <div id="search-results-list" class="search-results-list"></div>
     </div>
 </div>
@@ -506,7 +521,7 @@
 <script src="pokemon-data.js"></script>
 
 <script>
-// ===== 所有 JavaScript 與上一版相同，僅在 analyzeTotalTeam 結尾新增更新 deficiency 的邏輯 =====
+// ===== 所有 JavaScript 與之前相同，但 analyzeTotalTeam 中增加推薦抗性成員 =====
 const types = ["一般", "草", "火", "水", "電", "蟲", "飛行", "岩石", "毒", "地面", "冰", "格鬥", "超能力", "幽靈", "龍", "惡", "鋼", "妖精"];
 
 const chart = {
@@ -584,6 +599,18 @@ function createBadgeWithCount(type, count) {
 
 function createEmptyBadge() {
     return `<span style="color:#aaa; font-size:12px;">無</span>`;
+}
+
+// 取得單體防守倍率（用於推薦抗性成員）
+function getDefenseEffectiveness(attackType, defenderTypes) {
+    // 回傳 defender 對 attackType 的防守倍率（考慮雙屬性相乘）
+    let f = 1;
+    defenderTypes.forEach(def => {
+        if (chart[attackType] && chart[attackType][def] !== undefined) {
+            f *= chart[attackType][def];
+        }
+    });
+    return f;
 }
 
 function getStructuredAnalysis(t1, t2) {
@@ -789,7 +816,7 @@ function renderTeamSlots() {
     }
 }
 
-// ===== 修改 analyzeTotalTeam：增加欠缺屬性分析 =====
+// ===== 修改 analyzeTotalTeam：增加欠缺屬性分析與推薦抗性成員 =====
 function analyzeTotalTeam() {
     const ids = ['team-def-danger', 'team-def-weak', 'team-def-resist', 'team-atk-good', 'team-atk-blind'];
     let activeMembers = teamSlots.filter(m => m !== null && (m.t1 !== "" || m.t2 !== ""));
@@ -797,34 +824,42 @@ function analyzeTotalTeam() {
         ids.forEach(id => {
             document.getElementById(id).querySelector('.badge-container').innerHTML = '<span style="color:#aaa; font-size:12px;">無成員數據</span>';
         });
-        // 同時清空欠缺屬性
-        document.getElementById('deficiency-def').innerHTML = '<span style="color:#aaa; font-size:12px;">無成員數據</span>';
-        document.getElementById('deficiency-atk').innerHTML = '<span style="color:#aaa; font-size:12px;">無成員數據</span>';
+        document.getElementById('team-deficiency').innerHTML = '<span style="color:#aaa; font-size:12px;">無成員數據</span>';
         return;
     }
     ids.forEach(id => document.getElementById(id).querySelector('.badge-container').innerHTML = '');
     let defWeakCount = {};
     let defResistCount = {};
     let teamCanAtkSuper = {};
+    // 儲存每個成員對每個屬性的防守倍率（用於推薦）
+    let memberDefenseMap = {};
     types.forEach(t => {
         defWeakCount[t] = 0;
         defResistCount[t] = 0;
         teamCanAtkSuper[t] = false;
     });
-    activeMembers.forEach(member => {
+    activeMembers.forEach((member, idx) => {
+        const mTypes = [member.t1, member.t2].filter(t => t);
+        // 計算防守倍率
         types.forEach(atkType => {
-            let f1 = (member.t1 && chart[atkType] && chart[atkType][member.t1] !== undefined) ? chart[atkType][member.t1] : 1;
-            let f2 = (member.t2 && chart[atkType] && chart[atkType][member.t2] !== undefined) ? chart[atkType][member.t2] : 1;
-            let final = f1 * f2;
-            if (final > 1) defWeakCount[atkType]++;
-            if (final < 1) defResistCount[atkType]++;
+            let eff = getDefenseEffectiveness(atkType, mTypes);
+            if (eff > 1) defWeakCount[atkType]++;
+            else if (eff < 1) defResistCount[atkType]++;
         });
+        // 進攻面
         types.forEach(defType => {
             let f1 = (member.t1 && chart[member.t1] && chart[member.t1][defType] !== undefined) ? chart[member.t1][defType] : 1;
             let f2 = (member.t2 && chart[member.t2] && chart[member.t2][defType] !== undefined) ? chart[member.t2][defType] : 1;
             if (f1 === 2 || (member.t2 && f2 === 2)) teamCanAtkSuper[defType] = true;
         });
+        // 儲存防守倍率
+        memberDefenseMap[idx] = {};
+        types.forEach(atkType => {
+            memberDefenseMap[idx][atkType] = getDefenseEffectiveness(atkType, mTypes);
+        });
     });
+
+    // 生成防守盲點（同之前）
     types.forEach(t => {
         if (defWeakCount[t] >= 2 && defResistCount[t] < defWeakCount[t]) {
             document.getElementById('team-def-danger').querySelector('.badge-container').innerHTML += createBadgeWithCount(t, defWeakCount[t]);
@@ -848,21 +883,39 @@ function analyzeTotalTeam() {
         }
     });
 
-    // ---- 新增：更新欠缺屬性分析 ----
+    // ---- 欠缺屬性分析（僅防守盲點 + 推薦抗性成員） ----
     const defDeficiency = types.filter(t => defWeakCount[t] >= 2 && defResistCount[t] < defWeakCount[t]);
-    const atkDeficiency = types.filter(t => !teamCanAtkSuper[t]);
-
-    const defContainer = document.getElementById('deficiency-def');
-    const atkContainer = document.getElementById('deficiency-atk');
+    const deficiencyContainer = document.getElementById('team-deficiency');
     if (defDeficiency.length === 0) {
-        defContainer.innerHTML = '<span style="color:#28a745; font-size:12px;">✅ 無明顯防守盲點</span>';
+        deficiencyContainer.innerHTML = '<div style="color:#28a745; font-size:13px;">✅ 無明顯防守盲點</div>';
     } else {
-        defContainer.innerHTML = defDeficiency.map(t => createBadge(t)).join(' ');
-    }
-    if (atkDeficiency.length === 0) {
-        atkContainer.innerHTML = '<span style="color:#28a745; font-size:12px;">✅ 無進攻盲點</span>';
-    } else {
-        atkContainer.innerHTML = atkDeficiency.map(t => createBadge(t)).join(' ');
+        let html = '';
+        defDeficiency.forEach(type => {
+            // 找出所有成員中對該屬性有抗性（eff < 1）的成員
+            let resistantMembers = [];
+            activeMembers.forEach((member, idx) => {
+                if (memberDefenseMap[idx][type] < 1) {
+                    let name = member.name || `位置 ${idx+1}`;
+                    resistantMembers.push(name);
+                }
+            });
+            let recommendHtml = '';
+            if (resistantMembers.length > 0) {
+                recommendHtml = `推薦抗性成員：${resistantMembers.join('、')}`;
+            } else {
+                recommendHtml = '⚠️ 無成員能抵抗此屬性，建議補強';
+            }
+            html += `
+                <div class="deficiency-item">
+                    <div class="def-type">
+                        <span class="type-badge type-${type}">${type}</span>
+                        <span style="font-weight:normal; font-size:11px; color:#555;">（${defWeakCount[type]} 隻弱點）</span>
+                    </div>
+                    <div class="def-recommend">${recommendHtml}</div>
+                </div>
+            `;
+        });
+        deficiencyContainer.innerHTML = html;
     }
 }
 
@@ -977,7 +1030,7 @@ document.addEventListener('click', function(e) {
     }
 });
 
-// ===== 推薦功能 =====
+// ===== 推薦功能（與之前相同，但已移至最下方） =====
 function getTypeEffectiveness(attackType, defenseType) {
     if (!attackType || !defenseType) return 1;
     if (chart[attackType] && chart[attackType][defenseType] !== undefined) {
