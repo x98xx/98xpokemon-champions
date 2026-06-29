@@ -419,20 +419,21 @@
 
         /* ===== 折疊功能專用樣式 ===== */
         .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            position: relative;
             margin: 10px 0;
+            text-align: center;
         }
         .section-header h2, .section-header h3 {
-            flex: 1;
-            text-align: center;
             margin: 0;
         }
         .collapse-btn {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
             background: none;
             border: none;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             color: #6c757d;
             cursor: pointer;
             padding: 4px 8px;
