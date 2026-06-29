@@ -87,13 +87,13 @@
             display: inline-flex; align-items: center; gap: 4px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-        .btn-update { background-color: #d2d6db; color: white; }
+        .btn-update { background-color: #d2d6db; color: #000; }
         .btn-update:hover { background-color: #5a6268; }
 
-        .btn-remove { background-color: #d2d6db; color: white; }
+        .btn-remove { background-color: #d2d6db; color: #000; }
         .btn-remove:hover { background-color: #5a6268; }
 
-        .btn-clear { background-color: #d2d6db; color: white; }
+        .btn-clear { background-color: #d2d6db; color: #000; }
         .btn-clear:hover { background-color: #5a6268; }
 
         /* 2. 單體即時預覽區 */
@@ -244,8 +244,8 @@
         <div class="type-grid" id="type-button-container"></div>
         
         <div class="action-container">
-            <button class="btn btn-update" onclick="updateSelectedSlot()">✔ 更新</button>
-            <button class="btn btn-remove" onclick="removeSelectedSlot()">✘ 清除</button>
+            <button class="btn btn-update" onclick="updateSelectedSlot()">更新</button>
+            <button class="btn btn-remove" onclick="removeSelectedSlot()">清除</button>
             <button class="btn btn-clear" onclick="clearAllTeam()">全部重置</button>
         </div>
     </div>
