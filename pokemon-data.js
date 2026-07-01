@@ -84,10 +84,10 @@ const pokemonDatabase = [
     "image": "images/pokemon/雷丘.png"
   },
   {
-    "name": "雷丘|阿羅拉的樣子",
+    "name": "雷丘-阿羅拉的樣子",
     "t1": "電",
     "t2": "超能力",
-    "image": "images/pokemon/雷丘|阿羅拉的樣子.png"
+    "image": "images/pokemon/雷丘-阿羅拉的樣子.png"
   },
   {
     "name": "皮可西",
@@ -108,10 +108,10 @@ const pokemonDatabase = [
     "image": "images/pokemon/九尾.png"
   },
   {
-    "name": "九尾|阿羅拉的樣子",
+    "name": "九尾-阿羅拉的樣子",
     "t1": "冰",
     "t2": "妖精",
-    "image": "images/pokemon/九尾|阿羅拉的樣子.png"
+    "image": "images/pokemon/九尾-阿羅拉的樣子.png"
   },
   {
     "name": "風速狗",
@@ -120,10 +120,10 @@ const pokemonDatabase = [
     "image": "images/pokemon/風速狗.png"
   },
   {
-    "name": "風速狗|洗翠的樣子",
+    "name": "風速狗-洗翠的樣子",
     "t1": "火",
     "t2": "岩石",
-    "image": "images/pokemon/風速狗|洗翠的樣子.png"
+    "image": "images/pokemon/風速狗-洗翠的樣子.png"
   },
   {
     "name": "胡地",
@@ -162,10 +162,10 @@ const pokemonDatabase = [
     "image": "images/pokemon/呆殼獸.png"
   },
   {
-    "name": "呆殼獸|伽勒爾的樣子",
+    "name": "呆殼獸-伽勒爾的樣子",
     "t1": "毒",
     "t2": "超能力",
-    "image": "images/pokemon/呆殼獸|伽勒爾的樣子.png"
+    "image": "images/pokemon/呆殼獸-伽勒爾的樣子.png"
   },
   {
     "name": "超級呆殼獸",
@@ -228,22 +228,22 @@ const pokemonDatabase = [
     "image": "images/pokemon/肯泰羅.png"
   },
   {
-    "name": "肯泰羅|水瀾種",
+    "name": "肯泰羅-水瀾種",
     "t1": "格鬥",
     "t2": "水",
-    "image": "images/pokemon/肯泰羅|水瀾種.png"
+    "image": "images/pokemon/肯泰羅-水瀾種.png"
   },
   {
-    "name": "肯泰羅|火熾種",
+    "name": "肯泰羅-火熾種",
     "t1": "格鬥",
     "t2": "火",
-    "image": "images/pokemon/肯泰羅|火熾種.png"
+    "image": "images/pokemon/肯泰羅-火熾種.png"
   },
   {
-    "name": "肯泰羅|鬥戰種",
+    "name": "肯泰羅-鬥戰種",
     "t1": "格鬥",
     "t2": "",
-    "image": "images/pokemon/肯泰羅|鬥戰種.png"
+    "image": "images/pokemon/肯泰羅-鬥戰種.png"
   },
   {
     "name": "暴鯉龍",
@@ -330,10 +330,10 @@ const pokemonDatabase = [
     "image": "images/pokemon/火爆獸.png"
   },
   {
-    "name": "火爆獸|洗翠的樣子",
+    "name": "火爆獸-洗翠的樣子",
     "t1": "火",
     "t2": "幽靈",
-    "image": "images/pokemon/火爆獸|洗翠的樣子.png"
+    "image": "images/pokemon/火爆獸-洗翠的樣子.png"
   },
   {
     "name": "大力鱷",
@@ -396,10 +396,10 @@ const pokemonDatabase = [
     "image": "images/pokemon/呆呆王.png"
   },
   {
-    "name": "呆呆王|伽勒爾的樣子",
+    "name": "呆呆王-伽勒爾的樣子",
     "t1": "毒",
     "t2": "超能力",
-    "image": "images/pokemon/呆呆王|伽勒爾的樣子.png"
+    "image": "images/pokemon/呆呆王-伽勒爾的樣子.png"
   },
   {
     "name": "佛烈托斯",
@@ -594,28 +594,28 @@ const pokemonDatabase = [
     "image": "images/pokemon/美納斯.png"
   },
   {
-    "name": "飄浮泡泡|飄浮泡泡的樣子",
+    "name": "飄浮泡泡-飄浮泡泡的樣子",
     "t1": "一般",
     "t2": "",
-    "image": "images/pokemon/飄浮泡泡|飄浮泡泡的樣子.png"
+    "image": "images/pokemon/飄浮泡泡-飄浮泡泡的樣子.png"
   },
   {
-    "name": "飄浮泡泡|雨水的樣子",
+    "name": "飄浮泡泡-雨水的樣子",
     "t1": "水",
     "t2": "",
-    "image": "images/pokemon/飄浮泡泡|雨水的樣子.png"
+    "image": "images/pokemon/飄浮泡泡-雨水的樣子.png"
   },
   {
-    "name": "飄浮泡泡|太陽的樣子",
+    "name": "飄浮泡泡-太陽的樣子",
     "t1": "火",
     "t2": "",
-    "image": "images/pokemon/飄浮泡泡|太陽的樣子.png"
+    "image": "images/pokemon/飄浮泡泡-太陽的樣子.png"
   },
   {
-    "name": "飄浮泡泡|雪雲的樣子",
+    "name": "飄浮泡泡-雪雲的樣子",
     "t1": "冰",
     "t2": "",
-    "image": "images/pokemon/飄浮泡泡|雪雲的樣子.png"
+    "image": "images/pokemon/飄浮泡泡-雪雲的樣子.png"
   },
   {
     "name": "詛咒娃娃",
@@ -894,10 +894,10 @@ const pokemonDatabase = [
     "image": "images/pokemon/大劍鬼.png"
   },
   {
-    "name": "大劍鬼|洗翠的樣子",
+    "name": "大劍鬼-洗翠的樣子",
     "t1": "水",
     "t2": "惡",
-    "image": "images/pokemon/大劍鬼|洗翠的樣子.png"
+    "image": "images/pokemon/大劍鬼-洗翠的樣子.png"
   },
   {
     "name": "步哨鼠",
@@ -990,10 +990,10 @@ const pokemonDatabase = [
     "image": "images/pokemon/索羅亞克.png"
   },
   {
-    "name": "索羅亞克|洗翠的樣子",
+    "name": "索羅亞克-洗翠的樣子",
     "t1": "一般",
     "t2": "幽靈",
-    "image": "images/pokemon/索羅亞克|洗翠的樣子.png"
+    "image": "images/pokemon/索羅亞克-洗翠的樣子.png"
   },
   {
     "name": "人造細胞卵",
@@ -1038,10 +1038,10 @@ const pokemonDatabase = [
     "image": "images/pokemon/泥巴魚.png"
   },
   {
-    "name": "泥巴魚|伽勒爾的樣子",
+    "name": "泥巴魚-伽勒爾的樣子",
     "t1": "地面",
     "t2": "鋼",
-    "image": "images/pokemon/泥巴魚|伽勒爾的樣子.png"
+    "image": "images/pokemon/泥巴魚-伽勒爾的樣子.png"
   },
   {
     "name": "泥偶巨人",
@@ -1152,16 +1152,16 @@ const pokemonDatabase = [
     "image": "images/pokemon/多麗米亞.png"
   },
   {
-    "name": "超能妙喵|雄性的樣子",
+    "name": "超能妙喵-雄性的樣子",
     "t1": "超能力",
     "t2": "",
-    "image": "images/pokemon/超能妙喵|雄性的樣子.png"
+    "image": "images/pokemon/超能妙喵-雄性的樣子.png"
   },
   {
-    "name": "超能妙喵|雌性的樣子",
+    "name": "超能妙喵-雌性的樣子",
     "t1": "超能力",
     "t2": "",
-    "image": "images/pokemon/超能妙喵|雌性的樣子.png"
+    "image": "images/pokemon/超能妙喵-雌性的樣子.png"
   },
   {
     "name": "超級超能妙喵",
@@ -1170,16 +1170,16 @@ const pokemonDatabase = [
     "image": "images/pokemon/超級超能妙喵.png"
   },
   {
-    "name": "堅盾劍怪|盾牌形態",
+    "name": "堅盾劍怪-盾牌形態",
     "t1": "鋼",
     "t2": "幽靈",
-    "image": "images/pokemon/堅盾劍怪|盾牌形態.png"
+    "image": "images/pokemon/堅盾劍怪-盾牌形態.png"
   },
   {
-    "name": "堅盾劍怪|刀劍形態",
+    "name": "堅盾劍怪-刀劍形態",
     "t1": "鋼",
     "t2": "幽靈",
-    "image": "images/pokemon/堅盾劍怪|刀劍形態.png"
+    "image": "images/pokemon/堅盾劍怪-刀劍形態.png"
   },
   {
     "name": "芳香精",
@@ -1248,10 +1248,10 @@ const pokemonDatabase = [
     "image": "images/pokemon/黏美龍.png"
   },
   {
-    "name": "黏美龍|洗翠的樣子",
+    "name": "黏美龍-洗翠的樣子",
     "t1": "鋼",
     "t2": "龍",
-    "image": "images/pokemon/黏美龍|洗翠的樣子.png"
+    "image": "images/pokemon/黏美龍-洗翠的樣子.png"
   },
   {
     "name": "鑰圈兒",
@@ -1278,10 +1278,10 @@ const pokemonDatabase = [
     "image": "images/pokemon/冰岩怪.png"
   },
   {
-    "name": "冰岩怪|洗翠的樣子",
+    "name": "冰岩怪-洗翠的樣子",
     "t1": "冰",
     "t2": "岩石",
-    "image": "images/pokemon/冰岩怪|洗翠的樣子.png"
+    "image": "images/pokemon/冰岩怪-洗翠的樣子.png"
   },
   {
     "name": "音波龍",
@@ -1296,10 +1296,10 @@ const pokemonDatabase = [
     "image": "images/pokemon/狙射樹梟.png"
   },
   {
-    "name": "狙射樹梟|洗翠的樣子",
+    "name": "狙射樹梟-洗翠的樣子",
     "t1": "草",
     "t2": "格鬥",
-    "image": "images/pokemon/狙射樹梟|洗翠的樣子.png"
+    "image": "images/pokemon/狙射樹梟-洗翠的樣子.png"
   },
   {
     "name": "熾焰咆哮虎",
@@ -1332,22 +1332,22 @@ const pokemonDatabase = [
     "image": "images/pokemon/超級好勝毛蟹.png"
   },
   {
-    "name": "鬃岩狼人|白晝的樣子",
+    "name": "鬃岩狼人-白晝的樣子",
     "t1": "岩石",
     "t2": "",
-    "image": "images/pokemon/鬃岩狼人|白晝的樣子.png"
+    "image": "images/pokemon/鬃岩狼人-白晝的樣子.png"
   },
   {
-    "name": "鬃岩狼人|黑夜的樣子",
+    "name": "鬃岩狼人-黑夜的樣子",
     "t1": "岩石",
     "t2": "",
-    "image": "images/pokemon/鬃岩狼人|黑夜的樣子.png"
+    "image": "images/pokemon/鬃岩狼人-黑夜的樣子.png"
   },
   {
-    "name": "鬃岩狼人|黃昏的樣子",
+    "name": "鬃岩狼人-黃昏的樣子",
     "t1": "岩石",
     "t2": "",
-    "image": "images/pokemon/鬃岩狼人|黃昏的樣子.png"
+    "image": "images/pokemon/鬃岩狼人-黃昏的樣子.png"
   },
   {
     "name": "超壞星",
@@ -1440,16 +1440,16 @@ const pokemonDatabase = [
     "image": "images/pokemon/沙螺蟒.png"
   },
   {
-    "name": "怖思壶|贗品形態",
+    "name": "怖思壶-贗品形態",
     "t1": "幽靈",
     "t2": "",
-    "image": "images/pokemon/怖思壶|贗品形態.png"
+    "image": "images/pokemon/怖思壶-贗品形態.png"
   },
   {
-    "name": "怖思壶|真品形態",
+    "name": "怖思壶-真品形態",
     "t1": "幽靈",
     "t2": "",
-    "image": "images/pokemon/怖思壶|真品形態.png"
+    "image": "images/pokemon/怖思壶-真品形態.png"
   },
   {
     "name": "布莉姆溫",
@@ -1476,16 +1476,16 @@ const pokemonDatabase = [
     "image": "images/pokemon/霜奶仙.png"
   },
   {
-    "name": "莫魯貝可|滿腹花紋",
+    "name": "莫魯貝可-滿腹花紋",
     "t1": "電",
     "t2": "惡",
-    "image": "images/pokemon/莫魯貝可|滿腹花紋.png"
+    "image": "images/pokemon/莫魯貝可-滿腹花紋.png"
   },
   {
-    "name": "莫魯貝可|空腹花紋",
+    "name": "莫魯貝可-空腹花紋",
     "t1": "電",
     "t2": "惡",
-    "image": "images/pokemon/莫魯貝可|空腹花紋.png"
+    "image": "images/pokemon/莫魯貝可-空腹花紋.png"
   },
   {
     "name": "多龍巴魯托",
@@ -1506,16 +1506,16 @@ const pokemonDatabase = [
     "image": "images/pokemon/劈斧螳螂.png"
   },
   {
-    "name": "幽尾玄魚|雄性的樣子",
+    "name": "幽尾玄魚-雄性的樣子",
     "t1": "水",
     "t2": "幽靈",
-    "image": "images/pokemon/幽尾玄魚|雄性的樣子.png"
+    "image": "images/pokemon/幽尾玄魚-雄性的樣子.png"
   },
   {
-    "name": "幽尾玄魚|雌性的樣子",
+    "name": "幽尾玄魚-雌性的樣子",
     "t1": "水",
     "t2": "幽靈",
-    "image": "images/pokemon/幽尾玄魚|雌性的樣子.png"
+    "image": "images/pokemon/幽尾玄魚-雌性的樣子.png"
   },
   {
     "name": "大狃拉",
@@ -1548,16 +1548,16 @@ const pokemonDatabase = [
     "image": "images/pokemon/巴布土撥.png"
   },
   {
-    "name": "一家鼠|四隻家庭",
+    "name": "一家鼠-四隻家庭",
     "t1": "一般",
     "t2": "",
-    "image": "images/pokemon/一家鼠|四隻家庭.png"
+    "image": "images/pokemon/一家鼠-四隻家庭.png"
   },
   {
-    "name": "一家鼠|三隻家庭",
+    "name": "一家鼠-三隻家庭",
     "t1": "一般",
     "t2": "",
-    "image": "images/pokemon/一家鼠|三隻家庭.png"
+    "image": "images/pokemon/一家鼠-三隻家庭.png"
   },
   {
     "name": "鹽石巨靈",
@@ -1608,16 +1608,16 @@ const pokemonDatabase = [
     "image": "images/pokemon/巨鍛匠.png"
   },
   {
-    "name": "海豚俠|平凡形態",
+    "name": "海豚俠-平凡形態",
     "t1": "水",
     "t2": "",
-    "image": "images/pokemon/海豚俠|平凡形態.png"
+    "image": "images/pokemon/海豚俠-平凡形態.png"
   },
   {
-    "name": "海豚俠|全能形態",
+    "name": "海豚俠-全能形態",
     "t1": "水",
     "t2": "",
-    "image": "images/pokemon/海豚俠|全能形態.png"
+    "image": "images/pokemon/海豚俠-全能形態.png"
   },
   {
     "name": "拖拖蚓",
@@ -1806,16 +1806,16 @@ const pokemonDatabase = [
     "image": "images/pokemon/超級麻麻鳗魚王.png"
   },
   {
-    "name": "火炎狮|雄性的樣子",
+    "name": "火炎狮-雄性的樣子",
     "t1": "火",
     "t2": "一般",
-    "image": "images/pokemon/火炎狮|雄性的樣子.png"
+    "image": "images/pokemon/火炎狮-雄性的樣子.png"
   },
   {
-    "name": "火炎狮|雌性的樣子",
+    "name": "火炎狮-雌性的樣子",
     "t1": "火",
     "t2": "一般",
-    "image": "images/pokemon/火炎狮|雌性的樣子.png"
+    "image": "images/pokemon/火炎狮-雌性的樣子.png"
   },
   {
     "name": "超級火炎狮",
